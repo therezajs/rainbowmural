@@ -187,6 +187,22 @@ function search($tag) {
 		var_dump($rsp_obj);
 	}
 }
-getInfo();
-search('street art , murals, sanfrancisco');
-// echo "http://flickr.com/photos/' . $flickr->username . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" ';
+// getInfo();
+// search('street art , murals, sanfrancisco');
+
+
+######################
+######################
+######################
+
+// Google API key: AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ
+
+
+
+
+
+
+
+
+
+

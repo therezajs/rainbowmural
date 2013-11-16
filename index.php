@@ -6,51 +6,71 @@
 
     // $person = Person::currentUser();
 
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $person->becomeFriendsWith($_POST['action']);
-      exit();
-    }
 ?>
     <style type="text/css">
-        #row {
+        #container {
             margin-top: 20px;
         }
+        .item {
+            width: 25%;
+        }
+
     </style>
-    <div class='container' id='dropdown'>
-        <div class="btn-group" id='dropdown2'>
-          <button type="button" class="btn btn-default" id='btn'>Choose you city</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu" id='menu' role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">San Francisco</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Berlin</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bern</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-          </ul>
+
+    <script type="text/javascript" scr="masonry.pkgd.js"></script>
+    <script type="text/javascript">
+        var container = document.querySelector('#container');
+        var msnry = new Masonry( container, {
+          // options
+          columnWidth: 200,
+          itemSelector: '.item'
+        });
+    </script>
+
+    <div class='container' id='my_container'>
+        <div id='messages'>
+        <?php
+        if (isset($_SESSION['messages'])) {
+
+            foreach ($_SESSION['messages'] as $message) {
+                echo "<div class='alert alert-danger'>".$message."</div>";
+            }
+            unset($_SESSION['messages']);
+        };
+
+
+        ?>
         </div>
-        <!-- table -->
-        <div class='row' id='row'>
+        <div class="row">
+            <div class='col-md-9'>
+                <form action='picture.php' method='post'>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Choose your city" name="name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                        <input type='hidden' name='action' value='city'>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id='container' class="row">
 
         <?php
 
         $pics = new Picture();
-        $images = $pics->getRandomPics('37.779', '-122.420', '75');
+        $images = $pics->getRandomPics('30', '1');
         // var_dump($images);
         if($images === false) {
             echo 'Flickr Feed Unavailable';
         }
         else {
             foreach($images['photos']['photo'] as $photo) {
-                echo '<a href="detail.php" value="' . $photo['owner'] . '/' . $photo['id'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg" /></a>';
+                echo '<div class="item" ><a href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
                 // echo '<a href="http://flickr.com/photos/' . $photo->attributes()->owner . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" /></a>';
-
             }
         }
-?>
+        ?>
 
 
 

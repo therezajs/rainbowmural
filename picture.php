@@ -11,19 +11,28 @@ class Picture {
     //     $this->connection = new Database();
     // }
 
-    function getRandomPics($lat, $lon, $limit) {
+    function processFormData($data) {
+
+        if (isset($data['action']) && $data['action'] == 'city')
+        {
+
+            $this->findCity($data['name']);
+
+        }
+    }
+
+    function getRandomPics($limit, $page) {
 
         $params = array(
-        'method'    => 'flickr.photos.search',
-        'api_key'   => '8abd07e60daeea28e2170bedcf9b984c',
-        'tags' => 'mural, street art, graffiti',
+        'method' => 'flickr.photos.search',
+        'api_key' => '8693270a9110a8a81910efea61aaf448',
+        'tags' => 'Mural, Street Art, Graffiti, Urban Art, Wall Art',
         'tag_mode' => 'any',
         'sort' => 'interestingness_desc',
         'has_geo' => TRUE,
-        'lat' => $lat,
-        'lon' => $lon,
         'per_page' => $limit,
-        'format'    => 'php_serial',
+        'page' => $page,
+        'format' => 'php_serial',
         );
 
         $encoded_params = array();
@@ -39,38 +48,61 @@ class Picture {
         $rsp_obj = unserialize($rsp);
         // var_dump($rsp_obj);
         return $rsp_obj;
-
-        // echo '<br><br>';
-        // var_dump($rsp_obj);
-        // if ($rsp_obj['stat'] == 'ok'){
-        //     for ($i=0; $i < $limit ; $i++) {
-        //         $id = $rsp_obj['photos']['photo'][$i]['id'];
-        //         $title = $rsp_obj['photos']['photo'][$i]['owner'];
-        //         $farm = $rsp_obj['photos']['photo'][$i]['farm'];
-        //         $server = $rsp_obj['photos']['photo'][$i]['server'];
-        //         $secret = $rsp_obj['photos']['photo'][$i]['secret'];
-        //     }
-
-
-        // }else{
-
-        //     var_dump($rsp_obj);
-        // }
     }
 
-    function getCityPics($lat, $lon) {
+    function findCity($name) {
+        $params = array(
+        'method' => 'flickr.places.find',
+        'api_key' => '8693270a9110a8a81910efea61aaf448',
+        'query' => $name,
+        'format' => 'php_serial',
+        );
+
+        $encoded_params = array();
+
+        foreach ($params as $k => $v){
+
+            $encoded_params[] = urlencode($k).'='.urlencode($v);
+        }
+        $url = "http://api.flickr.com/services/rest/?".implode('&', $encoded_params);
+        $rsp = file_get_contents($url);
+
+
+        $rsp_obj = unserialize($rsp);
+        // var_dump($rsp_obj);
+        if ($rsp_obj['stat'] == 'ok'){
+            if ($rsp_obj['places']['total'] == 0) {
+                $message[] = "City name not valid";
+                $_SESSION['messages'] = $message;
+                header('location: index.php');
+            }
+            else
+            {
+                header("location: map.php?lat=".$rsp_obj['places']['place'][0]['latitude']."&lon=".$rsp_obj['places']['place'][0]['longitude']."&place=".$rsp_obj['places']['place'][0]['woe_name']);
+            }
+        }
+        else
+        {
+            $message[] = "Oops, something went wrong. please search for a city name";
+            $_SESSION['messages'] = $message;
+            header('location: index.php');
+        }
+    }
+
+    function getCityPics($lat, $lon, $page) {
         // $lat and $lon of requested city
 
         $params = array(
         'method'    => 'flickr.photos.search',
-        'api_key'   => '8abd07e60daeea28e2170bedcf9b984c',
-        'tags' => 'mural, street art, graffiti',
+        'api_key'   => '8693270a9110a8a81910efea61aaf448',
+        'tags' => 'Mural, Street Art, Graffiti, Urban Art, Wall Art',
         'tag_mode' => 'any',
         'sort' => 'interestingness_desc',
         'has_geo' => TRUE,
         'lat' => $lat,
         'lon' => $lon,
         'per_page' => '50',
+        'page' => $page,
         'format'    => 'php_serial',
         );
 
@@ -89,7 +121,27 @@ class Picture {
         return $rsp_obj;
     }
 
-    function getPic() {
+    function getPicInfo($photo_id) {
+        $params = array(
+        'method'    => 'flickr.photos.getInfo',
+        'api_key'   => '8693270a9110a8a81910efea61aaf448',
+        'photo_id' => $photo_id,
+        'format'    => 'php_serial',
+        );
+
+        $encoded_params = array();
+
+        foreach ($params as $k => $v){
+
+            $encoded_params[] = urlencode($k).'='.urlencode($v);
+        }
+        $url = "http://api.flickr.com/services/rest/?".implode('&', $encoded_params);
+        $rsp = file_get_contents($url);
+
+
+        $rsp_obj = unserialize($rsp);
+        // var_dump($rsp_obj);
+        return $rsp_obj;
     }
 
     // function __get($name) {
@@ -99,3 +151,5 @@ class Picture {
 
 }
 
+$picture = new Picture();
+$picture->processFormData($_POST);
