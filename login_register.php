@@ -61,10 +61,11 @@
 
 					$_SESSION['logged_in'] = true;
 					$_SESSION['id'] = $user[0]['id'];
+					$_SESSION['user_name'] = $user[0]['user_name'];
 					$_SESSION['first_name'] = $user[0]['first_name'];
 					$_SESSION['last_name'] = $user[0]['last_name'];
 					$_SESSION['email'] = $user[0]['email'];
-					$_SESSION['messages'][] = "You've logged in successfully!";
+					// $_SESSION['messages'][] = "You've logged in successfully!";
 					header('Location: index.php');
 				}
 				else
@@ -77,6 +78,10 @@
 
 		function registerAction($data){
 			$errors = array();
+
+			if (!(isset($data['user_name']) && is_string($data['user_name']) && strlen($data['user_name'])>2)) {
+				$errors[] = "Username not valid";
+			}
 
 			if (!(isset($data['first_name']) && is_string($data['first_name']) && strlen($data['first_name'])>2)) {
 				$errors[] = "First Name not valid";
@@ -104,17 +109,18 @@
 			}
 			else
 			{
-				$query = "SELECT * FROM users WHERE email = '{$data['email']}'";
+				$query = "SELECT * FROM users WHERE email = '{$data['email']}' OR user_name = '{$data['user_name']}'";
 				$user = $this->connection->fetch_all($query);
 
 				if (count($user)>0) {
-					$errors[] = "Account with email ".$data['email']." already exists.";
+
+					$errors[] = "Account with email ".$data['email']." or user_name ".$data['user_name']."already exists.";
 					$_SESSION['errors'] = $errors;
 					header('Location: login.php');
 				}
 				else
 				{
-					$query = "INSERT INTO users (first_name, last_name, email, password, created_at) VALUES ('{$data['first_name']}', '{$data['last_name']}', '{$data['email']}', '{$data['password']}', NOW())";
+					$query = "INSERT INTO users (user_name, first_name, last_name, email, password, created_at) VALUES ('{$data['user_name']}', '{$data['first_name']}', '{$data['last_name']}', '{$data['email']}', '{$data['password']}', NOW())";
 					mysql_query($query);
 
 					$success[] = "Registration successfull!";

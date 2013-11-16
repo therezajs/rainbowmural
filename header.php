@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Friends Finder</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrap.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Street Art Explorer</title>
     <link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&sensor=false"></script>
+    <script type="text/javascript" scr="masonry.js"></script>
     <style type="text/css">
-        #dropdown {
+        #my_container {
             margin-top: 100px;
         }
         #btn {
@@ -44,7 +43,7 @@
                 </ul>
                 <?php if (isset($_SESSION['logged_in'])) {
                     echo '<ul class="nav navbar-nav navbar-right">';
-                    echo "<li><a href='edit.php'>Welcome ". $_SESSION['first_name']."</a></li>";
+                    echo "<li><a href='edit.php'>Welcome ". $_SESSION['user_name']."</a></li>";
                     echo "<li><form action='login_register.php' method='post' class='navbar-form navbar-right'>";
                     echo "<div id='form-group'>";
                     echo "<input type='submit' value='Log off' class='btn btn-danger form-control'></div></form></li></ul>";

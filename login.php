@@ -59,6 +59,9 @@
 				<form action='login_register.php' method='post' id='registration' role='form'>
 					<input type='hidden' name='action' value='registration'>
 					<div class='form-group'>
+						<input type='text' placeholder='Username' name='user_name' class="form-control">
+					</div>
+					<div class='form-group'>
 						<input type='text' placeholder='First name' name='first_name' class="form-control">
 					</div>
 					<div class='form-group'>
