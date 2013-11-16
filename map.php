@@ -80,10 +80,24 @@
                 // echo '<a href="http://flickr.com/photos/' . $photo->attributes()->owner . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" /></a>';
 
             }
+
+
+            foreach ($images['photos']['photo'] as $photo) {
+                echo '<script type="text/javascript">
+                    var myLatlng = new google.maps.LatLng('.$photo['latitude'].','.$photo['longitude'].');
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title:"Hello World!"
+                    });</script>';
+
+            }
+
         }
+
     }
 ?>
-
+<script type="text/javascript"></script>
 
 
             </div>

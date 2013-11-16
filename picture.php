@@ -32,6 +32,7 @@ class Picture {
         'has_geo' => TRUE,
         'per_page' => $limit,
         'page' => $page,
+        'extras' => 'geo',
         'format' => 'php_serial',
         );
 
@@ -103,6 +104,7 @@ class Picture {
         'lon' => $lon,
         'per_page' => '50',
         'page' => $page,
+        'extras' => 'geo',
         'format'    => 'php_serial',
         );
 
