@@ -37,7 +37,7 @@
             var marker = new google.maps.Marker({
                 position: ll,
                 map: map,
-                title: "Hello World!"
+                title: photo.title._content
             });
         codeLatLng();
         }
@@ -65,7 +65,7 @@
     <style type="text/css">
         html { height: 100% }
         body { height: 100%; margin: 0; padding: 0 }
-        #map-canvas { height: 100%; border: 1px solid black; }
+        #map-canvas { height: 100%; }
 
         #container {
             margin-top: 70px;

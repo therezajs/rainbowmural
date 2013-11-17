@@ -28,7 +28,7 @@ class Picture {
         'api_key' => '8693270a9110a8a81910efea61aaf448',
         'tags' => 'Mural, Street Art, Graffiti, Urban Art, Wall Art',
         'tag_mode' => 'any',
-        'sort' => 'interestingness_desc',
+        'sort' => 'interestingness_asc',
         'has_geo' => TRUE,
         'per_page' => $limit,
         'page' => $page,

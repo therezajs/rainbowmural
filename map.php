@@ -82,7 +82,7 @@
         }
         else {
             foreach($images['photos']['photo'] as $photo) {
-                echo '<div class="row"><a href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg" /></a>  <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a></div>';
+                echo '<div class="row"><a href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a>  <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a></div>';
             }
 
             echo "<script>var photos = JSON.parse('".addslashes(json_encode($images['photos']['photo']))."');</script>";
