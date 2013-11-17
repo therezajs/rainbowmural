@@ -20,6 +20,14 @@
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+        photos.forEach(function(each) {
+            var ll = new google.maps.LatLng(each.latitude,each.longitude);
+            var marker = new google.maps.Marker({
+                position: ll,
+                map: map,
+                title: each.title
+            });
+        });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
@@ -74,24 +82,10 @@
         }
         else {
             foreach($images['photos']['photo'] as $photo) {
-
-
                 echo '<div class="row"><a href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_s.jpg" /></a>  <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a></div>';
-                // echo '<a href="http://flickr.com/photos/' . $photo->attributes()->owner . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" /></a>';
-
             }
 
-
-            foreach ($images['photos']['photo'] as $photo) {
-                echo '<script type="text/javascript">
-                    var myLatlng = new google.maps.LatLng('.$photo['latitude'].','.$photo['longitude'].');
-                    var marker = new google.maps.Marker({
-                        position: myLatlng,
-                        map: map,
-                        title:"Hello World!"
-                    });</script>';
-
-            }
+            echo "<script>var photos = JSON.parse('".addslashes(json_encode($images['photos']['photo']))."');</script>";
 
         }
 
