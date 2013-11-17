@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&sensor=false"></script>
     <script type="text/javascript" scr="masonry.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <style type="text/css">
         #my_container {
             margin-top: 100px;
