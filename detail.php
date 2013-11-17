@@ -18,21 +18,63 @@
 
 
     <script type="text/javascript">
+        var geocoder;
+        var map;
+        var lat;
+        var lon;
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            lat = photo.location.latitude;
+            lon = photo.location.longitude;
+        var mapOptions = {
+          center: new google.maps.LatLng(photo.location.latitude,photo.location.longitude),
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+            var ll = new google.maps.LatLng(photo.location.latitude,photo.location.longitude);
+            var marker = new google.maps.Marker({
+                position: ll,
+                map: map,
+                title: "Hello World!"
+            });
+        codeLatLng();
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+          function codeLatLng() {
+
+            var latlng = new google.maps.LatLng(lat, lon);
+            geocoder.geocode({'latLng': latlng}, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+
+                  $('#location').html((results[0].formatted_address).split(',').join('<br>'));
+
+                }
+              } else {
+                alert("Geocoder failed due to: " + status);
+              }
+            });
+          }
+
 
     </script>
     <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 300px; border: 1px solid black; }
-    </style>
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map-canvas { height: 100%; border: 1px solid black; }
 
-
-
-
-
-    <style type="text/css">
         #container {
             margin-top: 70px;
+        }
+        #location_heigth {
+            height: 80px;
+        }
+        #map {
+            height: 300px;
         }
     </style>
     <div class="container" id='container'>
@@ -51,6 +93,8 @@
                     $pics = new Picture();
                     $images = $pics->getPicInfo($id[0]);
                     // var_dump($images);
+                    echo "<script>var photo = JSON.parse('".addslashes(json_encode($images['photo']))."');</script>";
+
                     if($images === false) {
                         echo 'Flickr Feed Unavailable';
                     }
@@ -59,24 +103,14 @@
                     }
                 ?>
 
-                <div id='google_maps'>
-                    <h4>Location</h4>
-                   <?php
-                    echo $lat = $images['photo']['location']['latitude'];
-                    echo '<br>';
-                    echo $lon = $images['photo']['location']['longitude'];
-                    echo '<br>';
-                    echo $acc = $images['photo']['location']['accuracy'];
-                   ?>
-
-                    <br>
-                    Get streetview (if available) to see the location!
-                    <br>
-                    <br>
-                    <div id="map-canvas"/>
-
-                    <br>
+                <div id='location_heigth'>
+                <div id='location'></div>
                 </div>
+                <br>
+                <div id='map'>
+                    <div id="map-canvas"/>
+                </div>
+                <br>
                 <div id='comments'>
                     <!-- <form class='form'>
                         <ul class='form-group'>
@@ -129,72 +163,9 @@
     </div>
       <script type="text/javascript">
 
-  //     var geocoder;
-  // var map;
-  // var infowindow = new google.maps.InfoWindow();
-  // var marker;
-  // function initialize() {
-  //   geocoder = new google.maps.Geocoder();
-  //   var latlng = new google.maps.LatLng(40.730885,-73.997383);
-  //   var mapOptions = {
-  //     zoom: 8,
-  //     center: latlng,
-  //     mapTypeId: google.maps.MapTypeId.ROADMAP
-  //   }
-  //   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  // }
-
-  // function codeLatLng() {
-  //   var input = document.getElementById("latlng").value;
-  //   var latlngStr = input.split(",",2);
-  //   var lat = parseFloat(latlngStr[0]);
-  //   var lng = parseFloat(latlngStr[1]);
-  //   var latlng = new google.maps.LatLng(lat, lng);
-  //   geocoder.geocode({'latLng': latlng}, function(results, status) {
-  //     if (status == google.maps.GeocoderStatus.OK) {
-  //       if (results[1]) {
-  //         map.setZoom(11);
-  //         marker = new google.maps.Marker({
-  //             position: latlng,
-  //             map: map
-  //         });
-  //         infowindow.setContent(results[1].formatted_address);
-  //         infowindow.open(map, marker);
-  //       }
-  //     } else {
-  //       alert("Geocoder failed due to: " + status);
-  //     }
-  //   });
-  // }
 
 
-// function initialize() {
-//         var mapOptions = {
-//           center: new google.maps.LatLng(lat, lon),
-//           zoom: 10,
-//           mapTypeId: google.maps.MapTypeId.ROADMAP
-//         };
-//         var map = new google.maps.Map(document.getElementById("map-canvas"),
-//             mapOptions);
-//       }
-//       google.maps.event.addDomListener(window, 'load', initialize);
 
-///////////////////
-var myLatlng = new google.maps.LatLng('<?php echo $lat ?>','<?php echo $lon?>');
-var mapOptions = {
-  zoom: 13,
-  center: myLatlng,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-}
-var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-// To add the marker to the map, use the 'map' property
-var marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title:"Hello World!"
-});
-///////////////////
 
 
 
