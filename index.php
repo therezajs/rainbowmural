@@ -14,18 +14,12 @@
         .item {
             width: 25%;
         }
+        .item img {
+            width: 100%;
+            padding: 8px;
+        }
 
     </style>
-
-    <script type="text/javascript" scr="masonry.pkgd.js"></script>
-    <script type="text/javascript">
-        var container = document.querySelector('#container');
-        var msnry = new Masonry( container, {
-          // options
-          columnWidth: 200,
-          itemSelector: '.item'
-        });
-    </script>
 
     <div class='container' id='my_container'>
         <div id='messages'>
@@ -71,11 +65,16 @@
             }
         }
         ?>
-
-
-
-
         </div>
+        <script type="text/javascript">
+            $(window).load(function() {
+                var container = document.querySelector('#container');
+                var msnry = new Masonry( container, {
+                  itemSelector: '.item'
+                });
+            });
+        </script>
+
         <hr>
 		<footer>Made with love by Thereza, 2013</footer><br>
 	</div>
