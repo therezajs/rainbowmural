@@ -42,12 +42,27 @@
                     <li><a href="about.php">about</a></li>
                     <li><a href="login.php">login</a></li>
                 </ul>
-                <?php if (isset($_SESSION['logged_in'])) {
+                <?php
+                    if ($_SERVER["REQUEST_URI"] != '/projects/project1/index.php') {
+                        echo "<div class='col-md-3 navbar-right'>";
+                        echo "<form action='picture.php' method='post' class='navbar-form'>";
+                        echo '<div class="input-group">';
+                        echo '<div class="form-group">';
+                        echo '<input type="text" class="form-control" placeholder="Choose your city" name="name">';
+                        echo '</div>';
+                        echo '<span class="input-group-btn">';
+                        echo '<button class="btn btn-default form-group" type="button">Go!</button>';
+                        echo '</span>';
+                        echo "<input type='hidden' name='action' value='city'>";
+                        echo "</div></form></div>";
+                    }
+
+                if (isset($_SESSION['logged_in'])) {
                     echo '<ul class="nav navbar-nav navbar-right">';
                     echo "<li><a href='edit.php'>Welcome ". $_SESSION['user_name']."</a></li>";
                     echo "<li><form action='login_register.php' method='post' class='navbar-form navbar-right'>";
                     echo "<div id='form-group'>";
-                    echo "<input type='submit' value='Log off' class='btn btn-danger form-control'></div></form></li></ul>";
+                    echo "<input type='submit' value='Log off' class='btn btn-danger btn-sm form-control'></div></form></li></ul>";
                 }
                 ?>
             </div>
