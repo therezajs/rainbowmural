@@ -1,5 +1,5 @@
 <?php
-    // include('connection.php');
+    include('connection.php');
     // session_start();
 
 class Comment {
@@ -38,11 +38,24 @@ class Comment {
     }
 
     function insertComment($pic_id, $user_id, $comment) {
-        $query = "INSERT INTO comments (pic_id, user_id, comment) VALUES ('".$pic_id."','".$user_id."','".$comment."')";
-        mysql_query($query);
 
-        $messages[] = "Comment was successful";
-        $_SESSION['messages'] = $messages;
+        if (isset($comment) AND $comment != '') {
+            $query = "INSERT INTO comments (pic_id, user_id, comment) VALUES ('".$pic_id."','".$user_id."','".$comment."')";
+            mysql_query($query);
+
+
+
+        $posts = $this->connection->fetch_all("SELECT id FROM comments");
+        $end = end($posts);
+        $query = "SELECT comment, (select user_name from users where user_id = id ) AS user FROM comments WHERE id = ".$end['id'];
+            // echo $query;
+        $comments = $this->connection->fetch_all($query);
+        // var_dump($comments);
+        $html = "<tr><td>".$comments[0]['user']."</td><td>".$comments[0]['comment']."</td></tr>";
+
+        $data['html'] = $html;
+        echo json_encode($data);
+    }
 
     }
 
@@ -52,4 +65,9 @@ class Comment {
     // }
 
 }
+
+$data = new Comment();
+$data->processFormData($_POST);
+
+
 
