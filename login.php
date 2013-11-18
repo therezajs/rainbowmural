@@ -1,41 +1,20 @@
 <?php
 	session_start();
 	include('connection.php');
+	require('header.php');
 
 
 ?>
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Friends Finder</title>
-	<link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
+
 	<style type="text/css">
-	#form-group {
+	#submit {
 		margin-top: 10px;
 	}
 	#container {
 		margin-top: 60px;
 	}
 	</style>
-	<script type="text/javascript"></script>
-</head>
-<body>
-	<div class="navbar navbar-fixed-top navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php">Street Art of the World powered by flickr</a>
-			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="index.php">home</a></li>
-					<li><a href="map.php">map</a></li>
-					<li><a href="about.php">about</a></li>
-					<li><a href="login.php">login</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
 
 	<div class='container' id='container'>
 		<?php
@@ -59,7 +38,7 @@
 				<form action='login_register.php' method='post' id='registration' role='form'>
 					<input type='hidden' name='action' value='registration'>
 					<div class='form-group'>
-						<input type='text' placeholder='Username' name='user_name' class="form-control">
+						<input type='text' placeholder='Username' name='name' class="form-control">
 					</div>
 					<div class='form-group'>
 						<input type='text' placeholder='First name' name='first_name' class="form-control">
@@ -92,7 +71,7 @@
 					<input type='submit' value='Login' class='btn btn-success'>
 				</form>
 				<form action='login_register.php' method='post' role='form'>
-					<div id='form-group'>
+					<div id='submit'>
 					<input type='submit' value='Log off' class='btn btn-danger'>
 					</div>
 				</form>
