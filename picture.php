@@ -28,7 +28,7 @@ class Picture {
         'api_key' => '8693270a9110a8a81910efea61aaf448',
         'tags' => 'Mural, Street Art, Graffiti, Urban Art, Wall Art',
         'tag_mode' => 'any',
-        'sort' => 'interestingness_asc',
+        'sort' => 'interestingness-asc',
         'has_geo' => TRUE,
         'per_page' => $limit,
         'page' => $page,
@@ -98,7 +98,7 @@ class Picture {
         'api_key'   => '8693270a9110a8a81910efea61aaf448',
         'tags' => 'Mural, Street Art, Graffiti, Urban Art, Wall Art',
         'tag_mode' => 'any',
-        'sort' => 'interestingness_desc',
+        'sort' => 'interestingness-desc',
         'has_geo' => TRUE,
         'lat' => $lat,
         'lon' => $lon,
@@ -150,6 +150,38 @@ class Picture {
     //     // Returns a property, one of id, name, email, or is_friend
     //     return $this->data[$name];
     // }
+    function getPicsNearby($lat, $lon) {
+        // $lat and $lon of requested city
+
+        $params = array(
+        'method'    => 'flickr.photos.search',
+        'api_key'   => '8693270a9110a8a81910efea61aaf448',
+        'tags' => 'Mural, Street Art, Graffiti, Urban Art, Wall Art',
+        'tag_mode' => 'any',
+        'sort' => 'interestingness-asc',
+        'has_geo' => TRUE,
+        'lat' => $lat,
+        'lon' => $lon,
+        'radius' => '0.5',
+        'per_page' => '50',
+        'extras' => 'geo',
+        'format'    => 'php_serial',
+        );
+
+        $encoded_params = array();
+
+        foreach ($params as $k => $v){
+
+            $encoded_params[] = urlencode($k).'='.urlencode($v);
+        }
+        $url = "http://api.flickr.com/services/rest/?".implode('&', $encoded_params);
+        $rsp = file_get_contents($url);
+
+
+        $rsp_obj = unserialize($rsp);
+        // var_dump($rsp_obj);
+        return $rsp_obj;
+    }
 
 }
 
