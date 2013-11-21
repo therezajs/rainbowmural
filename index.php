@@ -8,18 +8,7 @@
 
 ?>
     <style type="text/css">
-        table {
-            margin: 10px auto;
 
-
-        }
-        td {
-            border: 1px solid black;
-            height: 50px;
-            text-align: center;
-            font-weight: bold;
-
-        }
         #search {
             margin: 10px auto;
         }
@@ -33,7 +22,11 @@
             width: 100%;
             padding: 8px;
         }
-
+        .button {
+            min-width: 250px;
+            height: 50px;
+            margin: 10px;
+        }
     </style>
 
     <div class='container' id='my_container'>
@@ -50,7 +43,8 @@
 
         </div>
         <div class="row">
-            <div class='col-md-5' id="search">
+            <div class='col-md-4'></div>
+            <div class='col-md-4' id="search">
                 <form action='picture.php' method='post'>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Choose your city" name="name">
@@ -61,18 +55,23 @@
                     </div>
                 </form>
             </div>
+            <div class='col-md-4'></div>
         </div>
-        <div class="row">
-            <table class="col-md-12">
-                <tbody>
-                    <tr>
-                        <td class="col-md-3"><a href="map.php?lat=37.779&lon=-122.420&place=San%20Francisco">San Francisco</a></td>
-                        <td class="col-md-3"><a href="map.php?lat=48.856&lon=2.341&place=Paris">Paris</a></td>
-                        <td class="col-md-3"><a href="map.php?lat=51.506&lon=-0.127&place=London">London</a></td>
-                        <td class="col-md-3"><a href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav col-md-12">
+            <li class='col-md-3'>
+                <a class="btn btn-default button" href="map.php?lat=37.779&lon=-122.420&place=San%20Francisco">San Francisco</a>
+            </li>
+            <li class='col-md-3'>
+                <a class="btn btn-default button" href="map.php?lat=48.856&lon=2.341&place=Paris">Paris</a>
+            </li>
+            <li class='col-md-3'>
+                <a class="btn btn-default button"href="map.php?lat=51.506&lon=-0.127&place=London">London</a>
+            </li>
+            <li class='col-md-3'>
+                <a class="btn btn-default button" href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a>
+            </li>
+        </ul>
         </div>
         <div id='container' class="row">
 
@@ -86,7 +85,7 @@
         }
         else {
             foreach($images['photos']['photo'] as $photo) {
-                echo '<div class="item" ><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '_' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
+                echo '<div class="item" ><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
                 // echo '<a href="http://flickr.com/photos/' . $photo->attributes()->owner . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" /></a>';
             }
         }
@@ -97,6 +96,15 @@
                 var container = document.querySelector('#container');
                 var msnry = new Masonry( container, {
                   itemSelector: '.item'
+                });
+                $(window).scroll(function() {
+                    if (  document.documentElement.clientHeight +
+                          $(document).scrollTop() >= document.body.offsetHeight )
+                    {
+                        // Display alert or whatever you want to do when you're
+                        //   at the bottom of the page.
+                        alert("You're at the bottom of the page.");
+                    }
                 });
             });
         </script>
