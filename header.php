@@ -14,7 +14,7 @@
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
     <style type="text/css">
         #my_container {
-            margin-top: 100px;
+            margin-top: 70px;
         }
         #btn {
             min-width: 300px;
@@ -33,12 +33,13 @@
 	<div class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">Street Art of the World powered by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong></a>
+                <a class="navbar-brand" href="index.php">Street Art of the World by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">home</a></li>
                     <li><a href="map.php">map</a></li>
+                    <li><a href="fav.php">likes</a></li>
                     <li><a href="about.php">about</a></li>
                     <li><a href="login.php">login</a></li>
                 </ul>
