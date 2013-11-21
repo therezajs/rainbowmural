@@ -17,25 +17,51 @@
         var lon;
         function initialize() {
             geocoder = new google.maps.Geocoder();
-            lat = photo.latitude;
-            lon = photo.longitude;
-        var mapOptions = {
-          center: new google.maps.LatLng(photo.latitude,photo.longitude),
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-            var ll = new google.maps.LatLng(photo.latitude,photo.longitude);
+            lat = photo.location.latitude;
+            lon = photo.location.longitude;
+            var mapOptions = {
+              center: new google.maps.LatLng(photo.location.latitude,photo.location.longitude),
+              zoom: 14,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+            var ll = new google.maps.LatLng(photo.location.latitude,photo.location.longitude);
             var marker = new google.maps.Marker({
                 position: ll,
                 map: map,
-                title: photo.title
+                title: photo.title._content
             });
-        codeLatLng();
-        }
 
-        google.maps.event.addDomListener(window, 'load', initialize);
+            var image = 'red_dot.png';
+            photosNearby.forEach(function(each) {
+                if (each.id != <?php echo "'". $_GET['id'] ."'"?>) {
+                    var myLatLng = new google.maps.LatLng(each.latitude,each.longitude);
+                    var dotMarker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        icon: image
+                    });
+                    var contentString = '<a href="detail.php?lat=' + each.latitude + '&lon=' + each.longitude + '&id=' + each.id + '&secret=' + each.secret + '"><img class="images" src="http://www.flickr.com/photos/'+each.id+'_'+each.secret+'_s.jpg"></a>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+                    google.maps.event.addListener(dotMarker, 'click', function() {
+
+                        infowindow.open(map, dotMarker);
+                    });
+
+                    google.maps.event.addListener(dotMarker, 'mouseout', function() {
+                        infowindow.close();
+                    });
+                };
+            });
+
+            codeLatLng();
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
 
           function codeLatLng() {
 
@@ -65,6 +91,15 @@
                     }, "json");
                 return false;
             });
+
+            $(document).on("click", '#fav', function() {
+                var form = $(this);
+                $.post(
+                    $(this).attr('action'), $(this).serialize(), function(param) {
+                        $(form).html('');
+                    }, "json");
+                return false;
+            })
         });
     </script>
     <style type="text/css">
@@ -102,9 +137,9 @@
         <div class='row'>
             <div class='col-md-7' id='pic'>
                 <?php
-                    $photo_id = $_GET['id'];
-                    $id = explode('_', $photo_id);
-                    echo '<img src="http://www.flickr.com/photos/'.$photo_id.'.jpg">';
+                    $id = $_GET['id'];
+                    $secret = $_GET['secret'];
+                    echo '<img src="http://www.flickr.com/photos/'.$id.'_'.$secret.'.jpg">';
                 ?>
 
                 <div class='row' id='nearby_container'>
@@ -121,15 +156,17 @@
                             echo 'Flickr Feed Unavailable';
                         }
                         else {
+                            echo "<script>var photosNearby = JSON.parse('".addslashes(json_encode($nearby['photos']['photo']))."');</script>";
                             foreach($nearby['photos']['photo'] as $photo) {
-                                if ($photo['id'] != $id[0]) {
-                                    echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '_' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
+                                if ($photo['id'] != $id) {
+                                    echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
                                 // <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a>
                                 }
                                 else
                                 {
-                                    $title = $photo['title'];
-                                    echo "<script>var photo = JSON.parse('".addslashes(json_encode($photo))."');</script>";
+                                    // var_dump($photo);
+                                    // $title = $photo['title'];
+                                    // echo "<script>var photo = JSON.parse('".addslashes(json_encode($photo))."');</script>";
                                 }
 
                             }
@@ -148,17 +185,17 @@
                 </div>
                 <br>
                 <?php
-                    // $pics = new Picture();
-                    // $images = $pics->getPicInfo($id[0]);
+                    $pics = new Picture();
+                    $images = $pics->getPicInfo($id);
                     // var_dump($images);
-                    // echo "<script>var photo = JSON.parse('".addslashes(json_encode($images['photo']))."');</script>";
+                    echo "<script>var photo = JSON.parse('".addslashes(json_encode($images['photo']))."');</script>";
 
-                    // if($images === false) {
-                    //     echo 'Flickr Feed Unavailable';
-                    // }
-                    // else {
-                        echo '<h3>Title: '.$title.'</h3>';
-                    // }
+                    if($images === false) {
+                        echo 'Flickr Feed Unavailable';
+                    }
+                    else {
+                        echo '<h3>Title: '.$images['photo']['title']["_content"].'</h3>';
+                    }
                 ?>
 
                 <div id='location_heigth'>
@@ -173,7 +210,14 @@
                             <li>comment</li>
                         </ul>
                     </form> -->
-                    <h4>Comment</h4>
+                    <div class="row">
+
+
+
+                    <h4>Comment <span class='.glyphicon .glyphicon-heart'><span></h4><form action='fav.php' method='post' id='fav'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'> <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span> like</form>
+
+
+                    </div>
                     <?php
                     function commentsTable($comments)
                     {
@@ -187,7 +231,7 @@
                         echo $html;
                     }
                     $get_comments = new Comment();
-                    $comments = $get_comments->getComments($id[0]);
+                    $comments = $get_comments->getComments($id);
                     // var_dump($comments);
                     commentsTable($comments);
 
@@ -195,7 +239,7 @@
 
 
                     <form action="comment.php" method="post" id='comment'>
-                        <input type='hidden' name='pic_id' value='<?php echo $id[0] ?>'>
+                        <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
                         <input type='hidden' name='pic_secret' value='<?php echo $photo_id ?>'>
                         <input type='hidden' name='action' value='comment' >
                         <?php
