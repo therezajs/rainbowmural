@@ -134,6 +134,9 @@
         }
     </style>
     <div class="container" id='container'>
+        <?php
+            flash();
+        ?>
         <div class='row'>
             <div class='col-md-7' id='pic'>
                 <?php

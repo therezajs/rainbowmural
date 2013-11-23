@@ -32,13 +32,7 @@
     <div class='container' id='my_container'>
         <div id='messages'>
         <?php
-        if (isset($_SESSION['messages'])) {
-
-            foreach ($_SESSION['messages'] as $message) {
-                echo "<div class='alert alert-danger'>".$message."</div>";
-            }
-            unset($_SESSION['messages']);
-        };
+            flash();
         ?>
 
         </div>

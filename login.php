@@ -18,20 +18,9 @@
 
 	<div class='container' id='container'>
 		<?php
-			if (isset($_SESSION['errors'])) {
-				foreach ($_SESSION['errors'] as $error) {
-					echo "<div class='alert alert-danger'>".$error."</div>";
-				}
-				unset($_SESSION['errors']);
-			};
-
-			if (isset($_SESSION['messages'])) {
-				foreach ($_SESSION['messages'] as $message) {
-					echo "<div class='alert alert-success'>".$message."</div>";
-				}
-				unset($_SESSION['messages']);
-			};
+			flash();
 		?>
+
 		<div class='row'>
 			<div class='box col-md-6'>
 				<h3>Register</h3>

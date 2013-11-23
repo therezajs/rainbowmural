@@ -85,7 +85,9 @@
     </script>
 <a href=""></a>
     <div class="container" id='container'>
-
+        <?php
+            flash();
+        ?>
         <div class="row">
             <div class='col-md-8' id='cityname'>
                 <h2><?php

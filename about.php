@@ -13,6 +13,9 @@
 ?>
 
     <div class="container">
+      <?php
+        flash();
+      ?>
     </div>
 </body>
 </html>

@@ -69,3 +69,23 @@
             </div>
         </div>
     </div>
+
+<?php
+    function flash(){
+
+        if (isset($_SESSION['errors'])) {
+            foreach ($_SESSION['errors'] as $error) {
+                echo "<div class='alert alert-danger'>".$error."</div>";
+            }
+            unset($_SESSION['errors']);
+        };
+
+        if (isset($_SESSION['messages'])) {
+            foreach ($_SESSION['messages'] as $message) {
+                echo "<div class='alert alert-success'>".$message."</div>";
+            }
+            unset($_SESSION['messages']);
+        };
+
+    }
+?>
