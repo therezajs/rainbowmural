@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include('connection.php');
+	include("Database.php");
     require('header.php');
     require_once('picture.php');
 
@@ -98,6 +98,19 @@
                         // Display alert or whatever you want to do when you're
                         //   at the bottom of the page.
                         alert("You're at the bottom of the page.");
+                        <?php
+                        $page = 1;
+                        $more_images = $pics->getRandomPics('30', '2');
+                        // var_dump($more_images);
+                        // if($more_images === false) {
+                        //     echo 'Flickr Feed Unavailable';
+                        // }
+                        // else {
+                        //     foreach($more_images['photos']['photo'] as $photo) {
+                        //         echo '<div class="item" ><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
+                        //     }
+                        // }
+                        ?>
                     }
                 });
             });
