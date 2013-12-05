@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include('connection.php');
+	include("Database.php");
     require('header.php');
     require_once('picture.php');
 
@@ -10,10 +10,20 @@
         body { height: 100%; margin: 0; padding: 0 }
         #map {
             height: 300px;
+            /*padding: 8px;*/
+        }
+        #my_map {
+            padding: 0;
+            position: fixed;
+            top: 70px;
+            right: 30px;
         }
         #map-canvas { height: 100%; }
         #cityname {
             padding: 8px;
+        }
+        #pic_container {
+            padding: 0;
         }
         .item {
             width: 32%;
@@ -31,9 +41,9 @@
         .images {
             height: 60px;
         }
-        #container {
-            margin-top: 70px;
-        }
+        /*#container {
+            margin-top: 40px;
+        }*/
     </style>
 
     <script type="text/javascript">
@@ -72,6 +82,7 @@
                 }
                 current_marker = marker;
                 that.infowindow.content = contentString;
+                that.infowindow.setOptions({ disableAutoPan : true });
                 that.infowindow.open(map, current_marker);
             });
             // google.maps.event.addListener(marker, 'mouseout', function() {
@@ -84,21 +95,12 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 <a href=""></a>
-    <div class="container" id='container'>
+    <div class="container" id='my_container'>
         <?php
             flash();
         ?>
         <div class="row">
-            <div class='col-md-8' id='cityname'>
-                <h2><?php
-                if (isset($_GET['place'])) {
-                    echo $_GET['place'];
-                }
-                else
-                {
-                    echo "Choose your city";
-                } ?></h2>
-            </div>
+
             <div class='col-md-8' id='pic_container'>
 
 <?php
@@ -124,8 +126,18 @@
     }
 ?>
             </div>
-            <div class='col-md-4' id='map'>
+            <!-- <div class='col-md-4' id='cityname'>
 
+            </div> -->
+            <div class='col-md-4' id='my_map'>
+                <h2><?php
+                if (isset($_GET['place'])) {
+                    echo $_GET['place'];
+                }
+                else
+                {
+                    echo "Choose your city";
+                } ?></h2>
 
                 <div id="map">
                     <div id="map-canvas"/>
