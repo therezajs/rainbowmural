@@ -1,8 +1,9 @@
 <?php
 	session_start();
-	// include('connection.php');
+	// include("Database.php");
     require('header.php');
-    require_once('comment.php');
+    require_once('ajax_comment.php');
+    require_once('ajax_like.php');
     require_once('picture.php');
 
     // $comment = Comment::currentUser();
@@ -34,6 +35,7 @@
             });
 
             var image = 'red_dot.png';
+            var current_dotMarker = null;
             photosNearby.forEach(function(each) {
                 if (each.id != <?php echo "'". $_GET['id'] ."'"?>) {
                     var myLatLng = new google.maps.LatLng(each.latitude,each.longitude);
@@ -44,16 +46,26 @@
                     });
                     var contentString = '<a href="detail.php?lat=' + each.latitude + '&lon=' + each.longitude + '&id=' + each.id + '&secret=' + each.secret + '"><img class="images" src="http://www.flickr.com/photos/'+each.id+'_'+each.secret+'_s.jpg"></a>';
 
+                    var that = this;
+                    that.infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+
                     var infowindow = new google.maps.InfoWindow({
                       content: contentString
                     });
-                    google.maps.event.addListener(dotMarker, 'click', function() {
+                    google.maps.event.addListener(dotMarker, 'mouseover', function() {
 
-                        infowindow.open(map, dotMarker);
-                    });
-
-                    google.maps.event.addListener(dotMarker, 'mouseout', function() {
-                        infowindow.close();
+                        if(current_dotMarker && this.__gm_id != current_dotMarker.__gm_id)
+                        {
+                        // console.log(current_marker.__gm_id);
+                            // console.log("close");
+                            that.infowindow.close();
+                        }
+                        current_marker = marker;
+                        that.infowindow.content = contentString;
+                        that.infowindow.setOptions({ disableAutoPan : true });
+                        that.infowindow.open(map, dotMarker);
                     });
                 };
             });
@@ -92,13 +104,14 @@
                 return false;
             });
 
-            $(document).on("click", '#fav', function() {
+            $(document).on("click", '#like_button', function() {
                 var form = $(this);
                 $.post(
                     $(this).attr('action'), $(this).serialize(), function(param) {
-                        $(form).html('');
+                        alert("Red heart");
+                        $(form).html("<button type='button' class='btn btn-default'><span class='glyphicon glyphicon-heart' id='red'></span> liked</button>");
                     }, "json");
-                return false;
+                // return false;
             })
         });
     </script>
@@ -108,6 +121,12 @@
         textarea {
             border-radius: 5px;
             margin-right: 10px;
+        }
+        #commentz {
+            padding: 0;
+        }
+        #comments {
+            padding-right: 20px;
         }
         #map-canvas { height: 100%; }
 
@@ -119,6 +138,9 @@
         }
         #map {
             height: 300px;
+        }
+        #red {
+            color: red;
         }
         img {
             width: 90%;
@@ -206,20 +228,12 @@
                 </div>
                 <br>
 
-                <div id='comments'>
-                    <!-- <form class='form'>
-                        <ul class='form-group'>
-                            <li>like</li>
-                            <li>comment</li>
+                <div>
+                    <div class="collapse navbar-collapse" id="commentz">
+                        <ul class="nav navbar-nav col-md-12">
+                            <li id='comments'><h4>Comment</h4></li>
+                            <li><form action='ajax_like.php' method='post' id='like_button'><input type='hidden' name='action' value='like_button'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'> <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span> like</button></form></li>
                         </ul>
-                    </form> -->
-                    <div class="row">
-
-
-
-                    <h4>Comment <span class='.glyphicon .glyphicon-heart'><span></h4><form action='fav.php' method='post' id='fav'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'> <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span> like</form>
-
-
                     </div>
                     <?php
                     function commentsTable($comments)
@@ -241,9 +255,9 @@
                     ?>
 
 
-                    <form action="comment.php" method="post" id='comment'>
+                    <form action="ajax_comment.php" method="post" id='comment'>
                         <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
-                        <input type='hidden' name='pic_secret' value='<?php echo $photo_id ?>'>
+                        <!-- <input type='hidden' name='pic_secret' value='<?php echo $secret ?>'> -->
                         <input type='hidden' name='action' value='comment' >
                         <?php
                             if (isset($_SESSION['logged_in'])) {
