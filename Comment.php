@@ -1,6 +1,4 @@
 <?php
-    include('connection.php');
-    // session_start();
 
 class Comment {
 
@@ -42,6 +40,7 @@ class Comment {
         if (isset($comment) AND $comment != '') {
             $query = "INSERT INTO comments (pic_id, user_id, comment) VALUES ('".$pic_id."','".$user_id."','".$comment."')";
             mysql_query($query);
+            // echo $query;
 
 
 
@@ -55,7 +54,7 @@ class Comment {
 
         $data['html'] = $html;
         echo json_encode($data);
-    }
+        }
 
     }
 
@@ -65,9 +64,3 @@ class Comment {
     // }
 
 }
-
-$data = new Comment();
-$data->processFormData($_POST);
-
-
-
