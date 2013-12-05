@@ -34,7 +34,7 @@ class Fav {
 
     	$query =
             "SELECT * FROM favs WHERE user_id = ".$user_id." AND pic_id = ". $pic_id;
-            echo $query;
+            // echo $query;
         $like = $this->connection->fetch_all($query);
 
         if (count($like)==0) {
@@ -42,6 +42,14 @@ class Fav {
             mysql_query($query);
 
         	echo json_encode("like successful");
+    	}
+    	else
+    	{
+    		$query = "DELETE FROM favs WHERE id = ". $like[0]['id'] ." AND user_id = ".$user_id." AND pic_id = ". $pic_id;
+    		// echo $query;
+    		mysql_query($query);
+    		echo json_encode("like not successful");
+
     	}
 
     }
