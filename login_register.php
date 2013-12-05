@@ -1,5 +1,5 @@
 <?php
-	include('connection.php');
+	include("Database.php");
 	session_start();
 
 	class LoginController {

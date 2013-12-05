@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.js"></script>
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
     <style type="text/css">
         #my_container {
@@ -39,7 +40,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">home</a></li>
                     <li><a href="map.php">map</a></li>
-                    <li><a href="fav.php">likes</a></li>
+                    <li><a href="like.php">likes</a></li>
                     <li><a href="about.php">about</a></li>
                     <li><a href="login.php">login</a></li>
                 </ul>
