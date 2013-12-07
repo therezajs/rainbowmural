@@ -38,11 +38,20 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">home</a></li>
                     <li><a href="map.php">map</a></li>
                     <li><a href="like.php">likes</a></li>
+                    <li><a href="upload.php">upload</a></li>
                     <li><a href="about.php">about</a></li>
-                    <li><a href="login.php">login</a></li>
+                    <?php
+                    if (isset($_SESSION['logged_in']))
+                    {
+                        echo '<li><a href="edit.php">setting</a></li>';
+                    }
+                    else
+                    {
+                        echo '<li><a href="login.php">login</a></li>';
+                    }
+                    ?>
                 </ul>
                 <?php
                     if ($_SERVER["REQUEST_URI"] != '/projects/project1/index.php') {

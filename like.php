@@ -52,7 +52,7 @@
 	}
 	else
 	{
-		echo "<h2>Please log in to see your liked street art</h2>";
+		echo "<h2>Please log in to see your likes</h2>";
 	};
 
 	?>
