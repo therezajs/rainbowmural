@@ -251,6 +251,7 @@
                     <div class="collapse navbar-collapse" id="commentz">
                         <ul class="nav navbar-nav col-md-12">
                             <li id='comments'><h4>Comment</h4></li>
+                            <?php if (isset($_SESSION['logged_in'])): ?>
                             <li><form action='ajax_like.php' method='post' id='like_button'>
                                 <input type='hidden' name='action' value='like_button'>
                                 <input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'>
@@ -261,6 +262,8 @@
                                 <div id='like_location'></div>
                                 <button type="button" class="btn btn-default" id='like_btn'>
                                     <span class="glyphicon glyphicon-heart"></span> like</button></form></li>
+
+                                <?php endif; ?>
 
                             <li><form action='ajax_like.php' method='post' id='check_like_button'><input type='hidden' name='action' value='check_like_button'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'></form></li>
                         </ul>
