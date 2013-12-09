@@ -2,7 +2,7 @@
 	session_start();
 	include("Database.php");
     require('header.php');
-    require_once('picture.php');
+    require_once('Picture.php');
 
 ?>
     <style type="text/css">

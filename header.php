@@ -8,10 +8,9 @@
     <meta name="author" content="">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Street Art Explorer</title>
-    <link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="jquery.js"></script>
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
     <style type="text/css">
         #my_container {
@@ -56,7 +55,7 @@
                 <?php
                     if ($_SERVER["REQUEST_URI"] != '/projects/project1/index.php') {
                         echo "<div class='col-md-3 navbar-right'>";
-                        echo "<form action='picture.php' method='post' class='navbar-form'>";
+                        echo "<form action='Picture.php' method='post' class='navbar-form'>";
                         echo '<div class="input-group">';
                         echo '<div class="form-group">';
                         echo '<input type="text" class="form-control" placeholder="Choose your city" name="name">';
@@ -71,7 +70,7 @@
                 if (isset($_SESSION['logged_in'])) {
                     echo '<ul class="nav navbar-nav navbar-right">';
                     echo "<li><a href='edit.php'>Welcome ". $_SESSION['user_name']."</a></li>";
-                    echo "<li><form action='login_register.php' method='post' class='navbar-form navbar-right'>";
+                    echo "<li><form action='Login_register.php' method='post' class='navbar-form navbar-right'>";
                     echo "<div id='form-group'>";
                     echo "<input type='submit' value='Log off' class='btn btn-danger btn-sm form-control'></div></form></li></ul>";
                 }

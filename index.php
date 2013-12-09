@@ -2,7 +2,7 @@
 	session_start();
 	include("Database.php");
     require('header.php');
-    require_once('picture.php');
+    require_once('Picture.php');
 
     // $person = Person::currentUser();
 
@@ -95,9 +95,6 @@
                     if (  document.documentElement.clientHeight +
                           $(document).scrollTop() >= document.body.offsetHeight )
                     {
-                        // Display alert or whatever you want to do when you're
-                        //   at the bottom of the page.
-                        alert("You're at the bottom of the page.");
                         <?php
                         $page = 1;
                         $more_images = $pics->getRandomPics('30', '2');

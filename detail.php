@@ -4,7 +4,7 @@
     require('header.php');
     require_once('ajax_comment.php');
     require_once('ajax_like.php');
-    require_once('picture.php');
+    require_once('Picture.php');
 
     // $comment = Comment::currentUser();
 ?>

@@ -24,7 +24,7 @@
 		<div class='row'>
 			<div class='box col-md-6'>
 				<h3>Register</h3>
-				<form action='login_register.php' method='post' id='registration' role='form'>
+				<form action='Login_register.php' method='post' id='registration' role='form'>
 					<input type='hidden' name='action' value='registration'>
 					<div class='form-group'>
 						<input type='text' placeholder='Username' name='name' class="form-control">
@@ -49,7 +49,7 @@
 			</div>
 			<div class='box col-md-6'>
 				<h3>Login</h3>
-				<form action='login_register.php' method='post' id='login' role='form'>
+				<form action='Login_register.php' method='post' id='login' role='form'>
 					<input type='hidden' name='action' value='login'>
 					<div class='form-group'>
 					<input type='text' placeholder='Email' name='email' class="form-control">
