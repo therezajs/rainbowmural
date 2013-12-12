@@ -50,7 +50,7 @@ class Comment {
             // echo $query;
         $comments = $this->connection->fetch_all($query);
         // var_dump($comments);
-        $html = "<tr><td>".$comments[0]['user']."</td><td>".$comments[0]['comment']."</td></tr>";
+        $html = "<p><strong class='user'>".$comments[0]['user']."</strong>  ".$comments[0]['comment']."</p>";
 
         $data['html'] = $html;
         echo json_encode($data);

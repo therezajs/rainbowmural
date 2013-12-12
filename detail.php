@@ -129,7 +129,15 @@
                         }
                     }, "json");
                 return false;
-            })
+            });
+
+            $(document).ready(function() {
+                $.post(
+                    $('#check_likes').attr('action'), $('#check_likes').serialize(), function(param) {
+                        $('#likes_count').html("<p> "+param+" likes</p>");
+                    }, "json");
+                return false;
+            });
         });
     </script>
     <style type="text/css">
@@ -170,6 +178,9 @@
             width: 100%;
             padding: 5px;
             margin: 0;
+        }
+        .user {
+            color: blue;
         }
     </style>
     <div class="container" id='container'>
@@ -266,16 +277,21 @@
                                 <?php endif; ?>
 
                             <li><form action='ajax_like.php' method='post' id='check_like_button'><input type='hidden' name='action' value='check_like_button'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'></form></li>
+
+                            <li><form action='ajax_like.php' method='post' id='check_likes'><input type='hidden' name='action' value='check_likes'><input type='hidden' name='pic_id' value='<?php echo $id ?>'></form></li>
+
+                            <li id="likes_count"></li>
                         </ul>
                     </div>
+                    <hr>
                     <?php
                     function commentsTable($comments)
                     {
-                        $html = "<table class='table table-bordered' id='commentsTable'><thead><tr><th>user</th><th>comment</th></tr></thead><tbody>";
+                        $html = "";
                         foreach($comments as $comment)
                         {
-                            $html .= "<tr><td>".$comment['user']."</td>";
-                            $html .= "<td>".$comment['comment']."</td>";
+                            $html .= "<p><strong class='user'>".$comment['user']."</strong>";
+                            $html .= " ".$comment['comment']."</p>";
                         }
                         $html .= "</tbody></table>";
                         echo $html;
@@ -284,10 +300,10 @@
                     $comments = $get_comments->getComments($id);
                     // var_dump($comments);
                     commentsTable($comments);
-
+                    echo "<p id='commentsTable'></p>";
                     ?>
 
-
+                    <hr>
                     <form action="ajax_comment.php" method="post" id='comment'>
                         <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
                         <input type='hidden' name='action' value='comment' >
@@ -297,11 +313,16 @@
                                 echo "<textarea rows='4' cols='50' name='comment'></textarea>";
                                 echo "<input type='submit' value='Say It' class='btn btn-primary'>";
                             }
-                            else
+                            elseif (!isset($_SESSION['logged_in']) && empty($comments)) {
+                                echo '<a href="login.php">Log in</a> and be the first to comment';
+                            }
+                            elseif (isset($_SESSION['logged_in']) && empty($comments)) {
+                                echo 'Be the first to comment';
+                            }
+                            elseif (!isset($_SESSION['logged_in']) && !empty($comments))
                             {
                                 echo '<a href="login.php">Log in</a> to comment';
-                            }
-
+                            };
                         ?>
                     </form>
                 </div>
