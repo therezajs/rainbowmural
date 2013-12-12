@@ -15,7 +15,7 @@
     <script src="dist/js/bootstrap.js"></script>
     <style type="text/css">
         #my_container {
-            margin-top: 70px;
+          margin-top: 70px;
         }
         #btn {
             min-width: 300px;
@@ -34,7 +34,7 @@
     </script>
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
           <div class="navbar-header">
@@ -54,7 +54,7 @@
               <li><a href="like.php">likes</a></li>
               <li><a href="about.php">about</a></li>
             </ul>
-              <?php if ($_SERVER["REQUEST_URI"] != '/projects/rainbowmural/index.php'): ?>
+              <?php if ($_SERVER["REQUEST_URI"] != '/index.php'): ?>
                 <form action='Picture.php' method='post' class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Choose your city" name="name">
@@ -77,8 +77,8 @@
                   <li class="divider"></li>
                   <li>
                     <form action='Login_register.php' method='post' class='navbar-form navbar-right'>
-                    <a href="">Log off</a>
-                    <!-- <input type='submit' value='Log off'></div> -->
+                    <!-- <a href="">Log off</a> -->
+                    <input type='submit' value='Log off'></div>
                     </form>
                   </li>
                 </ul>
