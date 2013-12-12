@@ -28,6 +28,9 @@
         .navbar-brand {
           padding-left: 0;
         }
+        .btn_left {
+          text-align: left;
+        }
     </style>
     <script type="text/javascript">
 
@@ -59,6 +62,7 @@
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Choose your city" name="name">
                 </div>
+                <input type='hidden' name='action' value='city'>
                 <button type="submit" class="btn btn-default">Go</button>
                 </form>
               <?php endif; ?>
@@ -71,9 +75,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="like.php">likes</a></li>
-                  <li><a href="upload.php">upload</a></li>
-                  <li><a href="about.php">about</a></li>
+                  <li><a href="like.php">Likes</a></li>
+                  <li><a href="upload.php">Upload pics</a></li>
+                  <li><a href='edit.php'>Edit account</a></li>
                   <li class="divider"></li>
                   <li>
                     <form action='Login_register.php' method='post' class='navbar-form navbar-right'>
