@@ -109,13 +109,18 @@
                 $.post(
                     $(this).attr('action'), $(this).serialize(), function(param) {
 
-                        if (param == "like successful") {
+                        if (param[0] == "like successful") {
                             $('#like_btn').html("<span class='glyphicon glyphicon-heart' id='red'></span> liked");
                         }
                         else {
                             // alert(param);
                             $('#like_btn').html("<span class='glyphicon glyphicon-heart'></span> like");
                         }
+                        if (param[1] == 1) {
+                            $('#likes_count').html("<p>"+param[1]+" like</p>");
+                        } else {
+                            $('#likes_count').html("<p>"+param[1]+" likes</p>");
+                        };
                     }, "json");
                 return false;
             })
@@ -124,17 +129,14 @@
                 $.post(
                     $('#check_like_button').attr('action'), $('#check_like_button').serialize(), function(param) {
                         // alert(param);
-                        if (param == "liked") {
+                        if (param[0] == "liked") {
                             $('#like_btn').html("<span class='glyphicon glyphicon-heart' id='red'></span> liked");
-                        }
-                    }, "json");
-                return false;
-            });
-
-            $(document).ready(function() {
-                $.post(
-                    $('#check_likes').attr('action'), $('#check_likes').serialize(), function(param) {
-                        $('#likes_count').html("<p> "+param+" likes</p>");
+                        };
+                        if (param[1] == 1) {
+                            $('#likes_count').html("<p>"+param[1]+" like</p>");
+                        } else {
+                            $('#likes_count').html("<p>"+param[1]+" likes</p>");
+                        };
                     }, "json");
                 return false;
             });
@@ -181,6 +183,10 @@
         }
         .user {
             color: blue;
+        }
+        #likes_count {
+            margin: 5px;
+            color: #B2B2B2;
         }
     </style>
     <div class="container" id='container'>
@@ -277,8 +283,6 @@
                                 <?php endif; ?>
 
                             <li><form action='ajax_like.php' method='post' id='check_like_button'><input type='hidden' name='action' value='check_like_button'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'></form></li>
-
-                            <li><form action='ajax_like.php' method='post' id='check_likes'><input type='hidden' name='action' value='check_likes'><input type='hidden' name='pic_id' value='<?php echo $id ?>'></form></li>
 
                             <li id="likes_count"></li>
                         </ul>
