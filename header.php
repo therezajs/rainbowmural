@@ -12,6 +12,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
+    <script src="dist/js/bootstrap.js"></script>
     <style type="text/css">
         #my_container {
             margin-top: 70px;
@@ -24,60 +25,73 @@
             min-width: 300px;
             text-align: left;
         }
+        .navbar-brand {
+          padding-left: 0;
+        }
     </style>
     <script type="text/javascript">
 
     </script>
 </head>
 <body>
-	<div class="navbar navbar-fixed-top navbar-inverse">
+	<nav class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">Street Art of the World by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="map.php">map</a></li>
-                    <li><a href="like.php">likes</a></li>
-                    <li><a href="upload.php">upload</a></li>
-                    <li><a href="about.php">about</a></li>
-                    <?php
-                    if (isset($_SESSION['logged_in']))
-                    {
-                        echo '<li><a href="edit.php">setting</a></li>';
-                    }
-                    else
-                    {
-                        echo '<li><a href="login.php">login</a></li>';
-                    }
-                    ?>
-                </ul>
-                <?php
-                    if ($_SERVER["REQUEST_URI"] != '/projects/project1/index.php') {
-                        echo "<div class='col-md-3 navbar-right'>";
-                        echo "<form action='Picture.php' method='post' class='navbar-form'>";
-                        echo '<div class="input-group">';
-                        echo '<div class="form-group">';
-                        echo '<input type="text" class="form-control" placeholder="Choose your city" name="name">';
-                        echo '</div>';
-                        echo '<span class="input-group-btn">';
-                        echo '<button class="btn btn-default form-group" type="button">Go!</button>';
-                        echo '</span>';
-                        echo "<input type='hidden' name='action' value='city'>";
-                        echo "</div></form></div>";
-                    }
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php">Urban Rainbow<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
+          </div>
 
-                if (isset($_SESSION['logged_in'])) {
-                    echo '<ul class="nav navbar-nav navbar-right">';
-                    echo "<li><a href='edit.php'>Welcome ". $_SESSION['user_name']."</a></li>";
-                    echo "<li><form action='Login_register.php' method='post' class='navbar-form navbar-right'>";
-                    echo "<div id='form-group'>";
-                    echo "<input type='submit' value='Log off' class='btn btn-danger btn-sm form-control'></div></form></li></ul>";
-                }
-                ?>
-            </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="map.php">map</a></li>
+              <li><a href="like.php">likes</a></li>
+              <li><a href="about.php">about</a></li>
+            </ul>
+              <?php if ($_SERVER["REQUEST_URI"] != '/projects/rainbowmural/index.php'): ?>
+                <form action='Picture.php' method='post' class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Choose your city" name="name">
+                </div>
+                <button type="submit" class="btn btn-default">Go</button>
+                </form>
+              <?php endif; ?>
+
+
+            <ul class="nav navbar-nav navbar-right">
+            <?php
+            if (isset($_SESSION['logged_in'])): ?>
+              <li><a href='edit.php'><?php echo $_SESSION['user_name'] ?></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="like.php">likes</a></li>
+                  <li><a href="upload.php">upload</a></li>
+                  <li><a href="about.php">about</a></li>
+                  <li class="divider"></li>
+                  <li>
+                    <form action='Login_register.php' method='post' class='navbar-form navbar-right'>
+                    <a href="">Log off</a>
+                    <!-- <input type='submit' value='Log off'></div> -->
+                    </form>
+                  </li>
+                </ul>
+              </li>
+              <?php else: ?>
+              <li><a href="login.php">login or register</a></li>
+              <?php endif; ?>
+            </ul>
+          </div><!-- /.navbar-collapse -->
         </div>
-    </div>
+    </nav>
+
+
 
 <?php
     function flash(){
@@ -98,3 +112,4 @@
 
     }
 ?>
+
