@@ -22,6 +22,21 @@ class Fav {
         {
             $this->checkLike($data['pic_id'], $data['user_id']);
         }
+        elseif (isset($data['action']) && $data['action'] == 'check_likes')
+        {
+            $this->getLikesByPic($data['pic_id']);
+        }
+    }
+
+    function getLikesByPic($pic_id) {
+        // Return array with everybody as Person objects with is_friend property
+        $query =
+            "SELECT id, pic_id FROM favs WHERE pic_id = ".$pic_id;
+            // echo $query;
+        $picLikes = $this->connection->fetch_all($query);
+        // return array_map(function($data) { return new Comment($data); }, $comments);
+        $likes_count = count($picLikes);
+        echo json_encode($likes_count);
     }
 
     function getLikes($user_id) {
