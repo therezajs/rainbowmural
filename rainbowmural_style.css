@@ -95,8 +95,12 @@ img {
     color: #b33c0c;
 }
 #likes_count {
-    margin: 5px;
+    margin-top: 9px;
+    margin-right: 10px;
     color: #B2B2B2;
+}
+#likes_count p {
+    margin: 0;
 }
 .mybtn {
     color: #fffddf;
@@ -187,10 +191,20 @@ img {
 .images {
     height: 60px;
 }
-/*#container {
-    margin-top: 40px;
-}*/
+.upload {
+  font-size: 130%;
+}
+.upload ol li {
+  font-size: 130%;
+}
+.set_size {
+  max-height: 140px;
+  display: inline-block;
+}
+.about {
+  font-size: 130%;
 
+}
 
 
 
