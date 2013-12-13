@@ -117,9 +117,9 @@
                             $('#like_btn').html("<span class='glyphicon glyphicon-heart'></span> like");
                         }
                         if (param[1] == 1) {
-                            $('#likes_count').html("<p>"+param[1]+" like</p>");
+                            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> like</p>");
                         } else {
-                            $('#likes_count').html("<p>"+param[1]+" likes</p>");
+                            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> likes</p>");
                         };
                     }, "json");
                 return false;
@@ -133,9 +133,9 @@
                             $('#like_btn').html("<span class='glyphicon glyphicon-heart' id='red'></span> liked");
                         };
                         if (param[1] == 1) {
-                            $('#likes_count').html("<p>"+param[1]+" like</p>");
+                            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> like</p>");
                         } else {
-                            $('#likes_count').html("<p>"+param[1]+" likes</p>");
+                            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> likes</p>");
                         };
                     }, "json");
                 return false;
@@ -222,6 +222,7 @@
                     <div class="collapse navbar-collapse" id="commentz">
                         <ul class="nav navbar-nav col-md-12">
                             <li id='comments'><h4>Comment</h4></li>
+                            <li id="likes_count"></li>
                             <?php if (isset($_SESSION['logged_in'])): ?>
                             <li><form action='ajax_like.php' method='post' id='like_button'>
                                 <input type='hidden' name='action' value='like_button'>
@@ -238,7 +239,6 @@
 
                             <li><form action='ajax_like.php' method='post' id='check_like_button'><input type='hidden' name='action' value='check_like_button'><input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'><input type='hidden' name='pic_id' value='<?php echo $id ?>'></form></li>
 
-                            <li id="likes_count"></li>
                         </ul>
                     </div>
                     <hr>
