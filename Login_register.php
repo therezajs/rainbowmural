@@ -79,16 +79,16 @@
 		function registerAction($data){
 			$errors = array();
 
-			if (!(isset($data['user_name']) && is_string($data['user_name']) && strlen($data['user_name'])>2)) {
-				$errors[] = "Username not valid";
+			if (!(isset($data['user_name']) && is_string($data['user_name']) && strlen($data['user_name'])>0)) {
+				$errors[] = "Username too short";
 			}
 
-			if (!(isset($data['first_name']) && is_string($data['first_name']) && strlen($data['first_name'])>2)) {
-				$errors[] = "First Name not valid";
+			if (!(isset($data['first_name']) && is_string($data['first_name']) && strlen($data['first_name'])>0)) {
+				$errors[] = "First Name too short";
 			}
 
-			if (!(isset($data['last_name']) && is_string($data['last_name']) && strlen($data['last_name'])>2)) {
-				$errors[] = "Last Name not valid";
+			if (!(isset($data['last_name']) && is_string($data['last_name']) && strlen($data['last_name'])>0)) {
+				$errors[] = "Last Name too short";
 			}
 
 			if (!(isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL))) {
@@ -96,7 +96,7 @@
 			}
 
 			if (!(isset($data['password']) && strlen($data['password'])>6)) {
-				$errors[] = "Password not valid";
+				$errors[] = "Password needs a least 6 characters. Your password had ".strlen($data['password'])." characters.";
 			}
 
 			if (!(isset($data['conf_password']) && $data['password'] == $data['conf_password'])) {
@@ -114,7 +114,7 @@
 
 				if (count($user)>0) {
 
-					$errors[] = "Account with email ".$data['email']." or user_name ".$data['user_name']."already exists.";
+					$errors[] = "Account with email ".$data['email']." or user_name ".$data['user_name']." already exists.";
 					$_SESSION['errors'] = $errors;
 					header('Location: login.php');
 				}
