@@ -33,9 +33,11 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="map.php">map</a></li>
-              <li><a href="like.php">likes</a></li>
-              <li><a href="about.php">about</a></li>
+              <li><a href="index.php">Home</a></li>
+              <?php if (isset($_SESSION['logged_in'])): ?>
+              <li><a href="like.php">Likes</a></li>
+              <?php endif; ?>
+              <li><a href="about.php">About</a></li>
             </ul>
               <?php if ($_SERVER["REQUEST_URI"] != '/index.php'): ?>
                 <form action='Picture.php' method='post' class="navbar-form navbar-left" role="search">
