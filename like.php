@@ -5,27 +5,6 @@
 	require('Fav.php');
 
 ?>
-	<style type="text/css">
-
-        #search {
-            margin: 10px auto;
-        }
-        #container {
-            margin-top: 20px;
-        }
-        .item {
-            width: 33%;
-        }
-        .item img {
-            width: 100%;
-            padding: 8px;
-        }
-        .button {
-            min-width: 250px;
-            height: 50px;
-            margin: 10px;
-        }
-    </style>
 	<div class='container'>
 	<?php
 		flash();

@@ -1,0 +1,194 @@
+
+body {
+  background-color: #fffddf;
+}
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+textarea {
+    border-radius: 5px;
+    margin-right: 10px;
+}
+img {
+    width: 90%;
+    margin-bottom: 20px;
+}
+#my_container {
+  margin-top: 70px;
+}
+#btn {
+    min-width: 300px;
+    text-align: left;
+}
+#menu {
+    min-width: 300px;
+    text-align: left;
+}
+#navbar {
+  background-color: #b0db14;
+}
+.btn-default {
+  background-color: #ff940b;
+  color: #fffddf;
+}
+.btn-default:hover {
+  background-color: #fffddf;
+  color: #ff940b;
+}
+.btn_log {
+  background-color: #9EC512;
+}
+.navbar-brand {
+  padding-left: 0;
+}
+.btn_left {
+  text-align: left;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: #C0E243;
+}
+
+.navbar-default li:hover {
+  background-color: #C0E243;
+}
+.navbar-brand:hover {
+  background-color: #C0E243 !important;
+}
+.link {
+  background-color: white;
+  border: none;
+}
+.link:active {
+  background-color: #428bca;
+  color: white;
+}
+#commentz {
+    padding: 0;
+}
+#comments {
+    padding-right: 20px;
+}
+#map-canvas { height: 100%; }
+
+#container {
+    margin-top: 70px;
+}
+#location_heigth {
+    height: 80px;
+}
+#map {
+    height: 300px;
+}
+#red {
+    color: red;
+}
+.item {
+    width: 30%;
+}
+.item img {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+}
+.user {
+    color: #b33c0c;
+}
+#likes_count {
+    margin: 5px;
+    color: #B2B2B2;
+}
+.mybtn {
+    color: #fffddf;
+}
+.btn.mybtn:hover {
+    color: #fffddf;
+    background-color: #E6850A;
+}
+#search {
+    margin: 10px auto;
+}
+#container {
+    margin-top: 20px;
+}
+.item {
+    width: 20%;
+}
+.item img {
+    width: 100%;
+    padding: 8px;
+}
+.button {
+    min-width: 250px;
+    height: 50px;
+    margin: 10px;
+
+    color: #fffddf;
+    background-color: #ff6052;
+}
+.btn.button:hover {
+    background-color: #E6564A;
+    color: #fffddf;
+}
+#search {
+    margin: 10px auto;
+}
+#container {
+    margin-top: 20px;
+}
+.item {
+    width: 33%;
+}
+.item img {
+    width: 100%;
+    padding: 8px;
+}
+.button {
+    min-width: 250px;
+    height: 50px;
+    margin: 10px;
+}
+#submit {
+  margin-top: 10px;
+}
+#container {
+  margin-top: 60px;
+}
+#map {
+    height: 300px;
+    /*padding: 8px;*/
+}
+#my_map {
+    padding: 0;
+    position: fixed;
+    top: 70px;
+    right: 30px;
+}
+#map-canvas { height: 100%; }
+#cityname {
+    padding: 8px;
+}
+#pic_container {
+    padding: 0;
+}
+.item {
+    width: 32%;
+}
+.item img {
+    width: 100%;
+    padding: 8px;
+}
+.title {
+    text-decoration: none;
+}
+.row {
+    padding: 10px;
+}
+.images {
+    height: 60px;
+}
+/*#container {
+    margin-top: 40px;
+}*/
+
+
+
+

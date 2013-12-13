@@ -9,68 +9,12 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Street Art Explorer</title>
     <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="rainbowmural_style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
     <script src="dist/js/bootstrap.js"></script>
-    <style type="text/css">
-        body {
-          background-color: #fffddf;
-        }
-        #my_container {
-          margin-top: 70px;
-        }
-        #btn {
-            min-width: 300px;
-            text-align: left;
-        }
-        #menu {
-            min-width: 300px;
-            text-align: left;
-        }
-        #navbar {
-          background-color: #b0db14;
-        }
-        .btn-default {
-          background-color: #ff940b;
-          color: #fffddf;
-        }
-        .btn-default:hover {
-          background-color: #fffddf;
-          color: #ff940b;
-        }
-        .btn_log {
-          background-color: #9EC512;
-        }
-        .navbar-brand {
-          padding-left: 0;
-        }
-        .btn_left {
-          text-align: left;
-        }
-        .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 
-        background-color: #C0E243;
-        }
-
-        .navbar-default li:hover {
-          background-color: #C0E243;
-        }
-        .navbar-brand:hover {
-          background-color: #C0E243 !important;
-        }
-        .link {
-          background-color: white;
-          border: none;
-        }
-        .link:active {
-          background-color: #428bca;
-          color: white;
-        }
-    </style>
-    <script type="text/javascript">
-
-    </script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" id="navbar" role="navigation">

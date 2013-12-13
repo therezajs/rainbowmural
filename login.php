@@ -2,20 +2,7 @@
 	session_start();
 	include("Database.php");
 	require('header.php');
-
-
 ?>
-
-	<style type="text/css">
-	#submit {
-		margin-top: 10px;
-	}
-	#container {
-		margin-top: 60px;
-	}
-	</style>
-
-
 	<div class='container' id='container'>
 		<?php
 			flash();

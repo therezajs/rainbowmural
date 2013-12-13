@@ -3,49 +3,7 @@
 	include("Database.php");
     require('header.php');
     require_once('Picture.php');
-
 ?>
-    <style type="text/css">
-        html { height: 100% }
-        body { height: 100%; margin: 0; padding: 0 }
-        #map {
-            height: 300px;
-            /*padding: 8px;*/
-        }
-        #my_map {
-            padding: 0;
-            position: fixed;
-            top: 70px;
-            right: 30px;
-        }
-        #map-canvas { height: 100%; }
-        #cityname {
-            padding: 8px;
-        }
-        #pic_container {
-            padding: 0;
-        }
-        .item {
-            width: 32%;
-        }
-        .item img {
-            width: 100%;
-            padding: 8px;
-        }
-        .title {
-            text-decoration: none;
-        }
-        .row {
-            padding: 10px;
-        }
-        .images {
-            height: 60px;
-        }
-        /*#container {
-            margin-top: 40px;
-        }*/
-    </style>
-
     <script type="text/javascript">
       function initialize() {
 

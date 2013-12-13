@@ -48,6 +48,10 @@ class Fav {
         if (count($like)>0) {
         	$data[] = "liked";
     	}
+        else {
+            $data[] = "placeholder";
+        }
+
         $data[] = count($picLikes);
 
         echo json_encode($data);

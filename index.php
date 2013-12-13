@@ -3,45 +3,7 @@
 	include("Database.php");
     require('header.php');
     require_once('Picture.php');
-
-    // $person = Person::currentUser();
-
 ?>
-    <style type="text/css">
-        .mybtn {
-            color: #fffddf;
-        }
-        .btn.mybtn:hover {
-            color: #fffddf;
-            background-color: #E6850A;
-        }
-        #search {
-            margin: 10px auto;
-        }
-        #container {
-            margin-top: 20px;
-        }
-        .item {
-            width: 20%;
-        }
-        .item img {
-            width: 100%;
-            padding: 8px;
-        }
-        .button {
-            min-width: 250px;
-            height: 50px;
-            margin: 10px;
-
-            color: #fffddf;
-            background-color: #ff6052;
-        }
-        .btn.button:hover {
-            background-color: #E6564A;
-            color: #fffddf;
-        }
-    </style>
-
     <div class='container' id='my_container'>
         <div id='messages'>
         <?php

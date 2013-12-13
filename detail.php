@@ -142,53 +142,7 @@
             });
         });
     </script>
-    <style type="text/css">
-        html { height: 100% }
-        body { height: 100%; margin: 0; padding: 0 }
-        textarea {
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        #commentz {
-            padding: 0;
-        }
-        #comments {
-            padding-right: 20px;
-        }
-        #map-canvas { height: 100%; }
 
-        #container {
-            margin-top: 70px;
-        }
-        #location_heigth {
-            height: 80px;
-        }
-        #map {
-            height: 300px;
-        }
-        #red {
-            color: red;
-        }
-        img {
-            width: 90%;
-            margin-bottom: 20px;
-        }
-        .item {
-            width: 30%;
-        }
-        .item img {
-            width: 100%;
-            padding: 5px;
-            margin: 0;
-        }
-        .user {
-            color: #b33c0c;
-        }
-        #likes_count {
-            margin: 5px;
-            color: #B2B2B2;
-        }
-    </style>
     <div class="container" id='container'>
         <?php
             flash();
