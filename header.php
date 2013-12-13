@@ -14,6 +14,9 @@
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
     <script src="dist/js/bootstrap.js"></script>
     <style type="text/css">
+        body {
+          background-color: #fffddf;
+        }
         #my_container {
           margin-top: 70px;
         }
@@ -25,11 +28,44 @@
             min-width: 300px;
             text-align: left;
         }
+        #navbar {
+          background-color: #b0db14;
+        }
+        .btn-default {
+          background-color: #ff940b;
+          color: #fffddf;
+        }
+        .btn-default:hover {
+          background-color: #fffddf;
+          color: #ff940b;
+        }
+        .btn_log {
+          background-color: #9EC512;
+        }
         .navbar-brand {
           padding-left: 0;
         }
         .btn_left {
           text-align: left;
+        }
+        .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+
+        background-color: #C0E243;
+        }
+
+        .navbar-default li:hover {
+          background-color: #C0E243;
+        }
+        .navbar-brand:hover {
+          background-color: #C0E243 !important;
+        }
+        .link {
+          background-color: white;
+          border: none;
+        }
+        .link:active {
+          background-color: #428bca;
+          color: white;
         }
     </style>
     <script type="text/javascript">
@@ -37,7 +73,7 @@
     </script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
           <div class="navbar-header">
@@ -79,10 +115,10 @@
                   <li><a href="upload.php">Upload pics</a></li>
                   <li><a href='edit.php'>Edit account</a></li>
                   <li class="divider"></li>
-                  <li>
-                    <form action='Login_register.php' method='post' class='navbar-form navbar-right'>
+                  <li class="li_link">
+                    <form action='Login_register.php' method='post' class='navbar-form navbar-left'>
                     <!-- <a href="">Log off</a> -->
-                    <input type='submit' value='Log off'></div>
+                    <input type='submit' class="link" value='Log off'></div>
                     </form>
                   </li>
                 </ul>

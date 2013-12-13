@@ -182,7 +182,7 @@
             margin: 0;
         }
         .user {
-            color: blue;
+            color: #b33c0c;
         }
         #likes_count {
             margin: 5px;
