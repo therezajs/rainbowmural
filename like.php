@@ -45,9 +45,5 @@
 
         });
     </script>
-
-
-
-	</div>
-</body>
-</html>
+</div>
+<?php require('footer.php'); ?>

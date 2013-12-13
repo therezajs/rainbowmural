@@ -87,9 +87,5 @@
                 });
             });
         </script>
-
-        <hr>
-		<footer>Made with love by Thereza, 2013</footer><br>
-	</div>
-</body>
-</html>
+    </div>
+<?php require('footer.php'); ?>

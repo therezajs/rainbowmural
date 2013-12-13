@@ -1,9 +1,7 @@
 <?php
 	session_start();
 	include("Database.php");
-  require('header.php');
-
-
+    require('header.php');
 ?>
 
     <div class="container" id="my_container">
@@ -24,3 +22,4 @@
         	<input type='submit' value='Log off' class="btn btn-primary btn_left"></div>
         </form>
     </div>
+<?php require('footer.php'); ?>
