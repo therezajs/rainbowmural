@@ -14,7 +14,7 @@
 				<form action='Login_register.php' method='post' id='registration' role='form'>
 					<input type='hidden' name='action' value='registration'>
 					<div class='form-group'>
-						<input type='text' placeholder='Username' name='name' class="form-control">
+						<input type='text' placeholder='Username' name='user_name' class="form-control">
 					</div>
 					<div class='form-group'>
 						<input type='text' placeholder='First name' name='first_name' class="form-control">
@@ -53,8 +53,4 @@
 				</form>
 			</div>
 		</div>
-		<hr>
-		<footer>Made with love by Thereza, 2013</footer>
-	</div>
-</body>
-</html>
+<?php require('footer.php'); ?>
