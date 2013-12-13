@@ -29,6 +29,18 @@
 			{
 				$this->registerAction($data);
 			}
+			elseif (isset($data['action']) && $data['action'] == 'edit')
+			{
+				$this->editAction($data);
+			}
+			elseif (isset($data['action']) && $data['action'] == 'delete')
+			{
+				$this->deleteAction($data);
+			}
+			elseif (isset($data['action']) && $data['action'] == 'pwd')
+			{
+				$this->changePwdAction($data);
+			}
 			else
 			{
 				session_destroy();
@@ -128,6 +140,24 @@
 					header('Location: login.php');
 				}
 			}
+		}
+		function editAction($data) {
+			$errors = array();
+			$errors[] = "Sorry, this feature is still under construction";
+			$_SESSION['errors'] = $errors;
+			header('Location: edit.php');
+		}
+		function changePwdAction($data) {
+			$errors = array();
+			$errors[] = "Sorry, this feature is still under construction";
+			$_SESSION['errors'] = $errors;
+			header('Location: edit.php');
+		}
+		function deleteAction($data) {
+			$errors = array();
+			$errors[] = "Sorry, this feature is still under construction";
+			$_SESSION['errors'] = $errors;
+			header('Location: edit.php');
 		}
 	}
 

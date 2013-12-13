@@ -46,19 +46,59 @@
 
         <?php
 
-        $pics = new Picture();
-        $images = $pics->getRandomPics('30', '1');
-        // var_dump($images);
-        if($images === false) {
-            echo 'Flickr Feed Unavailable';
-        }
-        else {
-            foreach($images['photos']['photo'] as $photo) {
-                echo '<div class="item" ><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
-                // echo '<a href="http://flickr.com/photos/' . $photo->attributes()->owner . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" /></a>';
-            }
-        }
+        // $pics = new Picture();
+        // $images = $pics->getRandomPics('30', '1');
+        // // var_dump($images);
+        // if($images === false) {
+        //     echo 'Flickr Feed Unavailable';
+        // }
+        // else {
+        //     foreach($images['photos']['photo'] as $photo) {
+        //         echo '<div class="item" ><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
+        //         // echo '<a href="http://flickr.com/photos/' . $photo->attributes()->owner . '/' . $photo->attributes()->id . '"><img src="http://farm' . $photo->attributes()->farm . '.static.flickr.com/' . $photo->attributes()->server . '/' . $photo->attributes()->id . '_' . $photo->attributes()->secret . '_s.jpg" /></a>';
+        //     }
+        // }
         ?>
+        <div class="item" ><a href="detail.php?lat=52.522289&lon=13.397923&id=3534028659&secret=ca43d3f8d0"><img src="http://farm4.staticflickr.com/3082/3534028659_ca43d3f8d0_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=52.524231&lon=13.402097&id=3686111708&secret=a21fbd597d"><img src="http://farm3.staticflickr.com/2588/3686111708_a21fbd597d_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=2644956705&secret=fdc733a479"><img src="http://farm4.staticflickr.com/3275/2644956705_fdc733a479_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=263312718&secret=725485ef9f"><img src="http://farm1.staticflickr.com/88/263312718_725485ef9f_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=3043354298&secret=a90326d21b"><img src="http://farm4.staticflickr.com/3139/3043354298_a90326d21b_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=5802352223&secret=cfdbd0c89b"><img src="http://farm6.staticflickr.com/5117/5802352223_cfdbd0c89b_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=4246396439&secret=57744a9216"><img src="http://farm5.staticflickr.com/4012/4246396439_57744a9216_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=1890164822&secret=2c93ffacd5"><img src="http://farm3.staticflickr.com/2224/1890164822_2c93ffacd5_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=258320532&secret=4477d9f925"><img src="http://farm1.staticflickr.com/79/258320532_4477d9f925_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=296176082&secret=9e2c9121f9"><img src="http://farm1.staticflickr.com/112/296176082_9e2c9121f9_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=4695101828&secret=c7228c3a18"><img src="http://farm5.staticflickr.com/4071/4695101828_c7228c3a18_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=2050539927&secret=4297ffe315"><img src="http://farm3.staticflickr.com/2032/2050539927_4297ffe315_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=1303845467&secret=da26f4aa83"><img src="http://farm2.staticflickr.com/1007/1303845467_da26f4aa83_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=8756219931&secret=43348f8ba5"><img src="http://farm4.staticflickr.com/3686/8756219931_43348f8ba5_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=2343586131&secret=2fcf55a0d2"><img src="http://farm4.staticflickr.com/3280/2343586131_2fcf55a0d2_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=7334209100&secret=afa17ae1e8"><img src="http://farm9.staticflickr.com/8006/7334209100_afa17ae1e8_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=8647072662&secret=6224ea0510"><img src="http://farm9.staticflickr.com/8240/8647072662_6224ea0510_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=2872712201&secret=2c882994c3"><img src="http://farm4.staticflickr.com/3222/2872712201_2c882994c3_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=236925851&secret=be4f331fa0"><img src="http://farm1.staticflickr.com/88/236925851_be4f331fa0_m.jpg" /></a></div>
+
+        <div class="item" ><a href="detail.php?lat=&lon=&id=2051323460&secret=1c52b14102"><img src="http://farm3.staticflickr.com/2288/2051323460_1c52b14102_m.jpg" /></a></div>
+
         </div>
         <script type="text/javascript">
             $(window).load(function() {

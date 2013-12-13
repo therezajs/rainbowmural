@@ -40,7 +40,7 @@ img {
   background-color: #9EC512;
 }
 .navbar-brand {
-  padding-left: 0;
+  /*some css*/
 }
 .btn_left {
   text-align: left;
@@ -51,9 +51,6 @@ img {
 
 .navbar-default li:hover {
   background-color: #C0E243;
-}
-.navbar-brand:hover {
-  background-color: #C0E243 !important;
 }
 .link {
   background-color: white;
@@ -203,7 +200,12 @@ img {
 }
 .about {
   font-size: 130%;
-
+}
+#like_container {
+  padding: 15px;
+}
+.col-md-6 {
+  padding: 0;
 }
 
 

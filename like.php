@@ -5,7 +5,7 @@
 	require('Fav.php');
 
 ?>
-	<div class='container'>
+<div class='container' id="my_container">
 	<?php
 		flash();
 	?>
@@ -26,12 +26,12 @@
 		}
 		else
 		{
-			echo "<h2>No likes set yet</h2>";
+			echo "<h3> No likes set yet</h3>";
 		};
 	}
 	else
 	{
-		echo "<h2>Please log in to see your likes</h2>";
+		echo "<h3>Please log in to see your likes</h3>";
 	};
 
 	?>

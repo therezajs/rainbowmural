@@ -7,11 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>Street Art Explorer</title>
+    <title>Rainbow Mural</title>
     <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="rainbowmural_style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.js"></script>
     <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
     <script src="dist/js/bootstrap.js"></script>
 
@@ -27,7 +28,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Urban Rainbow<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
+            <a class="navbar-brand" href="index.php">Rainbow Mural<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
