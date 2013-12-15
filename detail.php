@@ -156,8 +156,9 @@
                     $lon = $_GET['lon'];
                     echo '<img src="http://www.flickr.com/photos/'.$id.'_'.$secret.'.jpg">';
                 ?>
-
+                <h4>Street Art nearby:</h4>
                 <div class='row' id='nearby_container'>
+
 
                     <?php
 
