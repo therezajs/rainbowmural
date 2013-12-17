@@ -40,7 +40,7 @@
               <?php endif; ?>
               <li><a href="about.php">About</a></li>
             </ul>
-              <?php if ($_SERVER["REQUEST_URI"] != '/index.php'): ?>
+              <?php if ($_SERVER["REQUEST_URI"] != ('/index.php' || '/')): ?>
                 <form action='Picture.php' method='post' class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Choose your city" name="name">
