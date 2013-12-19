@@ -76,10 +76,10 @@
                 <form class="navbar-form navbar-right" action='Login_register.php' method='post' id='login' role='form'>
                   <input type='hidden' name='action' value='login'>
                   <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
+                    <input type="text" placeholder="Email" name='email' class="form-control">
                   </div>
                   <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
+                    <input type="password" placeholder="Password" name='password'class="form-control">
                   </div>
                   <button type="submit" class="btn btn-primary">Sign in</button>
                 </form>
