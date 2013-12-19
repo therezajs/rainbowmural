@@ -71,7 +71,7 @@
                   </li>
                 </ul>
               </li>
-              <?php else: ?>
+              <?php elseif (!isset($_SESSION['logged_in']) && ($_SERVER["REQUEST_URI"] != '/login.php')): ?>
               <li id='mylogin'>
                 <form class="navbar-form navbar-right" action='Login_register.php' method='post' id='login' role='form'>
                   <input type='hidden' name='action' value='login'>
