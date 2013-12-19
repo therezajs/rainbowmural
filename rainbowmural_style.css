@@ -4,7 +4,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #FFFEEF;
+  background-color: #FFFFFF;
 }
 textarea {
     border-radius: 5px;
@@ -15,7 +15,7 @@ img {
     margin-bottom: 20px;
 }
 #my_container {
-  margin-top: 70px;
+  margin-top: 60px;
 }
 #btn {
     min-width: 300px;
@@ -25,16 +25,11 @@ img {
     min-width: 300px;
     text-align: left;
 }
-#navbar {
-  background-color: #b0db14;
+.navbar-inverse a {
+  color: #DFD3DB !important;
 }
-.btn-default {
-  background-color: #ff940b;
-  color: #fffddf;
-}
-.btn-default:hover {
-  background-color: #fffddf;
-  color: #ff940b;
+.navbar-inverse a:hover {
+  color: #FFFFFF !important;
 }
 a.btn-success {
   font-size: 140%;
@@ -95,7 +90,7 @@ a.btn-success {
     margin: 0;
 }
 .user {
-    color: #b33c0c;
+    color: #602649;
 }
 #likes_count {
     margin-top: 9px;
@@ -210,11 +205,11 @@ a.btn-success {
 #like_container {
   padding: 15px;
 }
-.col-md-6 {
-  padding: 0;
-}
 .box {
-  margin: 5px;
+  padding: 5px;
+}
+.dropdown ul li a {
+  color: black !important;
 }
 
 
