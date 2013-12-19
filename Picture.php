@@ -52,39 +52,20 @@ class Picture {
     }
 
     function findCity($name) {
-        $params = array(
-        'method' => 'flickr.places.find',
-        'api_key' => '8693270a9110a8a81910efea61aaf448',
-        'query' => $name,
-        'format' => 'php_serial',
-        );
+        $parts = explode(" ", $name);
+        $newName = implode("+", $parts);
 
-        $encoded_params = array();
+        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".$newName."&sensor=false";
 
-        foreach ($params as $k => $v){
-
-            $encoded_params[] = urlencode($k).'='.urlencode($v);
-        }
-        $url = "http://api.flickr.com/services/rest/?".implode('&', $encoded_params);
         $rsp = file_get_contents($url);
-
-
-        $rsp_obj = unserialize($rsp);
+        $rsp_obj = json_decode($rsp, true);
         // var_dump($rsp_obj);
-        if ($rsp_obj['stat'] == 'ok'){
-            if ($rsp_obj['places']['total'] == 0) {
-                $message[] = "City name not valid";
-                $_SESSION['messages'] = $message;
-                header('location: index.php');
-            }
-            else
-            {
-                header("location: map.php?lat=".$rsp_obj['places']['place'][0]['latitude']."&lon=".$rsp_obj['places']['place'][0]['longitude']."&place=".$rsp_obj['places']['place'][0]['woe_name']);
-            }
+        if ($rsp_obj['status'] == 'OK') {
+            header("location: map.php?lat=".$rsp_obj['results'][0]['geometry']['location']['lat']."&lon=".$rsp_obj['results'][0]['geometry']['location']['lng']."&place=".$rsp_obj['results'][0]['formatted_address']);
         }
         else
         {
-            $message[] = "Oops, something went wrong. please search for a city name";
+            $message[] = "Oops, something went wrong. Please search for a city name";
             $_SESSION['messages'] = $message;
             header('location: index.php');
         }
