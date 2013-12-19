@@ -36,6 +36,9 @@ img {
   background-color: #fffddf;
   color: #ff940b;
 }
+a.btn-success {
+  font-size: 140%;
+}
 .btn_log {
   background-color: #9EC512;
 }
@@ -51,6 +54,9 @@ img {
 
 .navbar-default li:hover {
   background-color: #C0E243;
+}
+.navbar-default #mylogin:hover {
+  background-color: #b0db14;
 }
 .link {
   background-color: white;
@@ -206,6 +212,9 @@ img {
 }
 .col-md-6 {
   padding: 0;
+}
+.box {
+  margin: 5px;
 }
 
 
