@@ -10,6 +10,7 @@
     <title>Rainbow Mural</title>
     <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="rainbowmural_style.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="jquery.js"></script>
@@ -18,7 +19,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" id="navbar" role="navigation">
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
           <div class="navbar-header">
@@ -40,13 +41,13 @@
               <?php endif; ?>
               <li><a href="about.php">About</a></li>
             </ul>
-              <?php if ($_SERVER["REQUEST_URI"] != ('/index.php' || '/')): ?>
+              <?php if ($_SERVER["REQUEST_URI"] != ('/index.php')): ?>
                 <form action='Picture.php' method='post' class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Choose your city" name="name">
                 </div>
                 <input type='hidden' name='action' value='city'>
-                <button type="submit" class="btn btn-default">Go</button>
+                <button type="submit" class="btn btn-success">Go</button>
                 </form>
               <?php endif; ?>
 
@@ -71,7 +72,19 @@
                 </ul>
               </li>
               <?php else: ?>
-              <li><a href="login.php">login or register</a></li>
+              <li id='mylogin'>
+                <form class="navbar-form navbar-right" action='Login_register.php' method='post' id='login' role='form'>
+                  <input type='hidden' name='action' value='login'>
+                  <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+              </li>
+              <li><a href="login.php">or register</a></li>
               <?php endif; ?>
             </ul>
           </div><!-- /.navbar-collapse -->
