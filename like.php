@@ -5,11 +5,25 @@
 	require('Fav.php');
 
 ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).on("mouseenter", ".item", function(){
+                $(this).find("p").css("color", "white");
+                $(this).find("span").css("color", "white");
+            });
+
+            $(document).on("mouseleave", ".item", function(){
+                $("p").css("color", "transparent");
+                $(this).find("span").css("color", "transparent");
+            });
+})
+
+</script>
 <div class='container' id="my_container">
 	<?php
 		flash();
 	?>
-	<h2>List of liked Street Art</h2>
+	<h2>Likes</h2>
 	<div class='row' id='like_container'>
 	<?php
 	if (isset($_SESSION['id']))
@@ -21,7 +35,7 @@
 		if (!empty($likes))
 		{
 			foreach ($likes as $like) {
-				echo '<div class="item" ><a href="detail.php?lat=' . $like['lat'] . '&lon=' . $like['lon'] . '&id=' . $like['pic_id'] . '&secret=' . $like['pic_secret'] . '"><img src="http://www.flickr.com/photos/'.$like['pic_id'].'_'.$like['pic_secret'].'.jpg"></a></div>';
+				echo '<div class="item" ><a href="detail.php?lat=' . $like['lat'] . '&lon=' . $like['lon'] . '&id=' . $like['pic_id'] . '&secret=' . $like['pic_secret'] . '"><img src="http://www.flickr.com/photos/'.$like['pic_id'].'_'.$like['pic_secret'].'.jpg"></a><p>'.$like['title'].'</p></div>';
 			}
 		}
 		else

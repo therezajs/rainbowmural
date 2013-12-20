@@ -92,6 +92,16 @@
           }
 
         $(document).ready(function(){
+            $(document).on("mouseenter", ".item", function(){
+                $(this).find("p").css("color", "white");
+                $(this).find("span").css("color", "white");
+            });
+
+            $(document).on("mouseleave", ".item", function(){
+                $("p").css("color", "transparent");
+                $(this).find("span").css("color", "transparent");
+            });
+
             $(document).on("submit", '#comment', function() {
                 var form = $(this);
                 $.post(
@@ -175,7 +185,22 @@
                             echo "<script>var photosNearby = JSON.parse('".addslashes(json_encode($nearby['photos']['photo']))."');</script>";
                             foreach($nearby['photos']['photo'] as $photo) {
                                 if ($photo['id'] != $id) {
-                                    echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
+                                    if (isset($_SESSION['logged_in'])){
+                                    echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a>
+                                        <p>'.$photo['title'].'</p><form action="ajax_like.php" method="post" class="heart_btn">
+                                        <input type="hidden" name="action" value="heart_btn">
+                                        <input type="hidden" name="user_id" value='.$_SESSION['id'].'>
+                                        <input type="hidden" name="pic_id" value='.$photo['id'].'>
+                                        <input type="hidden" name="pic_secret" value='.$photo['secret'].'>
+                                        <input type="hidden" name="lon" value='. $photo['longitude'] .'>
+                                        <input type="hidden" name="lat" value='. $photo['latitude'] .'>
+                                        <input type="hidden" name="name" value='. $photo['title'] .'>
+                                        <span class="glyphicon glyphicon-heart" class="heart_span"></span></form></div>';
+                                    } else {
+                                        echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a>
+                                            <p>'.$photo['title'].'</p></div>';
+                                    }
+
                                 // <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a>
                                 }
                                 else
@@ -232,6 +257,7 @@
                                 <input type='hidden' name='pic_secret' value='<?php echo $secret ?>'>
                                 <input type='hidden' name='lon' value='<?php echo $lon ?>'>
                                 <input type='hidden' name='lat' value='<?php echo $lat ?>'>
+                                <input type='hidden' name='name' value='<?php echo $images['photo']['title']["_content"] ?>'>
                                 <div id='like_location'></div>
                                 <button type="button" class="btn btn-default" id='like_btn'>
                                     <span class="glyphicon glyphicon-heart"></span> like</button></form></li>
