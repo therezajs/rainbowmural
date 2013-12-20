@@ -51,6 +51,18 @@
 
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+
+      $(document).ready(function(){
+        $(document).on("mouseenter", ".item", function(){
+                $(this).find("h4").css("color", "white");
+                $(this).find("span").css("color", "white");
+            });
+
+            $(document).on("mouseleave", ".item", function(){
+                $("h4").css("color", "transparent");
+                $(this).find("span").css("color", "transparent");
+            });
+      });
     </script>
 <a href=""></a>
     <div class="container" id='my_container'>
@@ -73,7 +85,7 @@
         }
         else {
             foreach($images['photos']['photo'] as $photo) {
-                echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a></div>';
+                echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a><h4>' . $photo['title'] . '</h4></div>';
                 // <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a>
             }
 
