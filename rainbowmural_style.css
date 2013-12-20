@@ -73,10 +73,8 @@ a.btn-success:active {
 #comments {
     padding-right: 20px;
 }
-#map-canvas { height: 100%; }
-
-#container {
-    margin-top: 70px;
+#map-canvas {
+  height: 100%;
 }
 #location_heigth {
     height: 80px;
@@ -105,22 +103,43 @@ a.btn-success:active {
     margin-top: 20px;
 }
 .item {
-    width: 30%;
-    position: relative;
-}
-.item:hover {
-  color: red !important;
+    width: 32%;
+    margin: 4px;
 }
 .item img {
     width: 100%;
-    padding: 8px;
+    padding: 4px;
 }
-.item p {
+.item h4 {
   position: absolute;
   bottom: 5px;
   padding-left: 13px;
   color: transparent;
-  font-weight: bold;
+}
+.item_sm {
+    width: 30%;
+    margin: 4px;
+}
+.item_sm img {
+    width: 100%;
+    padding: 4px;
+}
+.item_sm h4 {
+  position: absolute;
+  bottom: 5px;
+  padding-left: 13px;
+  color: transparent;
+}
+.red_heart {
+  color: transparent;
+}
+.heart_span {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+}
+.heart_span:focus {
+  border: none;
 }
 .heart_btn {
   position: absolute;
@@ -139,9 +158,6 @@ a.btn-success:active {
 #search {
     margin: 10px auto;
 }
-#container {
-    margin-top: 20px;
-}
 .button {
     min-width: 250px;
     height: 50px;
@@ -149,9 +165,6 @@ a.btn-success:active {
 }
 #submit {
   margin-top: 10px;
-}
-#container {
-  margin-top: 60px;
 }
 #map {
     height: 300px;
