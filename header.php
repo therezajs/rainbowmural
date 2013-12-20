@@ -72,17 +72,16 @@
                 </ul>
               </li>
               <?php elseif (!isset($_SESSION['logged_in']) && ($_SERVER["REQUEST_URI"] != '/login.php')): ?>
-              <li id='mylogin'>
-                <form class="navbar-form navbar-right" action='Login_register.php' method='post' id='login' role='form'>
+              <li id='mylogin' class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+                <ul class="dropdown-menu" id="dropdown">
+                  <form class="" action='Login_register.php' method='post' id='login' role='form'>
                   <input type='hidden' name='action' value='login'>
-                  <div class="form-group">
-                    <input type="text" placeholder="Email" name='email' class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" placeholder="Password" name='password'class="form-control">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>
+                  <li><input type="text" placeholder="Email" name='email' class="form-control"></li>
+                  <li><input type="password" placeholder="Password" name='password'class="form-control"></li>
+                  <li><button type="submit" class="btn btn-primary">Sign in</button></li>
+                  </form>
+                </ul>
               </li>
               <li><a href="login.php">or register</a></li>
               <?php endif; ?>
