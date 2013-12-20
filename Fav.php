@@ -16,7 +16,7 @@ class Fav {
 
         if (isset($data['action']) && $data['action'] == 'like_button')
         {
-            $this->setLike($data['pic_id'], $data['pic_secret'], $data['user_id'], $data['lat'], $data['lon'], $data['like_location']);
+            $this->setLike($data['pic_id'], $data['pic_secret'], $data['user_id'], $data['lat'], $data['lon'], $data['like_location'], $data['name']);
         }
         elseif (isset($data['action']) && $data['action'] == 'check_like_button')
         {
@@ -57,7 +57,7 @@ class Fav {
         echo json_encode($data);
     }
 
-    function setLike($pic_id, $pic_secret, $user_id, $lat, $lon, $location) {
+    function setLike($pic_id, $pic_secret, $user_id, $lat, $lon, $location, $title) {
 
     	$query =
             "SELECT * FROM favs WHERE user_id = ".$user_id." AND pic_id = ". $pic_id;
@@ -66,7 +66,7 @@ class Fav {
 
 
         if (count($like)==0) {
-            $query = "INSERT INTO favs (pic_id, pic_secret, user_id, lat, lon, location, created_at) VALUES ('".$pic_id."', '".$pic_secret."','".$user_id."', '".$lat."', '".$lon."','".$location."', NOW())";
+            $query = "INSERT INTO favs (pic_id, pic_secret, user_id, lat, lon, location, title, created_at) VALUES ('".$pic_id."', '".$pic_secret."','".$user_id."', '".$lat."', '".$lon."','".$location."','".$title."', NOW())";
             mysql_query($query);
 
             $query = "SELECT id, pic_id FROM favs WHERE pic_id = ".$pic_id;
