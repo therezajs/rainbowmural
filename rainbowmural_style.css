@@ -10,10 +10,6 @@ textarea {
     border-radius: 5px;
     margin-right: 10px;
 }
-img {
-    width: 90%;
-    margin-bottom: 20px;
-}
 #my_container {
   margin-top: 60px;
 }
@@ -33,6 +29,16 @@ img {
 }
 a.btn-success {
   font-size: 140%;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#9D937E), to(#837A65));
+  background-image: -webkit-linear-gradient(top, #9D937E, 0%, #837A65, 100%);
+  background-image: -moz-linear-gradient(top, #9D937E 0%, #837A65 100%);
+  background-image: linear-gradient(to bottom, #9D937E 0%, #837A65 100%);
+  background-repeat: repeat-x;
+  border-color: #A89F8D;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
+}
+a.btn-success:active {
+  background-color: #449d44 !important;
 }
 .btn_log {
   background-color: #9EC512;
@@ -81,14 +87,6 @@ a.btn-success {
 #red {
     color: red;
 }
-.item {
-    width: 30%;
-}
-.item img {
-    width: 100%;
-    padding: 5px;
-    margin: 0;
-}
 .user {
     color: #602649;
 }
@@ -100,13 +98,6 @@ a.btn-success {
 #likes_count p {
     margin: 0;
 }
-.mybtn {
-    color: #fffddf;
-}
-.btn.mybtn:hover {
-    color: #fffddf;
-    background-color: #E6850A;
-}
 #search {
     margin: 10px auto;
 }
@@ -114,11 +105,28 @@ a.btn-success {
     margin-top: 20px;
 }
 .item {
-    width: 20%;
+    width: 30%;
+    position: relative;
+}
+.item:hover {
+  color: red !important;
 }
 .item img {
     width: 100%;
     padding: 8px;
+}
+.item p {
+  position: absolute;
+  bottom: 5px;
+  padding-left: 13px;
+  color: transparent;
+  font-weight: bold;
+}
+.heart_btn {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  color: transparent;
 }
 .button {
     min-width: 250px;
@@ -128,22 +136,11 @@ a.btn-success {
     color: #fffddf;
     background-color: #ff6052;
 }
-.btn.button:hover {
-    background-color: #E6564A;
-    color: #fffddf;
-}
 #search {
     margin: 10px auto;
 }
 #container {
     margin-top: 20px;
-}
-.item {
-    width: 33%;
-}
-.item img {
-    width: 100%;
-    padding: 8px;
 }
 .button {
     min-width: 250px;
@@ -172,13 +169,6 @@ a.btn-success {
 }
 #pic_container {
     padding: 0;
-}
-.item {
-    width: 32%;
-}
-.item img {
-    width: 100%;
-    padding: 8px;
 }
 .title {
     text-decoration: none;
@@ -211,6 +201,13 @@ a.btn-success {
 .dropdown ul li a {
   color: black !important;
 }
+#dropdown {
+  min-width: 300px;
+}
+#dropdown li {
+  padding: 5px;
+}
+
 
 
 
