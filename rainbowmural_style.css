@@ -171,7 +171,7 @@ a.btn-success:active {
     /*padding: 8px;*/
 }
 #my_map {
-    padding: 0;
+    padding-left: 15px;
     position: fixed;
     top: 70px;
     right: 30px;
@@ -182,6 +182,9 @@ a.btn-success:active {
 }
 #pic_container {
     padding: 0;
+}
+#pic img {
+  width: 100%;
 }
 .title {
     text-decoration: none;
@@ -204,9 +207,6 @@ a.btn-success:active {
 }
 .about {
   font-size: 130%;
-}
-#like_container {
-  padding: 15px;
 }
 .box {
   padding: 5px;
