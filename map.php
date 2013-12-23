@@ -52,17 +52,47 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
 
-      $(document).ready(function(){
+    $(document).ready(function(){
         $(document).on("mouseenter", ".item", function(){
-                $(this).find("h4").css("color", "white");
-                $(this).find("span").css("color", "white");
-            });
+            var heart_sm = $(this).find(".check_heart_button");
+            // alert($(heart_sm).serialize());
+            var little_heart = $(this).find("span")
+            $(this).find("h4").css("color", "white");
+            $.post(
+                $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
+                    // alert(param);
+                    if (param[0] == "liked") {
+                        // $('.heart_span').html("<span class='glyphicon glyphicon-heart red_heart'></span>");
+                        $(little_heart).css("color", "red");
+                    } else {
+                        $(little_heart).css("color", "white");
+                    };
+                }, "json");
+            return false;
+        });
 
-            $(document).on("mouseleave", ".item", function(){
-                $("h4").css("color", "transparent");
-                $(this).find("span").css("color", "transparent");
-            });
-      });
+        $(document).on("mouseleave", ".item", function(){
+            $(this).find("h4").css("color", "transparent");
+            $(this).find("span").css("color", "transparent");
+        });
+
+        $(document).on("click", '.heart_btn', function() {
+            var heart = $(this);
+            // alert($("#like_button").serialize());
+            $.post(
+                $(this).attr('action'), $(this).serialize(), function(param) {
+                    // console.log(heart);
+                    if (param[0] == "like successful") {
+                        $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart' id='red'></span>");
+                    }
+                    else {
+                        // alert(param);
+                        $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart'></span>");
+                    }
+                }, "json");
+            return false;
+        })
+    });
     </script>
 <a href=""></a>
     <div class="container" id='my_container'>
@@ -84,9 +114,28 @@
             echo 'Flickr Feed Unavailable';
         }
         else {
-            foreach($images['photos']['photo'] as $photo) {
-                echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a><h4>' . $photo['title'] . '</h4></div>';
-                // <a class="title" href="detail.php?id=' . $photo['id'] . '_' . $photo['secret'] . '">'.$photo['title'].'</a>
+            if (isset($_SESSION['logged_in'])){
+                foreach($images['photos']['photo'] as $photo) {
+                    echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a><h4>' . $photo['title'] . '</h4><form action="ajax_like.php" method="post" class="heart_btn">
+                    <input type="hidden" name="action" value="like_button">
+                    <input type="hidden" name="user_id" value='.$_SESSION['id'].'>
+                    <input type="hidden" name="pic_id" value='.$photo['id'].'>
+                    <input type="hidden" name="pic_secret" value='.$photo['secret'].'>
+                    <input type="hidden" name="lon" value='. $photo['longitude'] .'>
+                    <input type="hidden" name="lat" value='. $photo['latitude'] .'>
+                    <input type="hidden" name="name" value='. $photo['title'] .'>
+                    <input type="hidden" name="like_location" value="undefined">
+                    <button class="heart_span"><span class="glyphicon glyphicon-heart"></span></button></form>
+                    <form action="ajax_like.php" method="post" class="check_heart_button">
+                    <input type="hidden" name="action" value="check_like_button">
+                    <input type="hidden" name="user_id" value='.$_SESSION['id'].'>
+                    <input type="hidden" name="pic_id" value='.$photo['id'].'></form></div>';
+
+                }
+            } else {
+                foreach($images['photos']['photo'] as $photo) {
+                    echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a><h4>' . $photo['title'] . '</h4></div>';
+                }
             }
 
             echo "<script>var photos = JSON.parse('".addslashes(json_encode($images['photos']['photo']))."');</script>";
