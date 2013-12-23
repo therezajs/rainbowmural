@@ -8,12 +8,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$(document).on("mouseenter", ".item", function(){
-                $(this).find("p").css("color", "white");
+                $(this).find("h4").css("color", "white");
                 $(this).find("span").css("color", "white");
             });
 
             $(document).on("mouseleave", ".item", function(){
-                $("p").css("color", "transparent");
+                $("h4").css("color", "transparent");
                 $(this).find("span").css("color", "transparent");
             });
 })
@@ -35,7 +35,7 @@ $(document).ready(function(){
 		if (!empty($likes))
 		{
 			foreach ($likes as $like) {
-				echo '<div class="item" ><a href="detail.php?lat=' . $like['lat'] . '&lon=' . $like['lon'] . '&id=' . $like['pic_id'] . '&secret=' . $like['pic_secret'] . '"><img src="http://www.flickr.com/photos/'.$like['pic_id'].'_'.$like['pic_secret'].'.jpg"></a><p>'.$like['title'].'</p></div>';
+				echo '<div class="item" ><a href="detail.php?lat=' . $like['lat'] . '&lon=' . $like['lon'] . '&id=' . $like['pic_id'] . '&secret=' . $like['pic_secret'] . '"><img src="http://www.flickr.com/photos/'.$like['pic_id'].'_'.$like['pic_secret'].'.jpg"></a><h4>'.$like['title'].'</h4></div>';
 			}
 		}
 		else
