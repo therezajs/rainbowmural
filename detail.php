@@ -112,8 +112,8 @@
             });
 
             $(document).on("mouseleave", ".item_sm", function(){
-                $("h4").css("color", "transparent");
-                $("span").css("color", "transparent");
+                $(this).find("h4").css("color", "transparent");
+                $(this).find("span").css("color", "transparent");
             });
 
             $(document).on("submit", '#comment', function() {
@@ -129,7 +129,7 @@
             });
 
             $(document).on("click", '#like_button', function() {
-                alert($("#like_button").serialize());
+                // alert($("#like_button").serialize());
                 $.post(
                     $(this).attr('action'), $(this).serialize(), function(param) {
 
