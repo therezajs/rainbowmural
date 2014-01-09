@@ -25,7 +25,7 @@
       <img src="avatar.png" class="img-circle">
       </div>
       <div class="about col-md 10">
-	    <p>Hello, I am Thereza and I am looking for a job as web developer. I started to teach myself programming this January on Codecademy and fell in love with it. I moved to San Francisco in October 2013 to attend a programming bootcamp, <a href="http://codingdojo.com/">Coding Dojo</a></p>
+	    <p>Hello, I am Thereza and I am looking for a job as web developer. I started to teach myself programming this January on Codecademy and fell in love with it. I moved to San Francisco in October 2013 to attend a programming bootcamp, <a href="http://codingdojo.com/">Coding Dojo</a>.</p>
 
 	    <p>I built this project with php, jquery and ajax. For the pictures, I used the flickr API and I worked with the Google API to display all the maps and markers.</p>
       <br>
