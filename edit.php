@@ -40,11 +40,12 @@
 				<h4>Change Password</h4>
 				<form action='Login_register.php' method='post' id='pwd' role='form'>
 					<input type='hidden' name='action' value='pwd'>
+					<input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
 					<div class='form-group'>
 						<input type='password' placeholder='Old Password' name='password' class="form-control">
 					</div>
 					<div class='form-group'>
-						<input type='password' placeholder='New Password' name='password' class="form-control">
+						<input type='password' placeholder='New Password' name='new_password' class="form-control">
 					</div>
 					<div class='form-group'>
 						<input type='password' placeholder='Confirm new Password' name='conf_password' class="form-control">
@@ -55,6 +56,7 @@
 				<hr>
 				<form action='Login_register.php' method='post'>
 		        	<input type='hidden' name='action' value='delete'>
+		        	<input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
 		        	<input type='submit' value='Delete account' class="btn btn-primary">
 		        </form>
 		    </div>
