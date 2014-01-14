@@ -41,15 +41,13 @@
               <?php endif; ?>
               <li><a href="about.php">About</a></li>
             </ul>
-              <?php if ($_SERVER["REQUEST_URI"] != ('/index.php')): ?>
-                <form action='Picture.php' method='post' class="navbar-form navbar-left" role="search">
+                <form action='Picture.php' method='post' class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Choose your city" name="name">
+                  <input type="text" class="form-control header" placeholder="Choose your city" name="name">
                 </div>
                 <input type='hidden' name='action' value='city'>
-                <button type="submit" class="btn btn-success">Go</button>
+                <button type="submit" class="btn btn-success header">Go</button>
                 </form>
-              <?php endif; ?>
 
 
             <ul class="nav navbar-nav navbar-right">
