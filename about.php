@@ -9,7 +9,7 @@
         flash();
       ?>
       <div class="page-header">
-      <h2>About</h2>
+      <h2>About Rainbow Mural</h2>
       </div>
       <div class="about">
       <p>Rainbow Mural is a website to explore street art around the world.
