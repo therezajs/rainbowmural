@@ -143,11 +143,45 @@
 		}
 
 		function editAction($data) {
-
+			// var_dump($data);
 			$errors = array();
-			$errors[] = "Sorry, this feature is still under construction";
-			$_SESSION['errors'] = $errors;
-			header('Location: edit.php');
+			// if (strlen($data['user_name']) != 0) {
+				if (!(is_string($data['user_name']) && strlen($data['user_name'])>0)) {
+					$errors[] = "Username too short";
+				}
+			// }
+			// if (strlen($data['first_name']) != 0) {
+				if (!(is_string($data['first_name']) && strlen($data['first_name'])>0)) {
+					$errors[] = "First Name too short";
+				}
+			// }
+			// if (strlen($data['last_name']) != 0) {
+
+				if (!(is_string($data['last_name']) && strlen($data['last_name'])>0)) {
+					$errors[] = "Last Name too short";
+				}
+			// }
+			// if (strlen($data['email']) != 0) {
+
+				if (!(filter_var($data['email'], FILTER_VALIDATE_EMAIL))) {
+					$errors[] = "Email not valid";
+				}
+			// }
+
+			if (count($errors) > 0){
+				$_SESSION['errors'] = $errors;
+				header('Location: edit.php');
+			}
+			else
+			{
+				$query = "UPDATE users SET user_name='{$data['user_name']}', first_name='{$data['first_name']}', last_name='{$data['last_name']}', email='{$data['email']}' where id='{$data['id']}'";
+				mysql_query($query);
+
+				$success[] = "Account update successfull!";
+				$_SESSION['messages'] = $success;
+				header('Location: edit.php');
+				header('Location: edit.php');
+			}
 		}
 
 		function changePwdAction($data) {

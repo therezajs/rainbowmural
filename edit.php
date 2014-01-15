@@ -22,6 +22,7 @@
 	    <h4>Edit account</h4>
 				<form action='Login_register.php' method='post' id='edit' role='form'>
 					<input type='hidden' name='action' value='edit'>
+					<input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
 					<div class='form-group'>
 						<input type='text' placeholder='Username' name='user_name' class="form-control">
 					</div>
