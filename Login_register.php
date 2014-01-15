@@ -192,14 +192,30 @@
 			if (!(isset($data['new_password']) && strlen($data['new_password'])>6)) {
 				$errors[] = "New password needs a least 6 characters. Your new password had ".strlen($data['new_password'])." characters.";
 			}
+			if (!(isset($data['conf_password']) && $data['new_password'] == $data['conf_password'])) {
+				$errors[] = "Confirmed password not equal to password";
+			}
+			if (!(isset($data['password']) && strlen($data['password'])>6)) {
+				$errors[] = "Password is empty!";
+			}
+
+			if (count($errors) > 0){
+				$_SESSION['errors'] = $errors;
+				header('Location: edit.php');
+			}
 			else
 			{
 				$query = "SELECT * FROM users WHERE id='{$data['id']}' AND password='{$data['password']}'";
 				$user = $this->connection->fetch_all($query);
-				// echo $query;
-				// var_dump($data);
 
-				if (count($user)>0 && ($data['new_password'] == $data['conf_password'])) {
+				if (count($user)==0)
+				{
+					$errors[] = "Password is incorrect!";
+					$_SESSION['errors'] = $errors;
+					header('Location: login.php');
+				}
+				else
+				{
 					$query = "UPDATE users SET password='{$data['new_password']}' where id='{$data['id']}'";
 					mysql_query($query);
 					// echo $query;
@@ -208,28 +224,7 @@
 					$_SESSION['messages'] = $success;
 					header('Location: edit.php');
 				}
-				elseif ($data['new_password'] != $data['conf_password']) {
-					$errors[] = "Password confirmation is incorrect!";
-				}
-				elseif (!(isset($data['password']) && strlen($data['password'])>6)) {
-					$errors[] = "Password is empty!";
-				}
-				elseif (count($user)==0)
-				{
-					$errors[] = "Password is incorrect!";
-				}
-				else
-				{
-					$errors[] = "Oops, something went wrong.";
-				}
 			}
-
-			if (count($errors) > 0){
-				$_SESSION['errors'] = $errors;
-				header('Location: edit.php');
-			}
-
-
 			// $errors[] = "Sorry, this feature is still under construction";
 			// $_SESSION['errors'] = $errors;
 			// header('Location: edit.php');
