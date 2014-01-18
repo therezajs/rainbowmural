@@ -146,28 +146,47 @@
 		function editAction($data) {
 			// var_dump($data);
 			$errors = array();
-			// if (strlen($data['user_name']) != 0) {
+			if (strlen($data['user_name']) == 0) {
+				$data['user_name'] = $_SESSION['user_name'];
+			}
+			else
+			{
 				if (!(is_string($data['user_name']) && strlen($data['user_name'])>0)) {
 					$errors[] = "Username too short";
 				}
-			// }
-			// if (strlen($data['first_name']) != 0) {
+			}
+
+			if (strlen($data['first_name']) == 0) {
+				$data['first_name'] = $_SESSION['first_name'];
+			}
+			else
+			{
 				if (!(is_string($data['first_name']) && strlen($data['first_name'])>0)) {
 					$errors[] = "First Name too short";
 				}
-			// }
-			// if (strlen($data['last_name']) != 0) {
+			}
+
+			if (strlen($data['last_name']) == 0) {
+				$data['last_name'] = $_SESSION['last_name'];
+			}
+			else
+			{
 
 				if (!(is_string($data['last_name']) && strlen($data['last_name'])>0)) {
 					$errors[] = "Last Name too short";
 				}
-			// }
-			// if (strlen($data['email']) != 0) {
+			}
+
+			if (strlen($data['email']) == 0) {
+				$data['email'] = $_SESSION['email'];
+			}
+			else
+			{
 
 				if (!(filter_var($data['email'], FILTER_VALIDATE_EMAIL))) {
 					$errors[] = "Email not valid";
 				}
-			// }
+			}
 
 			if (count($errors) > 0){
 				$_SESSION['errors'] = $errors;
