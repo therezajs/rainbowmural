@@ -17,8 +17,13 @@
 	    <p><strong>Email Address:</strong>
 	    	<?php echo $_SESSION['email'] ?>
 	    </p>
+	    <div class="row">
+	    <form action='Login_register.php' method='post'>
+        <input type='submit' class="btn btn-success" value='Log off'>
+	    </form>
+	    </div>
 	    <br>
-	    <div class="col-md-6">
+	    <div class="col-md-6 no_padding">
 	    <h4>Edit account</h4>
 				<form action='Login_register.php' method='post' id='edit' role='form'>
 					<input type='hidden' name='action' value='edit'>
@@ -58,7 +63,7 @@
 				<form action='Login_register.php' method='post'>
 		        	<input type='hidden' name='action' value='delete'>
 		        	<input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
-		        	<input type='submit' value='Delete account' class="btn btn-primary">
+		        	<input type='submit' value='Delete account' class="btn btn-danger">
 		        </form>
 		    </div>
     </div>
