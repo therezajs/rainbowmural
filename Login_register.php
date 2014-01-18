@@ -84,6 +84,7 @@
 				{
 					$errors[] = "Email or Password not valid";
 					$_SESSION['errors'] = $errors;
+					header('Location: login.php');
 				}
 			}
 		}
