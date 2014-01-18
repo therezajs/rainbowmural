@@ -3,7 +3,7 @@
 	include("Database.php");
 	require('header.php');
 ?>
-	<div class='container' id='container'>
+	<div class='container' id='my_container'>
 		<?php
 			flash();
 		?>
