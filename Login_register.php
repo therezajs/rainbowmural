@@ -177,6 +177,14 @@
 				$query = "UPDATE users SET user_name='{$data['user_name']}', first_name='{$data['first_name']}', last_name='{$data['last_name']}', email='{$data['email']}' where id='{$data['id']}'";
 				mysql_query($query);
 
+				$query = "SELECT * FROM users WHERE id='{$data['id']}'";
+				$user = $this->connection->fetch_all($query);
+
+				$_SESSION['user_name'] = $user[0]['user_name'];
+				$_SESSION['first_name'] = $user[0]['first_name'];
+				$_SESSION['last_name'] = $user[0]['last_name'];
+				$_SESSION['email'] = $user[0]['email'];
+
 				$success[] = "Account update successfull!";
 				$_SESSION['messages'] = $success;
 				header('Location: edit.php');
