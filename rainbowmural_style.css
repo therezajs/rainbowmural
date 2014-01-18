@@ -232,6 +232,9 @@ a.btn-success:active {
 #dropdown li {
   padding: 5px;
 }
+.no_padding {
+  padding: 0;
+}
 #frisco {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#FF0000), to(#800000));
   background-image: -webkit-linear-gradient(top, #FF0000, 0%, #800000, 100%);
