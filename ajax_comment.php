@@ -1,6 +1,6 @@
 <?php
-    require_once('Database.php');
-    require('Comment.php');
+  require_once('Database.php');
+  require('Comment.php');
 
 
 $data = new Comment();

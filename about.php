@@ -31,14 +31,14 @@
       <img src="avatar.png" class="img-circle">
       </div>
       <div class="about col-md 10">
-	    <p>Hello, I am Thereza and I am looking for a job as web developer.
+      <p>Hello, I am Thereza and I am looking for a job as web developer.
         I started to teach myself programming on Codecademy and fell in love with it.
         I moved to San Francisco in October 2013 to attend a programming bootcamp, <a href="http://codingdojo.com/">Coding Dojo</a>.</p>
 
-	    <p>I built this project with PHP, jQuery and MySQL.
+      <p>I built this project with PHP, jQuery and MySQL.
         For the pictures, I used the flickr API and I worked with the Google API to display all the maps.</p>
       <br>
-	    <p>To learn more about me, check out my <button class="btn btn-success"><a href="http://www.linkedin.com/in/thereza">LinkedIn</a></button>, <button class="btn btn-success"><a href="https://twitter.com/therezaJS">Twitter</a></button> and <button class="btn btn-success"><a href="https://github.com/bakerstreet221b">Github</a></button> account.</p>
+      <p>To learn more about me, check out my <button class="btn btn-success"><a href="http://www.linkedin.com/in/thereza">LinkedIn</a></button>, <button class="btn btn-success"><a href="https://twitter.com/therezaJS">Twitter</a></button> and <button class="btn btn-success"><a href="https://github.com/bakerstreet221b">Github</a></button> account.</p>
       </div>
     </div>
 <?php require('footer.php'); ?>

@@ -1,6 +1,6 @@
 <?php
-    require_once('Database.php');
-    require('Fav.php');
+  require_once('Database.php');
+  require('Fav.php');
 
 
 $data = new Fav();
