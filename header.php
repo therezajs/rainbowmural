@@ -30,7 +30,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Rainbow Mural<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
+        <a class="navbar-brand" href="home.php">Rainbow Mural<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,20 +38,19 @@
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
           <?php if (isset($_SESSION['logged_in'])): ?>
-          <li><a href="like.php">Likes</a></li>
+            <li><a href="like.php">Likes</a></li>
           <?php endif; ?>
           <li><a href="about.php">About</a></li>
         </ul>
-          <form action='Picture.php' method='post' class="navbar-form navbar-right" role="search">
+        <form action='Picture.php' method='post' class="navbar-form navbar-right" role="search">
           <div class="form-group">
             <input type="text" class="form-control header" placeholder="Choose your city" name="name">
           </div>
           <input type='hidden' name='action' value='city'>
           <button type="submit" class="btn btn-success header">Go</button>
-          </form>
+        </form>
         <ul class="nav navbar-nav navbar-right">
-        <?php
-        if (isset($_SESSION['logged_in'])): ?>
+        <?php if (isset($_SESSION['logged_in'])): ?>
           <li><a href='edit.php'><?php echo $_SESSION['user_name'] ?></a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
@@ -63,7 +62,7 @@
               <li class="li_link">
                 <form action='Login_register.php' method='post' class='navbar-form navbar-left'>
                 <!-- <a href="">Log off</a> -->
-                <input type='submit' class="link" value='Log off'></div>
+                <input type='submit' class="link" value='Log off'>
                 </form>
               </li>
             </ul>

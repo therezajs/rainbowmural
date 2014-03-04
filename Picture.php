@@ -1,16 +1,6 @@
 <?php
 class Picture {
 
-  // private $data; // associative array
-  // private $connection;
-
-  // function __construct($data) {
-  //     // Make sure object is initialized into a valid state
-
-  //     $this->data = $data;
-  //     $this->connection = new Database();
-  // }
-
   function processFormData($data) {
 
     if (isset($data['action']) && $data['action'] == 'city')

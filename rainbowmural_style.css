@@ -13,6 +13,46 @@ textarea {
 #my_container {
   margin-top: 60px;
 }
+#my_jumbotron {
+  position: absolute;
+  margin-top: 170px;
+  padding: 20px 20px 50px;
+  min-width: 100%;
+  background-color: rgba(201,204,215, 0.7);
+  border-radius: 15px;
+}
+.bg {
+  position: fixed !important;
+  top: 7% !important;
+  /*left: -5% !important;*/
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 !important;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+/*#home_container {
+  margin-top: 60px;
+  min-height: 550px;
+}*/
+.title {
+  text-align: center;
+  text-shadow: 2px 2px 5px white;
+}
+.background_img {
+  background-image: url('spongebob_splash.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 #btn {
     min-width: 300px;
     text-align: left;
@@ -32,7 +72,7 @@ textarea {
   /*color: #DFD3DB;*/
 }
 a.btn-success {
-  font-size: 140%;
+  font-size: 100%;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#9D937E), to(#837A65));
   background-image: -webkit-linear-gradient(top, #9D937E, 0%, #837A65, 100%);
   background-image: -moz-linear-gradient(top, #9D937E 0%, #837A65 100%);
@@ -112,7 +152,7 @@ a.btn-success:active {
     margin: 10px auto;
 }
 #container {
-    margin-top: 20px;
+    margin-top: 5px;
 }
 .item {
     width: 32%;
