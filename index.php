@@ -4,20 +4,26 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
+    <div class="item bg">
+      <img src="https://farm9.staticflickr.com/8482/8224341564_7705fbbc3f_c.jpg" class="img-responsive my_carusel" alt="Responsive image" id="fish">
+    </div>
+    <div class="item bg">
+      <img src="https://farm1.staticflickr.com/70/176582625_ed5d35dc98.jpg" class="img-responsive my_carusel" alt="Responsive image" id="unicorn">
+    </div>
+    <div class="item bg">
+      <img src="https://farm1.staticflickr.com/62/176581933_3d503bbc52.jpg" class="img-responsive my_carusel" alt="Responsive image" id="flowers">
+    </div>
+    <div class="item bg">
+      <img src="scribbles.jpg" class="img-responsive my_carusel" alt="Responsive image" id="Banksy">
+    </div>
+    <div class="item bg">
+      <img src="https://farm3.staticflickr.com/2094/5764044402_a67dc976cb_z.jpg" class="img-responsive my_carusel" alt="Responsive image" id="fox">
+    </div>
     <div class="item active bg">
-      <img src="http://farm4.staticflickr.com/3082/3534028659_ca43d3f8d0.jpg" class="img-responsive my_carusel" alt="Responsive image" >
+      <img src="https://farm5.staticflickr.com/4128/5029933896_8a8e2afacb.jpg" class="img-responsive my_carusel" alt="Responsive image" id="namaste">
     </div>
     <div class="item bg">
-      <img src="http://farm4.staticflickr.com/3275/2644956705_fdc733a479.jpg" class="img-responsive my_carusel" alt="Responsive image" >
-    </div>
-    <div class="item bg">
-      <img src="http://farm4.staticflickr.com/3686/8756219931_43348f8ba5.jpg" class="img-responsive my_carusel" alt="Responsive image" >
-    </div>
-    <div class="item bg">
-      <img src="http://farm1.staticflickr.com/88/263312718_725485ef9f.jpg" class="img-responsive my_carusel" alt="Responsive image" >
-    </div>
-    <div class="item bg">
-      <img src="scribbles.jpg" class="img-responsive my_carusel" alt="Responsive image" >
+      <img src="https://farm4.staticflickr.com/3510/3879874342_ee7a713898_z.jpg" class="img-responsive my_carusel" alt="Responsive image" id="skull">
     </div>
   </div>
 
@@ -31,16 +37,16 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav col-md-12">
             <li class='col-md-3'>
-              <a class="btn btn-success" id="frisco" href="map.php?lat=37.779&lon=-122.420&place=San%20Francisco">San Francisco</a>
+              <a class="btn btn-success" id="rainbow1" href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a>
             </li>
             <li class='col-md-3'>
-              <a class="btn btn-success" id="paris" href="map.php?lat=48.856&lon=2.341&place=Paris">Paris</a>
+              <a class="btn btn-success" id="rainbow2" href="map.php?lat=51.506&lon=-0.127&place=London">London</a>
             </li>
             <li class='col-md-3'>
-              <a class="btn btn-success" id="london" href="map.php?lat=51.506&lon=-0.127&place=London">London</a>
+              <a class="btn btn-success" id="rainbow3" href="map.php?lat=48.856&lon=2.341&place=Paris">Paris</a>
             </li>
             <li class='col-md-3'>
-              <a class="btn btn-success" id="berlin" href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a>
+              <a class="btn btn-success" id="rainbow4" href="map.php?lat=37.779&lon=-122.420&place=San%20Francisco">San Francisco</a>
             </li>
           </ul>
         </div>

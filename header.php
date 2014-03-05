@@ -19,7 +19,9 @@
 
 </head>
 <body>
-  <?php include_once("analyticstracking.php") ?>
+  <?php
+  include_once("analyticstracking.php")
+  ?>
   <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container">
