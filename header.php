@@ -30,13 +30,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home.php">Rainbow Mural<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
+        <a class="navbar-brand" href="index.php">Rainbow Mural<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="index.php">Home</a></li>
+          <li><a href="home.php">Home</a></li>
           <?php if (isset($_SESSION['logged_in'])): ?>
             <li><a href="like.php">Likes</a></li>
           <?php endif; ?>

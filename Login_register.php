@@ -78,7 +78,7 @@
           $_SESSION['last_name'] = $user[0]['last_name'];
           $_SESSION['email'] = $user[0]['email'];
           // $_SESSION['messages'][] = "You've logged in successfully!";
-          header('Location: index.php');
+          header('Location: home.php');
         }
         else
         {
@@ -263,7 +263,7 @@
       // echo $query;
 
       session_destroy();
-      header('Location: index.php');
+      header('Location: home.php');
     }
   }
 

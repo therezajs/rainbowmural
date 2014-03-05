@@ -57,7 +57,7 @@ class Picture {
     {
       $message[] = "Oops, something went wrong. Please search for a city name";
       $_SESSION['messages'] = $message;
-      header('location: index.php');
+      header('location: home.php');
     }
   }
 
