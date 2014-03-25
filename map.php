@@ -58,6 +58,7 @@
       // alert($(heart_sm).serialize());
       var little_heart = $(this).find("span")
       $(this).find("h4").css("color", "white");
+      $(this).find("h4").css("text-shadow", "0 0 2px black");
       $.post(
         $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
           // alert(param);
@@ -73,6 +74,7 @@
 
     $(document).on("mouseleave", ".item", function(){
       $(this).find("h4").css("color", "transparent");
+      $(this).find("h4").css("text-shadow", "0 0 2px transparent");
       $(this).find("span").css("color", "transparent");
     });
 
@@ -101,7 +103,7 @@
     ?>
     <div class="row">
 
-      <div class='col-md-8' id='pic_container'>
+      <div class='col-md-8 col-xs-8' id='pic_container'>
 
 <?php
 
@@ -148,7 +150,7 @@
       <!-- <div class='col-md-4' id='cityname'>
 
       </div> -->
-      <div class='col-md-4' id='my_map'>
+      <div class='col-md-4 col-xs-4' id='my_map'>
         <h2><?php
         if (isset($_GET['place'])) {
           echo $_GET['place'];

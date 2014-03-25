@@ -95,6 +95,7 @@
         // alert($(heart_sm).serialize());
         var little_heart = $(this).find("span")
         $(this).find("h4").css("color", "white");
+        $(this).find("h4").css("text-shadow", "0 0 2px black");
         $.post(
           $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
             // alert(param);
@@ -110,6 +111,7 @@
 
       $(document).on("mouseleave", ".item_sm", function(){
         $(this).find("h4").css("color", "transparent");
+        $(this).find("h4").css("text-shadow", "0 0 2px transparent");
         $(this).find("span").css("color", "transparent");
       });
 
@@ -187,7 +189,7 @@
       flash();
     ?>
     <div class='row'>
-      <div class='col-md-7' id='pic'>
+      <div class='col-md-7 col-xs-12' id='pic'>
         <?php
           $id = $_GET['id'];
           $secret = $_GET['secret'];
@@ -255,9 +257,9 @@
           ?>
         </div>
       </div>
-      <div class='col-md-5'>
+      <div class='col-md-5 col-xs-12 initial_height'>
         <div id='map'>
-          <div id="map-canvas"/>
+          <div id="map-canvas"></div>
         </div>
         <br>
         <?php

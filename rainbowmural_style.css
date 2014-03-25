@@ -17,6 +17,7 @@ textarea {
   position: absolute;
   margin-top: 170px;
   padding: 20px 20px 50px;
+  margin-left: -15px;
   min-width: 100%;
   background-color: rgba(201,204,215, 0.7);
   border-radius: 15px;
@@ -37,17 +38,13 @@ textarea {
   bottom: 0;
   padding: 0 !important;
   margin: auto;
-  /*min-width: 100%;*/
+  min-width: 100%;
   min-height: 100%;
 }
 /*#home_container {
   margin-top: 60px;
   min-height: 550px;
 }*/
-.title {
-  text-align: center;
-  text-shadow: 2px 2px 5px white;
-}
 .my_btn {
   width: 100%;
 }
@@ -217,7 +214,7 @@ a.btn-success:active {
   margin-top: 10px;
 }
 #map {
-    height: 300px;
+    width: 100%
     /*padding: 8px;*/
 }
 #my_map {
@@ -237,10 +234,14 @@ a.btn-success:active {
   width: 100%;
 }
 .title {
-    text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 2px 2px 2px white;
 }
-.row {
-    /*padding: 10px;*/
+.title-sm {
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 0px 0px 2px white;
 }
 .images {
     height: 60px;
@@ -371,5 +372,8 @@ a.btn-success:active {
   background-repeat: repeat-x;
   border-color: #2aabd2;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
+}
+.initial_height {
+  min-height: 200px;
 }
 
