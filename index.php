@@ -28,31 +28,29 @@
   </div>
 
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-xs-1 col-md-1"></div>
+    <div class="col-xs-10 col-md-10">
       <div class="jumbotron" id="my_jumbotron">
         <h1 class="title">Rainbow Mural</h1>
         <p class="title"><!-- Explore street art around the world.<br> -->
           Street art is all around us! Explore your city, holiday destination or favorite city. <br><br></p>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav col-md-12">
-            <li class='col-md-3'>
-              <a class="btn btn-success" id="rainbow1" href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a>
-            </li>
-            <li class='col-md-3'>
-              <a class="btn btn-success" id="rainbow2" href="map.php?lat=51.506&lon=-0.127&place=London">London</a>
-            </li>
-            <li class='col-md-3'>
-              <a class="btn btn-success" id="rainbow3" href="map.php?lat=48.856&lon=2.341&place=Paris">Paris</a>
-            </li>
-            <li class='col-md-3'>
-              <a class="btn btn-success" id="rainbow4" href="map.php?lat=37.779&lon=-122.420&place=San%20Francisco">San Francisco</a>
-            </li>
-          </ul>
+        <div>
+          <div class='col-xs-12 col-sm-6 col-md-3'>
+            <a class="btn btn-success my_btn" id="rainbow1" href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a>
+          </div>
+          <div class='col-xs-12 col-sm-6 col-md-3'>
+            <a class="btn btn-success my_btn" id="rainbow2" href="map.php?lat=51.506&lon=-0.127&place=London">London</a>
+          </div>
+          <div class='col-xs-12 col-sm-6 col-md-3'>
+            <a class="btn btn-success my_btn" id="rainbow3" href="map.php?lat=48.856&lon=2.341&place=Paris">Paris</a>
+          </div>
+          <div class='col-xs-12 col-sm-6 col-md-3'>
+            <a class="btn btn-success my_btn" id="rainbow4" href="map.php?lat=37.779&lon=-122.420&place=San%20Francisco">San Francisco</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-xs-1 col-md-1"></div>
   </div>
 </div>
 </body>
