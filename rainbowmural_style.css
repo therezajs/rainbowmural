@@ -240,7 +240,7 @@ a.btn-success:active {
     text-decoration: none;
 }
 .row {
-    padding: 10px;
+    /*padding: 10px;*/
 }
 .images {
     height: 60px;

@@ -1,5 +1,5 @@
 <?php require('header.php'); ?>
-<div class='container' id='home_container'>
+<div id='home_container'>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
   <!-- Wrapper for slides -->
@@ -27,9 +27,9 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="container">
     <div class="col-xs-1 col-md-1"></div>
-    <div class="col-xs-10 col-md-10">
+    <div class="col-xs-9 col-md-9">
       <div class="jumbotron" id="my_jumbotron">
         <h1 class="title">Rainbow Mural</h1>
         <p class="title"><!-- Explore street art around the world.<br> -->
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-1 col-md-1"></div>
+    <div class="col-xs-2 col-md-2"></div>
   </div>
 </div>
 </body>
