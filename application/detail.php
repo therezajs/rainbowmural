@@ -3,7 +3,7 @@
   require('header.php');
   require_once('ajax_comment.php');
   require_once('ajax_like.php');
-  require_once('Picture.php');
+  require_once('../system/Picture.php');
 ?>
 
 
@@ -31,7 +31,7 @@
         title: photo.title._content
       });
 
-      var image = 'red_dot.png';
+      var image = '../assets/images/red_dot.png';
       var current_dotMarker = null;
       photosNearby.forEach(function(each) {
         if (each.id != <?php echo "'". $_GET['id'] ."'"?>) {

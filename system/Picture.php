@@ -51,13 +51,13 @@ class Picture {
     $rsp_obj = json_decode($rsp, true);
     // var_dump($rsp_obj);
     if ($rsp_obj['status'] == 'OK') {
-      header("location: map.php?lat=".$rsp_obj['results'][0]['geometry']['location']['lat']."&lon=".$rsp_obj['results'][0]['geometry']['location']['lng']."&place=".$rsp_obj['results'][0]['formatted_address']);
+      header("location: ../application/map.php?lat=".$rsp_obj['results'][0]['geometry']['location']['lat']."&lon=".$rsp_obj['results'][0]['geometry']['location']['lng']."&place=".$rsp_obj['results'][0]['formatted_address']);
     }
     else
     {
       $message[] = "Oops, something went wrong. Please search for a city name";
       $_SESSION['messages'] = $message;
-      header('location: home.php');
+      header('location: ../application/home.php');
     }
   }
 

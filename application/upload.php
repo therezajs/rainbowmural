@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include("Database.php");
+	include("../system/Database.php");
     require('header.php');
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	include("Database.php");
-    require('header.php');
+	// include("../system/Database.php");
+  require('header.php');
 ?>
 
     <div class="container" id="my_container">
@@ -28,7 +28,7 @@
       <br>
       <h3>About me</h3>
       <div class="set_size col-md-2">
-      <img src="avatar.png" class="img-circle">
+      <img src="../assets/images/avatar.png" class="img-circle">
       </div>
       <div class="about col-md 10">
       <p>Hello, I am Thereza and I am looking for a job as web developer.

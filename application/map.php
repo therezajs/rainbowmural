@@ -1,8 +1,8 @@
 <?php
   session_start();
-  include("Database.php");
+  include("../system/Database.php");
   require('header.php');
-  require_once('Picture.php');
+  require_once('../system/Picture.php');
 ?>
   <script type="text/javascript">
     function initialize() {

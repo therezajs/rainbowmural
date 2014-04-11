@@ -44,7 +44,7 @@
       else
       {
         session_destroy();
-        header('Location: login.php');
+        header('Location: ../application/login.php');
       }
     }
 
@@ -62,7 +62,7 @@
       if (count($errors)>0) {
 
         $_SESSION['errors'] = $errors;
-        header('Location: login.php');
+        header('Location: ../application/login.php');
       }
       else
       {
@@ -78,13 +78,13 @@
           $_SESSION['last_name'] = $user[0]['last_name'];
           $_SESSION['email'] = $user[0]['email'];
           // $_SESSION['messages'][] = "You've logged in successfully!";
-          header('Location: home.php');
+          header('Location: ../application/home.php');
         }
         else
         {
           $errors[] = "Email or Password not valid";
           $_SESSION['errors'] = $errors;
-          header('Location: login.php');
+          header('Location: ../application/login.php');
         }
       }
     }
@@ -118,7 +118,7 @@
 
       if (count($errors) > 0){
         $_SESSION['errors'] = $errors;
-        header('Location: login.php');
+        header('Location: ../application/login.php');
       }
       else
       {
@@ -129,7 +129,7 @@
 
           $errors[] = "Account with email ".$data['email']." or user_name ".$data['user_name']." already exists.";
           $_SESSION['errors'] = $errors;
-          header('Location: login.php');
+          header('Location: ../application/login.php');
         }
         else
         {
@@ -138,7 +138,7 @@
 
           $success[] = "Registration successfull!";
           $_SESSION['messages'] = $success;
-          header('Location: login.php');
+          header('Location: ../application/login.php');
         }
       }
     }
@@ -190,7 +190,7 @@
 
       if (count($errors) > 0){
         $_SESSION['errors'] = $errors;
-        header('Location: edit.php');
+        header('Location: .../application/edit.php');
       }
       else
       {
@@ -207,8 +207,7 @@
 
         $success[] = "Account update successfull!";
         $_SESSION['messages'] = $success;
-        header('Location: edit.php');
-        header('Location: edit.php');
+        header('Location: ../application/edit.php');
       }
     }
 
@@ -229,7 +228,7 @@
 
       if (count($errors) > 0){
         $_SESSION['errors'] = $errors;
-        header('Location: edit.php');
+        header('Location: ../application/edit.php');
       }
       else
       {
@@ -240,7 +239,7 @@
         {
           $errors[] = "Password is incorrect!";
           $_SESSION['errors'] = $errors;
-          header('Location: login.php');
+          header('Location: ../application/login.php');
         }
         else
         {
@@ -250,7 +249,7 @@
 
           $success[] = "Password update successfull!";
           $_SESSION['messages'] = $success;
-          header('Location: edit.php');
+          header('Location: ../application/edit.php');
         }
       }
       // $errors[] = "Sorry, this feature is still under construction";
@@ -263,7 +262,7 @@
       // echo $query;
 
       session_destroy();
-      header('Location: home.php');
+      header('Location: ../application/home.php');
     }
   }
 

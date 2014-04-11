@@ -1,8 +1,8 @@
 <?php
   session_start();
   require("header.php");
-  require_once("Database.php");
-  require('Fav.php');
+  require_once("../system/Database.php");
+  require('../system/Fav.php');
 
 ?>
 <script type="text/javascript">

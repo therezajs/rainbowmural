@@ -119,6 +119,7 @@ a.btn-success:active {
 }
 #map-canvas {
   height: 100%;
+  width: 100%
 }
 #location_heigth {
     height: 80px;
