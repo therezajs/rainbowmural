@@ -112,8 +112,13 @@
     $pics = new Picture();
     $images = $pics->getCityPics($_GET['lat'], $_GET['lon'], '1');
     // var_dump($images);
+    // echo "=======";
+    // echo $images['photos']['total'];
     if($images === false) {
       echo 'Flickr Feed Unavailable';
+    }
+    elseif ($images['photos']['total'] == NULL) {
+      echo "<div class='col-md-12'><h2>Where are you flickr? Flickr API is so down!!</h2></div>";
     }
     else {
       if (isset($_SESSION['logged_in'])){

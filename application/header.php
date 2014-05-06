@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="../assets/dist/css/bootstrap-theme.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="../assets/js/jquery.js"></script>
+  <!-- <script src="../assets/js/jquery.js"></script> -->
   <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
   <script src="../assets/dist/js/bootstrap.js"></script>
 
