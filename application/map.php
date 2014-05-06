@@ -118,7 +118,7 @@
       echo 'Flickr Feed Unavailable';
     }
     elseif ($images['photos']['total'] == NULL) {
-      echo "<div class='col-md-12'><h2>Where are you flickr? Flickr API is so down!!</h2></div>";
+      echo "<div class='col-md-12'><h3>Where are you flickr? Flickr API is so down!!</h3></div>";
     }
     else {
       if (isset($_SESSION['logged_in'])){
