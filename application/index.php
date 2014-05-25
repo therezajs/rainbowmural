@@ -1,7 +1,5 @@
 <?php require('header.php'); ?>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-  <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item bg">
       <img src="https://farm9.staticflickr.com/8482/8224341564_7705fbbc3f_c.jpg" class="img-responsive my_carusel" alt="Responsive image" id="fish">
@@ -26,14 +24,13 @@
     </div>
   </div>
 </div>
-
-
 <div class="col-xs-1 col-md-1"></div>
 <div class="col-xs-10 col-md-10">
   <div class="jumbotron" id="my_jumbotron">
     <h1 class="title col-xs-12">Rainbow Mural</h1>
-    <p class="title-sm col-xs-12"><!-- Explore street art around the world.<br> -->
-      Street art is all around us! Explore your city, holiday destination or favorite city. <br><br></p>
+    <p class="title-sm col-xs-12">
+      Street art is all around us! Explore your city, holiday destination or favorite city. <br><br>
+    </p>
     <div>
       <div class='col-xs-12 col-sm-6 col-md-3'>
         <a class="btn btn-success my_btn" id="rainbow1" href="map.php?lat=52.516&lon=13.376&place=Berlin">Berlin</a>
