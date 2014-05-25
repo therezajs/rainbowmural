@@ -272,7 +272,6 @@
       <?php else: ?>
           <h3>Title: <?php echo $images['photo']['title']["_content"] ?></h3>
       <?php endif; ?>
-
       <div id='location_heigth'>
         <div id='location'></div>
       </div>
@@ -322,11 +321,9 @@
         }
         $get_comments = new Comment();
         $comments = $get_comments->getComments($id);
-        // var_dump($comments);
         commentsTable($comments);
-        echo "<p id='commentsTable'></p>";
         ?>
-
+        <p id='commentsTable'></p>
         <hr>
         <form action="ajax_comment.php" method="post" id='comment'>
           <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
@@ -337,7 +334,6 @@
               <input type='submit' value='Say It' class='btn btn-primary'>
           <?php elseif (!isset($_SESSION['logged_in']) && empty($comments)): ?>
               <p><a href="login.php">Log in</a> and be the first to comment</p>
-
           <?php elseif (isset($_SESSION['logged_in']) && empty($comments)): ?>
               <p>Be the first to comment</p>
           <?php elseif (!isset($_SESSION['logged_in']) && !empty($comments)): ?>
@@ -347,7 +343,6 @@
       </div>
     </div>
   </div>
-
 </div>
 <script type="text/javascript">
 
