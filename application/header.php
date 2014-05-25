@@ -13,17 +13,12 @@
   <link rel="stylesheet" type="text/css" href="../assets/dist/css/bootstrap-theme.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEdp4vZEKpPU4nbucnDEAwzvCgyXCDhQ&amp;sensor=false"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <!-- <script src="../assets/js/jquery.js"></script> -->
   <script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
   <script src="../assets/dist/js/bootstrap.js"></script>
-
 </head>
 <body>
-  <?php
-  include_once("analyticstracking.php")
-  ?>
+  <?php include_once("analyticstracking.php") ?>
   <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -32,10 +27,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Rainbow Mural<!--  by</a><a class="navbar-brand" href="http://www.flickr.com"><strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong> --></a>
+        <a class="navbar-brand" href="index.php">Rainbow Mural</a>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="home.php">Home</a></li>
@@ -63,32 +56,29 @@
               <li class="divider"></li>
               <li class="li_link">
                 <form action='../system/Login_register.php' method='post' class='navbar-form navbar-left'>
-                <!-- <a href="">Log off</a> -->
-                <input type='submit' class="link" value='Log off'>
+                  <input type='submit' class="link" value='Log off'>
                 </form>
               </li>
             </ul>
           </li>
-          <?php elseif (!isset($_SESSION['logged_in']) && ($_SERVER["REQUEST_URI"] != '/login.php')): ?>
+        <?php elseif (!isset($_SESSION['logged_in']) && ($_SERVER["REQUEST_URI"] != '/login.php')): ?>
           <li id='mylogin' class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
             <ul class="dropdown-menu" id="dropdown">
               <form class="" action='../system/Login_register.php' method='post' id='login' role='form'>
-              <input type='hidden' name='action' value='login'>
-              <li><input type="text" placeholder="Email" name='email' class="form-control"></li>
-              <li><input type="password" placeholder="Password" name='password'class="form-control"></li>
-              <li><button type="submit" class="btn btn-primary">Sign in</button></li>
+                <input type='hidden' name='action' value='login'>
+                <li><input type="text" placeholder="Email" name='email' class="form-control"></li>
+                <li><input type="password" placeholder="Password" name='password'class="form-control"></li>
+                <li><button type="submit" class="btn btn-primary">Sign in</button></li>
               </form>
             </ul>
           </li>
           <li><a href="login.php">or register</a></li>
-          <?php endif; ?>
+        <?php endif; ?>
         </ul>
-      </div><!-- /.navbar-collapse -->
+      </div>
     </div>
   </nav>
-
-
 
 <?php
   function flash(){
@@ -107,4 +97,3 @@
     };
   }
 ?>
-
