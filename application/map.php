@@ -1,7 +1,7 @@
 <?php
   session_start();
   include_once("../system/Database.php");
-  require_once('../system/Picture.php');
+  require_once('ajax_picture.php');
   require('header.php');
 ?>
   <script type="text/javascript">
@@ -147,7 +147,15 @@
               </div>
             <?php endforeach; ?>
           <?php else: ?>
-            <?php foreach($images['photos']['photo'] as $photo): ?>
+            <?php foreach($images['photos']['photo'] as $photo):
+              $lat = $photo['latitude'];
+              $lon = $photo['longitude'];
+              $id = $photo['id'];
+              $secret = $photo['secret'];
+              $title = $photo['title'];
+              $farm = $photo['farm'];
+              $server = $photo['server'];
+            ?>
               <div class="item">
                 <a href="detail.php?lat=<?php echo $lat ?>&lon=<?php echo $lon ?>&id=<?php echo $id ?>&secret=<?php echo $secret ?>" >
                   <img src="http://farm<?php echo $farm ?>.static.flickr.com/<?php echo $server ?>/<?php echo $id ?>_<?php echo $secret ?>_m.jpg" />

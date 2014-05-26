@@ -37,7 +37,7 @@
           <?php endif; ?>
           <li><a href="about.php">About</a></li>
         </ul>
-        <form action='../system/Picture.php' method='post' class="navbar-form navbar-right" role="search">
+        <form action='ajax_picture.php' method='post' class="navbar-form navbar-right" role="search">
           <div class="form-group">
             <input type="text" class="form-control header" placeholder="Choose your city" name="name">
           </div>
@@ -55,7 +55,7 @@
               <li><a href='edit.php'>Edit account</a></li>
               <li class="divider"></li>
               <li class="li_link">
-                <form action='../system/Login_register.php' method='post' class='navbar-form navbar-left'>
+                <form action='ajax_login.php' method='post' class='navbar-form navbar-left'>
                   <input type='submit' class="link" value='Log off'>
                 </form>
               </li>
@@ -65,7 +65,7 @@
           <li id='mylogin' class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
             <ul class="dropdown-menu" id="dropdown">
-              <form class="" action='../system/Login_register.php' method='post' id='login' role='form'>
+              <form class="" action='ajax_login.php' method='post' id='login' role='form'>
                 <input type='hidden' name='action' value='login'>
                 <li><input type="text" placeholder="Email" name='email' class="form-control"></li>
                 <li><input type="password" placeholder="Password" name='password'class="form-control"></li>

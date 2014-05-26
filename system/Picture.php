@@ -116,6 +116,3 @@ class Picture {
     return $rsp_obj;
   }
 }
-
-$picture = new Picture();
-$picture->processFormData($_POST);

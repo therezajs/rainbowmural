@@ -1,6 +1,5 @@
 <?php
-
-include_once("../application/constant.php");
+include_once("constant.php");
 
 class Database{
 
@@ -40,4 +39,3 @@ class Database{
     return mysql_fetch_assoc($result);
   }
 }
-

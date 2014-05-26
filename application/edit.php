@@ -1,6 +1,5 @@
 <?php
   session_start();
-  include_once("../system/Database.php");
   require('header.php');
 ?>
 
@@ -16,14 +15,14 @@
     <?php echo $_SESSION['email'] ?>
   </p>
   <div class="row">
-    <form action='../system/Login_register.php' method='post'>
+    <form action='ajax_login.php' method='post'>
       <input type='submit' class="btn btn-success" value='Log off'>
     </form>
   </div>
   <br>
   <div class="col-md-6 no_padding">
     <h4>Edit account</h4>
-    <form action='../system/Login_register.php' method='post' id='edit' role='form'>
+    <form action='ajax_login.php' method='post' id='edit' role='form'>
       <input type='hidden' name='action' value='edit'>
       <input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
       <div class='form-group'>
@@ -42,7 +41,7 @@
     </form>
     <br>
     <h4>Change Password</h4>
-    <form action='../system/Login_register.php' method='post' id='pwd' role='form'>
+    <form action='ajax_login.php' method='post' id='pwd' role='form'>
       <input type='hidden' name='action' value='pwd'>
       <input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
       <div class='form-group'>
@@ -58,7 +57,7 @@
     </form>
     <br>
     <hr>
-    <form action='../system/Login_register.php' method='post'>
+    <form action='ajax_login.php' method='post'>
       <input type='hidden' name='action' value='delete'>
       <input type='hidden' name='id' value='<?php echo $_SESSION['id'] ?>'>
       <input type='submit' value='Delete account' class="btn btn-danger">

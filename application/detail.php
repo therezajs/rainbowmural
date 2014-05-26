@@ -3,7 +3,7 @@
   require('header.php');
   require_once('ajax_comment.php');
   require_once('ajax_like.php');
-  require_once('../system/Picture.php');
+  require_once('ajax_picture.php');
 ?>
 
 

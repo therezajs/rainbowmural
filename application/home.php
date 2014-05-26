@@ -1,8 +1,7 @@
 <?php
 session_start();
-include_once("../system/Database.php");
 require('header.php');
-require_once('../system/Picture.php');
+require_once('ajax_picture.php');
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
