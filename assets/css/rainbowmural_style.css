@@ -7,8 +7,8 @@ body {
   background-color: #FFFFFF;
 }
 textarea {
-    border-radius: 5px;
-    margin-right: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 #my_container {
   margin-top: 60px;
@@ -25,7 +25,6 @@ textarea {
 .bg {
   position: fixed !important;
   top: 7% !important;
-  /*left: -5% !important;*/
   margin: 0 !important;
   width: 100% !important;
   height: 100% !important;
@@ -41,20 +40,16 @@ textarea {
   min-width: 100%;
   min-height: 100%;
 }
-/*#home_container {
-  margin-top: 60px;
-  min-height: 550px;
-}*/
 .my_btn {
   width: 100%;
 }
 #btn {
-    min-width: 300px;
-    text-align: left;
+  min-width: 300px;
+  text-align: left;
 }
 #menu {
-    min-width: 300px;
-    text-align: left;
+  min-width: 300px;
+  text-align: left;
 }
 .navbar-inverse a {
   color: #DFD3DB !important;
@@ -64,7 +59,6 @@ textarea {
 }
 .header {
   background-color: #ECE5E9;
-  /*color: #DFD3DB;*/
 }
 a.btn-success {
   font-size: 100%;
@@ -86,9 +80,6 @@ a.btn-success:active {
 }
 .btn_log {
   background-color: #9EC512;
-}
-.navbar-brand {
-  /*some css*/
 }
 .btn_left {
   text-align: left;
@@ -112,51 +103,51 @@ a.btn-success:active {
   color: white;
 }
 #commentz {
-    padding: 0;
+  padding: 0;
 }
 #comments {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 #map-canvas {
   height: 100%;
   width: 100%
 }
 #location_heigth {
-    height: 80px;
+  height: 80px;
 }
 #map {
-    height: 300px;
+  height: 300px;
 }
 #red {
-    color: red;
+  color: red;
 }
 #white {
-    color: white;
+  color: white;
 }
 .user {
-    color: #602649;
+  color: #602649;
 }
 #likes_count {
-    margin-top: 9px;
-    margin-right: 10px;
-    color: #B2B2B2;
+  margin-top: 9px;
+  margin-right: 10px;
+  color: #B2B2B2;
 }
 #likes_count p {
-    margin: 0;
+  margin: 0;
 }
 #search {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 #container {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .item {
-    width: 32%;
-    margin: 4px;
+  width: 32%;
+  margin: 4px;
 }
 .item img {
-    width: 100%;
-    padding: 4px;
+  width: 100%;
+  padding: 4px;
 }
 .item h4 {
   position: absolute;
@@ -165,12 +156,12 @@ a.btn-success:active {
   color: transparent;
 }
 .item_sm {
-    width: 30%;
-    margin: 4px;
+  width: 30%;
+  margin: 4px;
 }
 .item_sm img {
-    width: 100%;
-    padding: 4px;
+  width: 100%;
+  padding: 4px;
 }
 .item_sm h4 {
   position: absolute;
@@ -196,40 +187,41 @@ a.btn-success:active {
   color: transparent;
 }
 .button {
-    min-width: 250px;
-    height: 50px;
-    margin: 10px;
+  min-width: 250px;
+  height: 50px;
+  margin: 10px;
 
-    color: #fffddf;
-    background-color: #ff6052;
+  color: #fffddf;
+  background-color: #ff6052;
 }
 #search {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 .button {
-    min-width: 250px;
-    height: 50px;
-    margin: 10px;
+  min-width: 250px;
+  height: 50px;
+  margin: 10px;
 }
 #submit {
   margin-top: 10px;
 }
 #map {
-    width: 100%
-    /*padding: 8px;*/
+  width: 100%
 }
 #my_map {
-    padding-left: 15px;
-    position: fixed;
-    top: 70px;
-    right: 30px;
+  padding-left: 15px;
+  position: fixed;
+  top: 70px;
+  right: 30px;
 }
-#map-canvas { height: 100%; }
+#map-canvas {
+  height: 100%;
+}
 #cityname {
-    padding: 8px;
+  padding: 8px;
 }
 #pic_container {
-    padding: 0;
+  padding: 0;
 }
 #pic img {
   width: 100%;
@@ -293,15 +285,6 @@ a.btn-success:active {
   border-color: #c12e2a;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
 }
-/*#paris {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#FF7F00), to(black));
-  background-image: -webkit-linear-gradient(top, #FF7F00, 0%, black, 100%);
-  background-image: -moz-linear-gradient(top, #FF7F00 0%, black 100%);
-  background-image: linear-gradient(to bottom, #FF7F00 0%, black 100%);
-  background-repeat: repeat-x;
-  border-color: #A89F8D;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
-}*/
 #rainbow2 {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#FFF000), to(#807800));
   background-image: -webkit-linear-gradient(top, #FFF000, 0%, #807800, 100%);
@@ -338,24 +321,6 @@ a.btn-success:active {
   border-color: #419641;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
 }
-/*#berlin {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#00FFFF), to(#008AB8));
-  background-image: -webkit-linear-gradient(top, #00FFFF, 0%, #008AB8, 100%);
-  background-image: -moz-linear-gradient(top, #00FFFF 0%, #008AB8 100%);
-  background-image: linear-gradient(to bottom, #5597CF 0%, #2B6698 100%);
-  background-repeat: repeat-x;
-  border-color: #2d6ca2;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
-}
-#berlin:hover {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#00FFFF), to(#008AB8));
-  background-image: -webkit-linear-gradient(top, #00FFFF, 0%, #008AB8, 100%);
-  background-image: -moz-linear-gradient(top, #00FFFF 0%, #008AB8 100%);
-  background-image: linear-gradient(to bottom, #428bca 0%, #265A87 100%);
-  background-repeat: repeat-x;
-  border-color: #2d6ca2;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff449d44', GradientType=0);
-}*/
 #rainbow4 {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#00FFFF), to(#008AB8));
   background-image: -webkit-linear-gradient(top, #00FFFF, 0%, #008AB8, 100%);
@@ -377,4 +342,3 @@ a.btn-success:active {
 .initial_height {
   min-height: 200px;
 }
-
