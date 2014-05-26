@@ -1,15 +1,13 @@
 <?php
-	session_start();
-	include("../system/Database.php");
-    require('header.php');
+  session_start();
+  include_once("../system/Database.php");
+  require('header.php');
 ?>
-
 <div class="container" id="my_container">
   <?php
     flash();
   ?>
   <h2>Upload Pictures</h2>
-
   <p class="upload">Rainbow Mural displays pictures from flickr. To have your pictures displayed on this website, please follow these steps:</p>
   <br>
   <ol class="upload">
@@ -26,5 +24,4 @@
     <li>That's it. Your all done.</li>
   </ol>
 </div>
-
 <?php require('footer.php'); ?>

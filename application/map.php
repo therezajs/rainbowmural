@@ -1,8 +1,8 @@
 <?php
   session_start();
-  include("../system/Database.php");
-  require('header.php');
+  include_once("../system/Database.php");
   require_once('../system/Picture.php');
+  require('header.php');
 ?>
   <script type="text/javascript">
     function initialize() {
@@ -96,103 +96,102 @@
     })
   });
   </script>
-<a href=""></a>
-  <div class="container" id='my_container'>
-    <?php
-      flash();
-    ?>
-    <div class="row">
 
-      <div class='col-md-8 col-xs-8' id='pic_container'>
-
-<?php
-
-  if (isset($_GET['lat'])) {
-
-    $pics = new Picture();
-    $images = $pics->getCityPics($_GET['lat'], $_GET['lon'], '1');
-    // var_dump($images);
-    // echo "=======";
-    // echo $images['photos']['total'];
-    if($images === false) {
-      echo 'Flickr Feed Unavailable';
-    }
-    elseif ($images['photos']['total'] == NULL) {
-      echo "<div class='col-md-12'><h3>Where are you flickr? Flickr API is so down!!</h3></div>";
-    }
-    else {
-      if (isset($_SESSION['logged_in'])){
-        foreach($images['photos']['photo'] as $photo) {
-          echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a><h4>' . $photo['title'] . '</h4><form action="ajax_like.php" method="post" class="heart_btn">
-          <input type="hidden" name="action" value="like_button">
-          <input type="hidden" name="user_id" value='.$_SESSION['id'].'>
-          <input type="hidden" name="pic_id" value='.$photo['id'].'>
-          <input type="hidden" name="pic_secret" value='.$photo['secret'].'>
-          <input type="hidden" name="lon" value='. $photo['longitude'] .'>
-          <input type="hidden" name="lat" value='. $photo['latitude'] .'>
-          <input type="hidden" name="name" value='. $photo['title'] .'>
-          <input type="hidden" name="like_location" value="undefined">
-          <button class="heart_span"><span class="glyphicon glyphicon-heart"></span></button></form>
-          <form action="ajax_like.php" method="post" class="check_heart_button">
-          <input type="hidden" name="action" value="check_like_button">
-          <input type="hidden" name="user_id" value='.$_SESSION['id'].'>
-          <input type="hidden" name="pic_id" value='.$photo['id'].'></form></div>';
-
-        }
-      } else {
-        foreach($images['photos']['photo'] as $photo) {
-          echo '<div class="item"><a href="detail.php?lat=' . $photo['latitude'] . '&lon=' . $photo['longitude'] . '&id=' . $photo['id'] . '&secret=' . $photo['secret'] . '"><img src="http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'] . '_m.jpg" /></a><h4>' . $photo['title'] . '</h4></div>';
-        }
-      }
-
-      echo "<script>var photos = JSON.parse('".addslashes(json_encode($images['photos']['photo']))."');</script>";
-
-    }
-
-  }
-?>
+<div class="container" id='my_container'>
+  <?php
+    flash();
+  ?>
+  <div class="row">
+    <div class='col-md-8 col-xs-8' id='pic_container'>
+      <?php if (isset($_GET['lat'])):
+      $pics = new Picture();
+      $images = $pics->getCityPics($_GET['lat'], $_GET['lon'], '1'); ?>
+        <?php if($images === false): ?>
+          <p>Flickr Feed Unavailable</p>
+        <?php elseif ($images['photos']['total'] == NULL): ?>
+          <div class='col-md-12'><h3>Where are you flickr? Flickr API is so down!!</h3></div>
+        <?php else: ?>
+          <?php if (isset($_SESSION['logged_in'])): ?>
+            <?php foreach($images['photos']['photo'] as $photo):
+              $lat = $photo['latitude'];
+              $lon = $photo['longitude'];
+              $id = $photo['id'];
+              $secret = $photo['secret'];
+              $title = $photo['title'];
+              $farm = $photo['farm'];
+              $server = $photo['server'];
+            ?>
+              <div class="item">
+                <a href="detail.php?lat=<?php echo $lat ?>&lon=<?php echo $lon ?>&id=<?php echo $id ?>&secret=<?php echo $secret ?>" >
+                  <img src="http://farm<?php echo $farm ?>.static.flickr.com/<?php echo $server ?>/<?php echo $id ?>_<?php echo $secret ?>_m.jpg" />
+                </a>
+                <h4><?php echo $title ?></h4>
+                <form action="ajax_like.php" method="post" class="heart_btn">
+                  <input type="hidden" name="action" value="like_button">
+                  <input type="hidden" name="user_id" value='<?php echo $_SESSION['id'] ?>'>
+                  <input type="hidden" name="pic_id" value='<?php echo $id ?>'>
+                  <input type="hidden" name="pic_secret" value='<?php echo $secret ?>'>
+                  <input type="hidden" name="lon" value='<?php echo $lon ?>'>
+                  <input type="hidden" name="lat" value='<?php echo $lat ?>'>
+                  <input type="hidden" name="name" value='<?php echo $title ?>'>
+                  <input type="hidden" name="like_location" value="undefined">
+                  <button class="heart_span">
+                    <span class="glyphicon glyphicon-heart"></span>
+                  </button>
+                </form>
+                <form action="ajax_like.php" method="post" class="check_heart_button">
+                  <input type="hidden" name="action" value="check_like_button">
+                  <input type="hidden" name="user_id" value='<?php echo $_SESSION['id'] ?>'>
+                  <input type="hidden" name="pic_id" value='<?php echo $id ?>'>
+                </form>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <?php foreach($images['photos']['photo'] as $photo): ?>
+              <div class="item">
+                <a href="detail.php?lat=<?php echo $lat ?>&lon=<?php echo $lon ?>&id=<?php echo $id ?>&secret=<?php echo $secret ?>" >
+                  <img src="http://farm<?php echo $farm ?>.static.flickr.com/<?php echo $server ?>/<?php echo $id ?>_<?php echo $secret ?>_m.jpg" />
+                </a>
+                <h4><?php echo $title ?></h4>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+          <script>var photos = JSON.parse('<?php echo addslashes(json_encode($images['photos']['photo'])) ?>');</script>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
+    <div class='col-md-4 col-xs-4' id='my_map'>
+      <h2>
+        <?php if (isset($_GET['place'])): ?>
+          <?php $_GET['place']; ?>
+        <?php else: ?>
+          <p>Choose your city</p>
+        <?php endif; ?>
+      </h2>
+      <div id="map">
+        <div id="map-canvas"/>
       </div>
-      <!-- <div class='col-md-4' id='cityname'>
-
-      </div> -->
-      <div class='col-md-4 col-xs-4' id='my_map'>
-        <h2><?php
-        if (isset($_GET['place'])) {
-          echo $_GET['place'];
-        }
-        else
-        {
-          echo "Choose your city";
-        } ?></h2>
-
-        <div id="map">
-          <div id="map-canvas"/>
-        </div>
-        <div>
-          <hr>
-          <footer>
-            <p>Made with love by <a href="about.php">Thereza</a>, 2013 | <a href="http://www.linkedin.com/in/thereza">LinkedIn</a> | <a href="https://twitter.com/therezaJS">Twitter</a> | <a href="https://github.com/bakerstreet221b">Github</a></p>
-
-          </footer><br>
-        </div>
+      <div>
+        <hr>
+        <footer>
+          <p>Made with love by
+            <a href="about.php">Thereza</a>, 2013 |
+            <a href="http://www.linkedin.com/in/thereza">LinkedIn</a> |
+            <a href="https://twitter.com/therezaJS">Twitter</a> |
+            <a href="https://github.com/bakerstreet221b">Github</a>
+          </p>
+        </footer><br>
       </div>
     </div>
-
-
   </div>
-  <script type="text/javascript">
-      $(window).load(function() {
-        var container = document.querySelector('#pic_container');
-        var msnry = new Masonry( container, {
-          itemSelector: '.item'
-        });
-
-        $(window).scroll(function () {
-           if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
-            // alert("Add something at the end of the page");
-           }
-        });
-      });
-    </script>
-  </body>
+</div>
+<script type="text/javascript">
+  $(window).load(function() {
+    var container = document.querySelector('#pic_container');
+    var msnry = new Masonry( container, {
+      itemSelector: '.item'
+    });
+  });
+</script>
+</body>
 </html>
