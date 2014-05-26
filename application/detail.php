@@ -191,23 +191,23 @@
   <div class='row'>
     <div class='col-md-7 col-xs-12' id='pic'>
       <?php
-        $id = $_GET['id'];
-        $secret = $_GET['secret'];
-        $lat = $_GET['lat'];
-        $lon = $_GET['lon'];
+        $detail_id = $_GET['id'];
+        $detail_secret = $_GET['secret'];
+        $detail_lat = $_GET['lat'];
+        $detail_lon = $_GET['lon'];
       ?>
-      <img src="http://www.flickr.com/photos/<?php echo $id ?>_<?php echo $secret?>.jpg">
+      <img src="http://www.flickr.com/photos/<?php echo $detail_id ?>_<?php echo $detail_secret?>.jpg">
       <h4>Street Art nearby:</h4>
       <div class='row' id='nearby_container'>
         <?php if (isset($_GET['lat'])): ?>
           <?php $pics = new Picture();
-          $nearby = $pics->getPicsNearby($_GET['lat'], $_GET['lon']); ?>
+          $nearby = $pics->getPicsNearby($detail_lat, $detail_lon); ?>
           <?php if($nearby === false): ?>
             <h5>Flickr Feed Unavailable</h5>
           <?php else: ?>
             <script>var photosNearby = JSON.parse('<?php echo addslashes(json_encode($nearby['photos']['photo'])) ?>');</script>
             <?php foreach($nearby['photos']['photo'] as $photo): ?>
-              <?php if ($photo['id'] != $id): ?>
+              <?php if ($photo['id'] != $detail_id): ?>
                 <?php
                   $lat = $photo['latitude'];
                   $lon = $photo['longitude'];
@@ -269,8 +269,10 @@
         <script>var photo = JSON.parse('<?php echo addslashes(json_encode($images['photo'])) ?>');</script>
       <?php if($images === false): ?>
           <p>Flickr Feed Unavailable</p>
-      <?php else: ?>
-          <h3>Title: <?php echo $images['photo']['title']["_content"] ?></h3>
+      <?php else:
+        $detail_title = $images['photo']['title']["_content"]
+      ?>
+          <h3>Title: <?php echo $detail_title ?></h3>
       <?php endif; ?>
       <div id='location_heigth'>
         <div id='location'></div>
@@ -279,18 +281,20 @@
       <div>
         <div class="collapse navbar-collapse" id="commentz">
           <ul class="nav navbar-nav col-md-12">
-            <li id='comments'><h4>Comment</h4></li>
+            <li id='comments'>
+              <h4>Comment</h4>
+            </li>
             <li id="likes_count"></li>
             <?php if (isset($_SESSION['logged_in'])): ?>
             <li>
               <form action='ajax_like.php' method='post' id='like_button'>
                 <input type='hidden' name='action' value='like_button'>
                 <input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'>
-                <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
-                <input type='hidden' name='pic_secret' value='<?php echo $secret ?>'>
-                <input type='hidden' name='lon' value='<?php echo $lon ?>'>
-                <input type='hidden' name='lat' value='<?php echo $lat ?>'>
-                <input type='hidden' name='name' value='<?php echo $images['photo']['title']["_content"] ?>'>
+                <input type='hidden' name='pic_id' value='<?php echo $detail_id ?>'>
+                <input type='hidden' name='pic_secret' value='<?php echo $detail_secret ?>'>
+                <input type='hidden' name='lon' value='<?php echo $detail_lon ?>'>
+                <input type='hidden' name='lat' value='<?php echo $detail_lat ?>'>
+                <input type='hidden' name='name' value='<?php echo $detail_title ?>'>
                 <div id='like_location'></div>
                 <button type="button" class="btn btn-default" id='like_btn'>
                   <span class="glyphicon glyphicon-heart"></span> like</button>
@@ -301,15 +305,14 @@
               <form action='ajax_like.php' method='post' id='check_like_button'>
                 <input type='hidden' name='action' value='check_like_button'>
                 <input type='hidden' name='user_id' value='<?php echo $_SESSION['id']?>'>
-                <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
+                <input type='hidden' name='pic_id' value='<?php echo $detail_id ?>'>
               </form>
             </li>
           </ul>
         </div>
         <hr>
         <?php
-        function commentsTable($comments)
-        {
+        function commentsTable($comments) {
           $html = "";
           foreach($comments as $comment)
           {
@@ -320,13 +323,13 @@
           echo $html;
         }
         $get_comments = new Comment();
-        $comments = $get_comments->getComments($id);
+        $comments = $get_comments->getComments($detail_id);
         commentsTable($comments);
         ?>
         <p id='commentsTable'></p>
         <hr>
         <form action="ajax_comment.php" method="post" id='comment'>
-          <input type='hidden' name='pic_id' value='<?php echo $id ?>'>
+          <input type='hidden' name='pic_id' value='<?php echo $detail_id ?>'>
           <input type='hidden' name='action' value='comment' >
           <?php if (isset($_SESSION['logged_in'])): ?>
               <input type='hidden' name='user_id' value="<?php echo $_SESSION['id'] ?>">
