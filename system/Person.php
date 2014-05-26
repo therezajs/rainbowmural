@@ -5,7 +5,6 @@ class Person {
   private $connection;
 
   function __construct($data) {
-    // Make sure object is initialized into a valid state
     assert(isset($data['id']));
     $this->data = $data;
     $this->connection = new Database();
@@ -17,7 +16,7 @@ class Person {
   }
 
   function getComments() {
-    // Return array with everybody as Person objects with is_friend property
+    // Returns array with everybody as Person objects with is_friend property
     $query =
       "SELECT
         id,
@@ -32,5 +31,4 @@ class Person {
     // Returns a property, one of id, name, email, or is_friend
     return $this->data[$name];
   }
-
 }

@@ -5,6 +5,3 @@
 
 $data = new Comment();
 $data->processFormData($_POST);
-
-
-

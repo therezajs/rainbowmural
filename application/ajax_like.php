@@ -1,7 +1,7 @@
 <?php
   require_once('../system/Database.php');
-  require('../system/Fav.php');
+  require('../system/Favorite.php');
 
 
-$data = new Fav();
+$data = new Favorite();
 $data->processFormData($_POST);

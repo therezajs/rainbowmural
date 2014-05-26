@@ -4,98 +4,9 @@
   require_once('ajax_picture.php');
   require('header.php');
 ?>
-  <script type="text/javascript">
-    function initialize() {
 
-    var mapOptions = {
-      center: new google.maps.LatLng("<?php echo $_GET['lat']?>","<?php echo $_GET['lon']?>"),
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
-      mapOptions);
-       var current_marker = null;
-    photos.forEach(function(each) {
-      var ll = new google.maps.LatLng(each.latitude,each.longitude);
-      var marker = new google.maps.Marker({
-        position: ll,
-        map: map,
-        title: each.title
-      });
-      var contentString = '<a href="detail.php?lat=' + each.latitude + '&lon=' + each.longitude + '&id=' + each.id + '&secret=' + each.secret + '"><img class="images" src="http://www.flickr.com/photos/'+each.id+'_'+each.secret+'_s.jpg"></a>';
-
-      var that = this;
-      that.infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-
-
-      google.maps.event.addListener(marker, 'mouseover', function() {
-        // console.log(this.__gm_id);
-        if(current_marker && this.__gm_id != current_marker.__gm_id)
-        {
-        // console.log(current_marker.__gm_id);
-          // console.log("close");
-          that.infowindow.close();
-        }
-        current_marker = marker;
-        that.infowindow.content = contentString;
-        that.infowindow.setOptions({ disableAutoPan : true });
-        that.infowindow.open(map, current_marker);
-      });
-      // google.maps.event.addListener(marker, 'mouseout', function() {
-      // // infowindow.close();
-      // });
-    });
-
-
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-  $(document).ready(function(){
-    $(document).on("mouseenter", ".item", function(){
-      var heart_sm = $(this).find(".check_heart_button");
-      // alert($(heart_sm).serialize());
-      var little_heart = $(this).find("span")
-      $(this).find("h4").css("color", "white");
-      $(this).find("h4").css("text-shadow", "0 0 2px black");
-      $.post(
-        $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
-          // alert(param);
-          if (param[0] == "liked") {
-            // $('.heart_span').html("<span class='glyphicon glyphicon-heart red_heart'></span>");
-            $(little_heart).css("color", "red");
-          } else {
-            $(little_heart).css("color", "white");
-          };
-        }, "json");
-      return false;
-    });
-
-    $(document).on("mouseleave", ".item", function(){
-      $(this).find("h4").css("color", "transparent");
-      $(this).find("h4").css("text-shadow", "0 0 2px transparent");
-      $(this).find("span").css("color", "transparent");
-    });
-
-    $(document).on("click", '.heart_btn', function() {
-      var heart = $(this);
-      // alert($("#like_button").serialize());
-      $.post(
-        $(this).attr('action'), $(this).serialize(), function(param) {
-          // console.log(heart);
-          if (param[0] == "like successful") {
-            $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart' id='red'></span>");
-          }
-          else {
-            // alert(param);
-            $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart'></span>");
-          }
-        }, "json");
-      return false;
-    })
-  });
-  </script>
+<script type="text/javascript" src="../assets/js/googleMapsApi.js"></script>
+<script type="text/javascript" src="../assets/js/changeHeartColor.js"></script>
 
 <div class="container" id='my_container'>
   <?php
@@ -193,13 +104,8 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  $(window).load(function() {
-    var container = document.querySelector('#pic_container');
-    var msnry = new Masonry( container, {
-      itemSelector: '.item'
-    });
-  });
-</script>
+
+<script type="text/javascript" src="../assets/js/masonry.js"></script>
+
 </body>
 </html>

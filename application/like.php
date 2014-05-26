@@ -2,7 +2,7 @@
   session_start();
   require("header.php");
   require_once("../system/Database.php");
-  require('../system/Fav.php');
+  require('../system/Favorite.php');
 
 ?>
 <script type="text/javascript">
@@ -52,7 +52,7 @@ $(document).ready(function(){
   <h2>Likes</h2>
   <div class='row' id='like_container'>
   <?php if (isset($_SESSION['id'])):
-    $data = new Fav();
+    $data = new Favorite();
     $likes = $data->getLikes($_SESSION['id']);
   ?>
     <?php if (!empty($likes)): ?>

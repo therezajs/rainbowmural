@@ -171,7 +171,6 @@ class LoginController {
   }
 
   function changePwdAction($data) {
-
     $errors = array();
     $success = array();
 
@@ -208,6 +207,7 @@ class LoginController {
       }
     }
   }
+
   function deleteAction($data) {
     $query = "DELETE FROM users WHERE id='{$data['id']}'";
     mysql_query($query);
