@@ -5,116 +5,9 @@
   require_once('ajax_like.php');
   require_once('ajax_picture.php');
 ?>
-
-
-
+<script type="text/javascript" src="../assets/js/geocoderMapMarkers.js"></script>
 <script type="text/javascript">
-  var geocoder;
-  var map;
-  var lat;
-  var lon;
-  function initialize() {
-    geocoder = new google.maps.Geocoder();
-    lat = photo.location.latitude;
-    lon = photo.location.longitude;
-    var mapOptions = {
-      center: new google.maps.LatLng(photo.location.latitude,photo.location.longitude),
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-      mapOptions);
-    var ll = new google.maps.LatLng(photo.location.latitude,photo.location.longitude);
-    var marker = new google.maps.Marker({
-      position: ll,
-      map: map,
-      title: photo.title._content
-    });
-
-    var image = '../assets/images/red_dot.png';
-    var current_dotMarker = null;
-    photosNearby.forEach(function(each) {
-      if (each.id != <?php echo "'". $_GET['id'] ."'"?>) {
-        var myLatLng = new google.maps.LatLng(each.latitude,each.longitude);
-        var dotMarker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          icon: image
-        });
-        var contentString = '<a href="detail.php?lat=' + each.latitude + '&lon=' + each.longitude + '&id=' + each.id + '&secret=' + each.secret + '"><img class="images" src="http://www.flickr.com/photos/'+each.id+'_'+each.secret+'_s.jpg"></a>';
-
-        var that = this;
-        that.infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-        google.maps.event.addListener(dotMarker, 'mouseover', function() {
-
-          if(current_dotMarker && this.__gm_id != current_dotMarker.__gm_id)
-          {
-          // console.log(current_marker.__gm_id);
-            // console.log("close");
-            that.infowindow.close();
-          }
-          current_marker = marker;
-          that.infowindow.content = contentString;
-          that.infowindow.setOptions({ disableAutoPan : true });
-          that.infowindow.open(map, dotMarker);
-        });
-      };
-    });
-
-    codeLatLng();
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    function codeLatLng() {
-
-    var latlng = new google.maps.LatLng(lat, lon);
-    geocoder.geocode({'latLng': latlng}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-      if (results[0]) {
-        $('#like_location').html("<input type='hidden' name='like_location' value='"+results[3].formatted_address+"'>");
-        $('#location').html((results[0].formatted_address).split(',').join('<br>'));
-
-      }
-      } else {
-      alert("Geocoder failed due to: " + status);
-      }
-    });
-    }
-
   $(document).ready(function(){
-
-    $(document).on("mouseenter", ".item_sm", function(){
-      var heart_sm = $(this).find(".check_heart_button");
-      // alert($(heart_sm).serialize());
-      var little_heart = $(this).find("span")
-      $(this).find("h4").css("color", "white");
-      $(this).find("h4").css("text-shadow", "0 0 2px black");
-      $.post(
-        $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
-          // alert(param);
-          if (param[0] == "liked") {
-            // $('.heart_span').html("<span class='glyphicon glyphicon-heart red_heart'></span>");
-            $(little_heart).css("color", "red");
-          } else {
-            $(little_heart).css("color", "white");
-          };
-        }, "json");
-      return false;
-    });
-
-    $(document).on("mouseleave", ".item_sm", function(){
-      $(this).find("h4").css("color", "transparent");
-      $(this).find("h4").css("text-shadow", "0 0 2px transparent");
-      $(this).find("span").css("color", "transparent");
-    });
-
     $(document).on("submit", '#comment', function() {
       var form = $(this);
       $.post(
@@ -128,64 +21,10 @@
         }, "json");
       return false;
     });
-
-    $(document).on("click", '#like_button', function() {
-      // alert($("#like_button").serialize());
-      $.post(
-        $(this).attr('action'), $(this).serialize(), function(param) {
-
-          if (param[0] == "like successful") {
-            $('#like_btn').html("<span class='glyphicon glyphicon-heart' id='red'></span> liked");
-          }
-          else {
-            // alert(param);
-            $('#like_btn').html("<span class='glyphicon glyphicon-heart'></span> like");
-          }
-          if (param[1] == 1) {
-            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> like</p>");
-          } else {
-            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> likes</p>");
-          };
-        }, "json");
-      return false;
-    })
-
-    $(document).on("click", '.heart_btn', function() {
-      var heart = $(this);
-      // alert($("#like_button").serialize());
-      $.post(
-        $(this).attr('action'), $(this).serialize(), function(param) {
-          // console.log(heart);
-          if (param[0] == "like successful") {
-            $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart' id='red'></span>");
-          }
-          else {
-            // alert(param);
-            $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart'></span>");
-          }
-        }, "json");
-      return false;
-    })
-
-    $(document).ready(function() {
-      // alert($("#check_like_button").serialize());
-      $.post(
-        $('#check_like_button').attr('action'), $('#check_like_button').serialize(), function(param) {
-          // alert(param);
-          if (param[0] == "liked") {
-            $('#like_btn').html("<span class='glyphicon glyphicon-heart' id='red'></span> liked");
-          };
-          if (param[1] == 1) {
-            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> like</p>");
-          } else {
-            $('#likes_count').html("<p><span class='badge'>"+param[1]+"</span> likes</p>");
-          };
-        }, "json");
-      return false;
-    });
   });
 </script>
-
+<script type="text/javascript" src="../assets/js/changeSmallHeartColor.js"></script>
+<script type="text/javascript" src="../assets/js/comment.js"></script>
 <div class="container" id='my_container'>
   <?php
     flash();

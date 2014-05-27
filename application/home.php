@@ -3,19 +3,8 @@ session_start();
 require('header.php');
 require_once('ajax_picture.php');
 ?>
-<script type="text/javascript">
-$(document).ready(function(){
-  $(document).on("mouseenter", ".item", function(){
-      $(this).find("h4").css("color", "white");
-      $(this).find("span").css("color", "white");
-    });
 
-  $(document).on("mouseleave", ".item", function(){
-    $("h4").css("color", "transparent");
-    $(this).find("span").css("color", "transparent");
-  });
-});
-</script>
+<script type="text/javascript" src="../assets/js/changeHeartColor.js"></script>
 
 <div class='container' id='my_container'>
   <div id='messages'>
@@ -23,7 +12,7 @@ $(document).ready(function(){
     flash();
   ?>
   </div>
-  <div id='container' class="row">
+  <div id='pic_container' class="row">
     <div class="item" >
       <a href="detail.php?lat=52.522289&lon=13.397923&id=3534028659&secret=ca43d3f8d0">
         <img src="http://farm4.staticflickr.com/3082/3534028659_ca43d3f8d0_m.jpg" />
@@ -145,13 +134,8 @@ $(document).ready(function(){
       <h4>graffiti_0710_003</h4>
     </div>
   </div>
-<script type="text/javascript">
-  $(window).load(function() {
-    var container = document.querySelector('#container');
-    var msnry = new Masonry( container, {
-      itemSelector: '.item'
-    });
-  });
-</script>
+
+  <script type="text/javascript" src="../assets/js/masonry.js"></script>
+
 </div>
 <?php require('footer.php'); ?>

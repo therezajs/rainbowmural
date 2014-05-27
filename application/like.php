@@ -3,66 +3,28 @@
   require("header.php");
   require_once("../system/Database.php");
   require('../system/Favorite.php');
-
 ?>
-<script type="text/javascript">
-$(document).ready(function(){
-  $(document).on("mouseenter", ".item", function(){
-    var heart_sm = $(this).find(".check_heart_button");
-    // alert($(heart_sm).serialize());
-    var little_heart = $(this).find("span")
-    $(this).find("h4").css("color", "white");
-    $.post(
-      $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
-        // alert(param);
-        if (param[0] == "liked") {
-          // $('.heart_span').html("<span class='glyphicon glyphicon-heart red_heart'></span>");
-          $(little_heart).css("color", "red");
-        } else {
-          $(little_heart).css("color", "white");
-        };
-      }, "json");
-    return false;
-  });
 
-  $(document).on("mouseleave", ".item", function(){
-    $(this).find("h4").css("color", "transparent");
-    $(this).find("span").css("color", "transparent");
-  });
+<script type="text/javascript" src="../assets/js/likes.js"></script>
 
-  $(document).on("click", '.heart_btn', function() {
-    var heart = $(this).parent(".item");
-    // alert($("#like_button").serialize());
-    $.post(
-      $(this).attr('action'), $(this).serialize(), function(param) {
-        // console.log(heart);
-        if (param[0] == "unlike successful") {
-          // alert(param);
-          $(heart).fadeOut("slow");
-        }
-      }, "json");
-    return false;
-  })
-});
-</script>
 <div class='container' id="my_container">
   <?php
     flash();
   ?>
   <h2>Likes</h2>
-  <div class='row' id='like_container'>
-  <?php if (isset($_SESSION['id'])):
-    $data = new Favorite();
-    $likes = $data->getLikes($_SESSION['id']);
-  ?>
-    <?php if (!empty($likes)): ?>
-      <?php foreach ($likes as $like):
-        $lat = $like['lat'];
-        $lon = $like['lon'];
-        $id = $like['pic_id'];
-        $secret = $like['pic_secret'];
-        $title = $like['title'];
-      ?>
+  <div class='row' id='pic_container'>
+  <?php
+    if (isset($_SESSION['id'])):
+      $data = new Favorite();
+      $likes = $data->getLikes($_SESSION['id']);
+      if (!empty($likes)):
+        foreach ($likes as $like):
+          $lat = $like['lat'];
+          $lon = $like['lon'];
+          $id = $like['pic_id'];
+          $secret = $like['pic_secret'];
+          $title = $like['title'];
+        ?>
         <div class="item" >
           <a href="detail.php?lat=<?php echo $lat ?>&lon=<?php echo $lon ?>&id=<?php echo $id ?>&secret=<?php echo $secret ?>">
             <img src="http://www.flickr.com/photos/<?php echo $id ?>_<?php echo $secret ?>.jpg">
@@ -95,13 +57,8 @@ $(document).ready(function(){
     <h3>Please log in to see your likes</h3>
   <?php endif; ?>
   </div>
-  <script type="text/javascript">
-    $(window).load(function() {
-      var container = document.querySelector('#like_container');
-      var msnry = new Masonry( container, {
-        itemSelector: '.item'
-      });
-    });
-  </script>
+
+  <script type="text/javascript" src="../assets/js/masonry.js"></script>
+
 </div>
 <?php require('footer.php'); ?>

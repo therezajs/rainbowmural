@@ -1,9 +1,9 @@
-$(document).ready(function() {
-
-  // checks if picture is liked and displays the heart sign accordingly
+$(document).ready(function(){
   $(document).on("mouseenter", ".item", function(){
     var heart_sm = $(this).find(".check_heart_button");
     var little_heart = $(this).find("span");
+    $(this).find("h4").css("color", "white");
+    $(this).find("h4").css("text-shadow", "0 0 2px black");
     $.post(
       $(heart_sm).attr('action'), $(heart_sm).serialize(), function(param) {
         if (param[0] == "liked") {
@@ -15,29 +15,18 @@ $(document).ready(function() {
     return false;
   });
 
-  // changes the color of title to white
-  $(document).on("mouseenter", ".item", function(){
-    $(this).find("h4").css("color", "white");
-    $(this).find("h4").css("text-shadow", "0 0 2px black");
-  });
-
-  // changes the color of title and heart back to transparent
   $(document).on("mouseleave", ".item", function(){
     $(this).find("h4").css("color", "transparent");
     $(this).find("h4").css("text-shadow", "0 0 2px transparent");
     $(this).find("span").css("color", "transparent");
   });
 
-  // like and unlike a picture
   $(document).on("click", '.heart_btn', function() {
-    var heart = $(this);
+    var heart = $(this).parent(".item");
     $.post(
       $(this).attr('action'), $(this).serialize(), function(param) {
-        if (param[0] == "like successful") {
-          $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart' id='red'></span>");
-        }
-        else {
-          $(heart).find(".heart_span").html("<span class='glyphicon glyphicon-heart'></span>");
+        if (param[0] == "unlike successful") {
+          $(heart).fadeOut("slow");
         }
       }, "json");
     return false;

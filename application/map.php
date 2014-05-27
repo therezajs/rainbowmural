@@ -82,7 +82,7 @@
     <div class='col-md-4 col-xs-4' id='my_map'>
       <h2>
         <?php if (isset($_GET['place'])): ?>
-          <?php $_GET['place']; ?>
+          <?php echo $_GET['place']; ?>
         <?php else: ?>
           <p>Choose your city</p>
         <?php endif; ?>

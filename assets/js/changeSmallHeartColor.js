@@ -1,7 +1,5 @@
 $(document).ready(function() {
-
-  // checks if picture is liked and displays the heart sign accordingly
-  $(document).on("mouseenter", ".item", function(){
+  $(document).on("mouseenter", ".item_sm", function(){
     var heart_sm = $(this).find(".check_heart_button");
     var little_heart = $(this).find("span");
     $.post(
@@ -15,20 +13,17 @@ $(document).ready(function() {
     return false;
   });
 
-  // changes the color of title to white
-  $(document).on("mouseenter", ".item", function(){
+  $(document).on("mouseenter", ".item_sm", function(){
     $(this).find("h4").css("color", "white");
     $(this).find("h4").css("text-shadow", "0 0 2px black");
   });
 
-  // changes the color of title and heart back to transparent
-  $(document).on("mouseleave", ".item", function(){
+  $(document).on("mouseleave", ".item_sm", function(){
     $(this).find("h4").css("color", "transparent");
     $(this).find("h4").css("text-shadow", "0 0 2px transparent");
     $(this).find("span").css("color", "transparent");
   });
 
-  // like and unlike a picture
   $(document).on("click", '.heart_btn', function() {
     var heart = $(this);
     $.post(
