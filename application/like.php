@@ -51,10 +51,14 @@
         </div>
       <?php endforeach; ?>
     <?php else: ?>
-      <h3> No likes set yet</h3>
+      <div class="container">
+        <h3> No likes set yet</h3>
+      </div>
     <?php endif; ?>
   <?php else: ?>
-    <h3>Please log in to see your likes</h3>
+    <div class="container">
+      <h3>Please log in to see your likes</h3>
+    </div>
   <?php endif; ?>
   </div>
 

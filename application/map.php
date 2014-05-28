@@ -5,7 +5,7 @@
   require('header.php');
 ?>
 
-<script type="text/javascript" src="../assets/js/googleMapsApi.js"></script>
+<script type="text/javascript" src="../assets/js/mapMarkers.js"></script>
 <script type="text/javascript" src="../assets/js/changeHeartColor.js"></script>
 
 <div class="container" id='my_container'>

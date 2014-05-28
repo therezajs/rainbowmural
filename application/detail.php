@@ -5,7 +5,7 @@
   require_once('ajax_like.php');
   require_once('ajax_picture.php');
 ?>
-<script type="text/javascript" src="../assets/js/geocoderMapMarkers.js"></script>
+<script type="text/javascript" src="../assets/js/mapMarkersGeocoder.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $(document).on("submit", '#comment', function() {
@@ -183,14 +183,11 @@
   </div>
 </div>
 <script type="text/javascript">
-
   $(window).load(function() {
     var container = document.querySelector('#nearby_container');
     var msnry = new Masonry( container, {
       itemSelector: '.item_sm'
     });
   });
-
 </script>
-
 <?php require('footer.php'); ?>
