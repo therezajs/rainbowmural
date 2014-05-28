@@ -36,9 +36,8 @@ class LoginController {
 
   function loginAction($data){
     $errors = array();
-
     if (!(isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL))) {
-      $errors[] = "Email not valid";
+      $errors[] = "Email ".$data['email']." not valid";
     }
     if (!(isset($data['password']) && strlen($data['password'])>6)) {
       $errors[] = "Password not valid";
@@ -48,7 +47,9 @@ class LoginController {
       header('Location: ../application/login.php');
     }
     else {
-      $query = "SELECT * FROM users WHERE email='{$data['email']}' AND password='{$data['password']}'";
+      $query = "SELECT * FROM users WHERE email='".
+        mysql_real_escape_string($data['email'])."' AND password='".
+        mysql_real_escape_string($data['password'])."'";
       $user = $this->connection->fetch_all($query);
       if (count($user)>0) {
         $_SESSION['logged_in'] = true;
@@ -93,20 +94,26 @@ class LoginController {
       header('Location: ../application/login.php');
     }
     else {
-      $query = "SELECT * FROM users WHERE email = '{$data['email']}' OR user_name = '{$data['user_name']}'";
+      $query = "SELECT * FROM users WHERE email = '".
+        mysql_real_escape_string($data['email']) ."' OR user_name = '".
+        mysql_real_escape_string($data['user_name'])."'";
       $user = $this->connection->fetch_all($query);
 
       if (count($user)>0) {
-
         $errors[] = "Account with email ".$data['email']." or user_name ".$data['user_name']." already exists.";
         $_SESSION['errors'] = $errors;
         header('Location: ../application/login.php');
       }
       else {
-        $query = "INSERT INTO users (user_name, first_name, last_name, email, password, created_at) VALUES ('{$data['user_name']}', '{$data['first_name']}', '{$data['last_name']}', '{$data['email']}', '{$data['password']}', NOW())";
+        $query = "INSERT INTO users (user_name, first_name, last_name, email, password, created_at) VALUES ('".
+          mysql_real_escape_string($data['user_name'])."', '".
+          mysql_real_escape_string($data['first_name'])."', '".
+          mysql_real_escape_string($data['last_name'])."', '".
+          mysql_real_escape_string($data['email'])."', '".
+          mysql_real_escape_string($data['password'])."', NOW())";
         mysql_query($query);
 
-        $success[] = "Registration successfull!";
+        $success[] = "Registration successfull! You can login now :)";
         $_SESSION['messages'] = $success;
         header('Location: ../application/login.php');
       }
@@ -153,10 +160,16 @@ class LoginController {
       header('Location: .../application/edit.php');
     }
     else {
-      $query = "UPDATE users SET user_name='{$data['user_name']}', first_name='{$data['first_name']}', last_name='{$data['last_name']}', email='{$data['email']}' where id='{$data['id']}'";
+      $query = "UPDATE users SET user_name='".
+        mysql_real_escape_string($data['user_name'])."', first_name='".
+        mysql_real_escape_string($data['first_name'])."', last_name='".
+        mysql_real_escape_string($data['last_name'])."', email='".
+        mysql_real_escape_string($data['email'])."' where id=".
+        mysql_real_escape_string($data['id']);
       mysql_query($query);
 
-      $query = "SELECT * FROM users WHERE id='{$data['id']}'";
+      $query = "SELECT * FROM users WHERE id=".
+        mysql_real_escape_string($data['id']);
       $user = $this->connection->fetch_all($query);
 
       $_SESSION['user_name'] = $user[0]['user_name'];
@@ -175,7 +188,8 @@ class LoginController {
     $success = array();
 
     if (!(isset($data['new_password']) && strlen($data['new_password'])>6)) {
-      $errors[] = "New password needs a least 6 characters. Your new password had ".strlen($data['new_password'])." characters.";
+      $errors[] = "New password needs a least 6 characters. Your new password had ".
+        strlen($data['new_password'])." characters.";
     }
     if (!(isset($data['conf_password']) && $data['new_password'] == $data['conf_password'])) {
       $errors[] = "Confirmed password not equal to password";
@@ -189,7 +203,10 @@ class LoginController {
       header('Location: ../application/edit.php');
     }
     else {
-      $query = "SELECT * FROM users WHERE id='{$data['id']}' AND password='{$data['password']}'";
+      $query = "SELECT * FROM users WHERE password= '".
+        mysql_real_escape_string($data['password'])."' AND = id ".
+        mysql_real_escape_string($data['id']);
+
       $user = $this->connection->fetch_all($query);
 
       if (count($user)==0) {
@@ -198,7 +215,9 @@ class LoginController {
         header('Location: ../application/login.php');
       }
       else {
-        $query = "UPDATE users SET password='{$data['new_password']}' where id='{$data['id']}'";
+        $query = "UPDATE users SET password='".
+          mysql_real_escape_string($data['new_password'])."' where id=".
+          mysql_real_escape_string($data['id']);
         mysql_query($query);
 
         $success[] = "Password update successfull!";
@@ -209,7 +228,8 @@ class LoginController {
   }
 
   function deleteAction($data) {
-    $query = "DELETE FROM users WHERE id='{$data['id']}'";
+    $query = "DELETE FROM users WHERE id=".
+      mysql_real_escape_string($data['id']);
     mysql_query($query);
 
     session_destroy();

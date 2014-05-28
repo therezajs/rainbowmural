@@ -21,8 +21,10 @@ class Person {
       "SELECT
         id,
         comment,
-        (select user_name from user where id = ".$this->id.") AS user_name
-      FROM comments WHERE pic_id = ".$this->pic_id;
+        (select user_name from user where id = ".
+          mysql_real_escape_string($this->id).") AS user_name
+        FROM comments WHERE pic_id = ".
+          mysql_real_escape_string($this->pic_id);
     $comments = $this->connection->fetch_all($query);
     return array_map(function($data) { return new Person($data); }, $comments);
   }
