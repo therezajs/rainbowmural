@@ -112,10 +112,10 @@ class LoginController {
           mysql_real_escape_string($data['email'])."', '".
           mysql_real_escape_string($data['password'])."', NOW())";
         mysql_query($query);
-
-        $success[] = "Registration successfull! You can login now :)";
+   
+        $success[] = "Registration successfull! Have fun :)";
         $_SESSION['messages'] = $success;
-        header('Location: ../application/login.php');
+        $this->loginAction($data);
       }
     }
   }
