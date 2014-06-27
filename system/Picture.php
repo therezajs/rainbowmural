@@ -4,7 +4,7 @@ class Picture {
   function processFormData($data) {
     if (isset($data['action']) && $data['action'] == 'city')
     {
-      $this->findCity($data['name']);
+      $this->findCity($data);
     }
   }
 
@@ -32,7 +32,8 @@ class Picture {
     return $rsp_obj;
   }
 
-  function findCity($name) {
+  function findCity($data) {
+    $name = $data['name'];
     $parts = explode(" ", $name);
     $newName = implode("+", $parts);
     $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".$newName."&sensor=false";

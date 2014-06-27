@@ -9,19 +9,23 @@ class Comment {
 
   function processFormData($data) {
     if (isset($data['action']) && $data['action'] == 'comment') {
-      $this->insertComment($data['pic_id'], $data['user_id'], $data['comment']);
+      $this->insertComment($data);
     }
   }
 
-  function getComments($pic_id) {
+  function getComments($data) {
     $query =
       "SELECT id, comment, (select user_name from users where user_id = id ) AS user FROM comments WHERE pic_id = ".
-        mysql_real_escape_string($pic_id);
+        mysql_real_escape_string($data);
     $comments = $this->connection->fetch_all($query);
     return $comments;
   }
 
-  function insertComment($pic_id, $user_id, $comment) {
+  function insertComment($data) {
+    $pic_id = $data['pic_id'];
+    $user_id = $data['user_id'];
+    $comment = $data['comment'];
+
     if (isset($comment) AND $comment != '') {
       $query = "INSERT INTO comments (pic_id, user_id, comment) VALUES ('".
         mysql_real_escape_string($pic_id)."','".
