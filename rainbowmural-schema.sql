@@ -46,6 +46,7 @@ CREATE TABLE `favs` (
   `lat` varchar(45) DEFAULT NULL,
   `lon` varchar(45) DEFAULT NULL,
   `location` varchar(225) DEFAULT NULL,
+  `title` varchar(225) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;

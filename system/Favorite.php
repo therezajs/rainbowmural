@@ -57,15 +57,14 @@ class Favorite {
     $lon = $data['lon'];
     $location = $data['like_location'];
     $title = $data['name'];
-
+    
     $query =
       "SELECT * FROM favs WHERE user_id = ".
         mysql_real_escape_string($user_id)." AND pic_id = ".
         mysql_real_escape_string($pic_id);
     $like = $this->connection->fetch_all($query);
 
-
-    if (count($like)===0) {
+    if (count($like)==0) {
       $query =
         "INSERT INTO favs (pic_id, pic_secret, user_id, lat, lon, location, title, created_at) VALUES ('".
           mysql_real_escape_string($pic_id)."', '".

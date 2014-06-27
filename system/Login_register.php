@@ -134,6 +134,7 @@ class LoginController {
     $first_name = $data['first_name'];
     $last_name = $data['last_name'];
     $email = $data['email'];
+    $id = $data['id'];
     $errors = array();
     if (strlen($user_name) == 0) {
       $user_name = $_SESSION['user_name'];
@@ -180,7 +181,7 @@ class LoginController {
         mysql_real_escape_string($email)."' where id=".
         mysql_real_escape_string($id);
       mysql_query($query);
-
+      
       $query = "SELECT * FROM users WHERE id=".
         mysql_real_escape_string($id);
       $user = $this->connection->fetch_all($query);
@@ -208,24 +209,23 @@ class LoginController {
       $errors[] = "New password needs a least 6 characters. Your new password had ".
         strlen($new_password)." characters.";
     }
-    if (!(isset($conf_password) && $new_password == $conf_password)) {
+    if (!(isset($conf_password) && $new_password === $conf_password)) {
       $errors[] = "Confirmed password not equal to password";
     }
     if (!(isset($password) && strlen($password)>6)) {
       $errors[] = "Password is empty!";
     }
-
     if (count($errors) > 0){
       $_SESSION['errors'] = $errors;
       header('Location: ../application/edit.php');
     }
     else {
       $query = "SELECT * FROM users WHERE password= '".
-        mysql_real_escape_string($password)."' AND = id ".
+        mysql_real_escape_string($password)."' AND id= ".
         mysql_real_escape_string($id);
 
       $user = $this->connection->fetch_all($query);
-
+      
       if (count($user)==0) {
         $errors[] = "Password is incorrect!";
         $_SESSION['errors'] = $errors;
@@ -233,7 +233,7 @@ class LoginController {
       }
       else {
         $query = "UPDATE users SET password='".
-          mysql_real_escape_string($new_password)."' where id=".
+          mysql_real_escape_string($new_password)."' where id= ".
           mysql_real_escape_string($id);
         mysql_query($query);
 
@@ -246,7 +246,7 @@ class LoginController {
 
   function deleteAction($data) {
     $id = $data['id'];
-    $query = "DELETE FROM users WHERE id=".
+    $query = "DELETE FROM users WHERE id= ".
       mysql_real_escape_string($id);
     mysql_query($query);
 
