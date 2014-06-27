@@ -9,16 +9,10 @@ class Favorite {
 
   function processFormData($data) {
     if (isset($data['action']) && $data['action'] == 'like_button') {
-      $this->setLike($data['pic_id'],
-        $data['pic_secret'],
-        $data['user_id'],
-        $data['lat'],
-        $data['lon'],
-        $data['like_location'],
-        $data['name']);
+      $this->setLike($data);
     }
     elseif (isset($data['action']) && $data['action'] == 'check_like_button') {
-      $this->checkLike($data['pic_id'], $data['user_id']);
+      $this->checkLike($data);
     }
   }
 
@@ -30,7 +24,11 @@ class Favorite {
     return $likes;
   }
 
-  function checkLike($pic_id, $user_id) {
+  function checkLike($data) {
+
+    $pic_id = $data['pic_id'];
+    $user_id = $data['user_id'];
+
     $query =
       "SELECT * FROM favs WHERE user_id = ".
         mysql_real_escape_string($user_id)." AND pic_id = ".
@@ -52,7 +50,15 @@ class Favorite {
     echo json_encode($data);
   }
 
-  function setLike($pic_id, $pic_secret, $user_id, $lat, $lon, $location, $title) {
+  function setLike($data) {
+
+    $pic_id = $data['pic_id'];
+    $pic_secret = $data['pic_secret'];
+    $user_id = $data['user_id'];
+    $lat = $data['lat'];
+    $lon = $data['lon'];
+    $location = $data['like_location'];
+    $title = $data['name'];
 
     $query =
       "SELECT * FROM favs WHERE user_id = ".
