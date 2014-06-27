@@ -16,16 +16,15 @@ class Favorite {
     }
   }
 
-  function getLikes($user_id) {
+  function getLikes($data) {
     // Return array with everybody as Person objects with is_friend property
     $query =
-      "SELECT * FROM favs WHERE user_id = ".mysql_real_escape_string($user_id);
+      "SELECT * FROM favs WHERE user_id = ".mysql_real_escape_string($data);
     $likes = $this->connection->fetch_all($query);
     return $likes;
   }
 
   function checkLike($data) {
-
     $pic_id = $data['pic_id'];
     $user_id = $data['user_id'];
 
@@ -51,7 +50,6 @@ class Favorite {
   }
 
   function setLike($data) {
-
     $pic_id = $data['pic_id'];
     $pic_secret = $data['pic_secret'];
     $user_id = $data['user_id'];
@@ -67,7 +65,7 @@ class Favorite {
     $like = $this->connection->fetch_all($query);
 
 
-    if (count($like)==0) {
+    if (count($like)===0) {
       $query =
         "INSERT INTO favs (pic_id, pic_secret, user_id, lat, lon, location, title, created_at) VALUES ('".
           mysql_real_escape_string($pic_id)."', '".

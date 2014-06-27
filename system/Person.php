@@ -5,7 +5,7 @@ class Person {
   private $connection;
 
   function __construct($data) {
-    assert(isset($data['id']));
+    assert(isset($id));
     $this->data = $data;
     $this->connection = new Database();
   }
