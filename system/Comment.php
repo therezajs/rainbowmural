@@ -33,7 +33,7 @@ class Comment {
         mysql_real_escape_string($comment)."')";
     mysql_query($query);
 
-    $data[] = "comment successful";
+    $data['status'] = "comment successful";
     echo json_encode($data);
     }
   }

@@ -6,23 +6,6 @@
   require_once('ajax_picture.php');
 ?>
 <script type="text/javascript" src="../assets/js/mapMarkersGeocoder.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(document).on("submit", '#comment', function() {
-      var form = $(this);
-      $.post(
-        $(this).attr('action'), $(this).serialize(), function(param) {
-          if (param == "comment successful") {
-            $('#commentsTable').append("<strong><?php echo $_SESSION['user_name'] ?></strong> " + $('#written_comment').val());
-          };
-          $(form).each(function(){
-              this.reset();
-          })
-        }, "json");
-      return false;
-    });
-  });
-</script>
 <script type="text/javascript" src="../assets/js/changeSmallHeartColor.js"></script>
 <script type="text/javascript" src="../assets/js/comment.js"></script>
 <div class="container" id='my_container'>
@@ -156,11 +139,9 @@
           $get_comments = new Comment();
           $comments = $get_comments->getComments($detail_id);
         ?>
-        <table><tbody>
         <?php foreach($comments as $comment): ?>
           <p><strong class='user'><?php echo $comment['user'] ?></strong> <?php echo $comment['comment'] ?></p>
         <?php endforeach ?>
-        </tbody></table>
         <p id='commentsTable'></p>
         <hr>
         <form action="ajax_comment.php" method="post" id='comment'>
@@ -168,6 +149,7 @@
           <input type='hidden' name='action' value='comment' >
           <?php if (isset($_SESSION['logged_in'])): ?>
               <input type='hidden' name='user_id' value="<?php echo $_SESSION['id'] ?>">
+              <input type='hidden' name='user_name' value="<?php echo $_SESSION['user_name'] ?>">
               <textarea rows='4' cols='50' name='comment' id='written_comment'></textarea>
               <input type='submit' value='Say It' class='btn btn-primary'>
           <?php elseif (!isset($_SESSION['logged_in']) && empty($comments)): ?>

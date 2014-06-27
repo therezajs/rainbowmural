@@ -40,12 +40,12 @@ class Favorite {
     $picLikes = $this->connection->fetch_all($query);
 
     if (count($like)>0) {
-      $data[] = "liked";
+      $data['status'] = "liked";
     }
     else {
-      $data[] = "placeholder";
+      $data['status'] = "blank";
     }
-    $data[] = count($picLikes);
+    $data['count_likes'] = count($picLikes);
     echo json_encode($data);
   }
 
@@ -57,7 +57,7 @@ class Favorite {
     $lon = $data['lon'];
     $location = $data['like_location'];
     $title = $data['name'];
-    
+
     $query =
       "SELECT * FROM favs WHERE user_id = ".
         mysql_real_escape_string($user_id)." AND pic_id = ".
@@ -79,8 +79,8 @@ class Favorite {
       $query = "SELECT id, pic_id FROM favs WHERE pic_id = ".
         mysql_real_escape_string($pic_id);
       $picLikes = $this->connection->fetch_all($query);
-      $data[] = "like successful";
-      $data[] = count($picLikes);
+      $data['status'] = "like successful";
+      $data['count_likes'] = count($picLikes);
       echo json_encode($data);
     }
     else {
@@ -93,8 +93,8 @@ class Favorite {
       $query = "SELECT id, pic_id FROM favs WHERE pic_id = ".
         mysql_real_escape_string($pic_id);
       $picLikes = $this->connection->fetch_all($query);
-      $data[] = "unlike successful";
-      $data[] = count($picLikes);
+      $data['status'] = "unlike successful";
+      $data['count_likes'] = count($picLikes);
       echo json_encode($data);
     }
   }
